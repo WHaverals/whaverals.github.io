@@ -1,0 +1,12 @@
+baseURL: "https://whaverals.github.io"
+title: "Wouter's Portfolio"
+theme: "PaperMod"
+
+params:
+  env: production
+  ShowReadingTime: true
+  ShowPostNavLinks: true
+
+markup:
+  highlight:
+    noClasses: false
