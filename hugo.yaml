@@ -1,3 +1,68 @@
 baseURL: "https://whaverals.github.io/"
 title: "Wouter's Portfolio"
 theme: "PaperMod"
+
+# Enable search
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+
+# Menu items
+menu:
+  main:
+    - identifier: home
+      name: Home
+      url: /
+      weight: 10
+    - identifier: posts
+      name: Posts
+      url: /posts/
+      weight: 20
+    - identifier: tags
+      name: Tags
+      url: /tags/
+      weight: 30
+    - identifier: about
+      name: About
+      url: /about/
+      weight: 40
+
+# Theme parameters
+params:
+  # Profile mode
+  profileMode:
+    enabled: true
+    title: "Wouter's Portfolio"
+    subtitle: "Software Engineer & Data Scientist"
+    imageUrl: "/images/profile.jpg"
+    buttons:
+      - name: Posts
+        url: posts
+      - name: Projects
+        url: projects
+
+  # Social icons
+  socialIcons:
+    - name: github
+      url: "https://github.com/whaverals"
+    - name: linkedin
+      url: "https://linkedin.com/in/wouter-haverals"
+    - name: email
+      url: "mailto:youremail@example.com"
+
+  # Theme appearance
+  defaultTheme: auto
+  disableThemeToggle: false
+  
+  # Layout settings
+  ShowReadingTime: true
+  ShowShareButtons: true
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  
+  # Content settings
+  cover:
+    responsiveImages: true

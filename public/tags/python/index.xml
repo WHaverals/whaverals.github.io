@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Python on Wouter's Portfolio</title><link>https://whaverals.github.io/tags/python/</link><description>Recent content in Python on Wouter's Portfolio</description><generator>Hugo -- 0.145.0</generator><language>en</language><lastBuildDate>Thu, 02 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://whaverals.github.io/tags/python/index.xml" rel="self" type="application/rss+xml"/><item><title>Sample Project</title><link>https://whaverals.github.io/projects/project-1/</link><pubDate>Thu, 02 May 2024 00:00:00 +0000</pubDate><guid>https://whaverals.github.io/projects/project-1/</guid><description>&lt;h1 id="project-title-data-analysis-dashboard">Project Title: Data Analysis Dashboard&lt;/h1>
+&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This project is a data visualization dashboard that helps users analyze and interpret complex datasets through interactive charts and graphs.&lt;/p>
+&lt;h2 id="features">Features&lt;/h2>
+&lt;ul>
+&lt;li>Interactive data visualization&lt;/li>
+&lt;li>Support for multiple data sources&lt;/li>
+&lt;li>Customizable charts and graphs&lt;/li>
+&lt;li>Export functionality for reports&lt;/li>
+&lt;li>Real-time data processing&lt;/li>
+&lt;/ul>
+&lt;h2 id="technologies-used">Technologies Used&lt;/h2>
+&lt;ul>
+&lt;li>Python (Pandas, NumPy)&lt;/li>
+&lt;li>Dash and Plotly for visualization&lt;/li>
+&lt;li>Flask for backend API&lt;/li>
+&lt;li>PostgreSQL for data storage&lt;/li>
+&lt;li>Docker for containerization&lt;/li>
+&lt;/ul>
+&lt;h2 id="challenges-and-solutions">Challenges and Solutions&lt;/h2>
+&lt;p>One of the main challenges was handling large datasets efficiently. I implemented data chunking and asynchronous loading to improve performance without sacrificing functionality.&lt;/p></description></item></channel></rss>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Portfolio on Wouter's Portfolio</title><link>https://whaverals.github.io/tags/portfolio/</link><description>Recent content in Portfolio on Wouter's Portfolio</description><generator>Hugo -- 0.145.0</generator><language>en</language><lastBuildDate>Thu, 02 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://whaverals.github.io/tags/portfolio/index.xml" rel="self" type="application/rss+xml"/><item><title>Welcome to My Portfolio</title><link>https://whaverals.github.io/posts/my-first-post/</link><pubDate>Thu, 02 May 2024 00:00:00 +0000</pubDate><guid>https://whaverals.github.io/posts/my-first-post/</guid><description>&lt;h1 id="welcome-to-my-portfolio-website">Welcome to My Portfolio Website!&lt;/h1>
+&lt;p>I&amp;rsquo;m excited to share my journey, projects, and thoughts with you through this platform. This site will serve as a hub for my professional work, personal projects, and blog posts about technology and other interests.&lt;/p>
+&lt;h2 id="what-to-expect">What to Expect&lt;/h2>
+&lt;p>On this site, you&amp;rsquo;ll find:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Projects&lt;/strong>: Detailed breakdowns of my technical projects with links to code repositories&lt;/li>
+&lt;li>&lt;strong>Blog Posts&lt;/strong>: Thoughts, tutorials, and insights about technology, programming, and data science&lt;/li>
+&lt;li>&lt;strong>About Me&lt;/strong>: My professional background, skills, and experience&lt;/li>
+&lt;/ul>
+&lt;h2 id="why-hugo-with-papermod">Why Hugo with PaperMod?&lt;/h2>
+&lt;p>I chose to build this site with &lt;a href="https://gohugo.io/">Hugo&lt;/a> and the &lt;a href="https://github.com/adityatelange/hugo-PaperMod">PaperMod&lt;/a> theme for several reasons:&lt;/p></description></item></channel></rss>

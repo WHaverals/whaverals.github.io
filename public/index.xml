@@ -1,19 +1,46 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Wouter&#39;s Portfolio</title>
-    <link>https://whaverals.github.io/</link>
-    <description>Recent content on Wouter&#39;s Portfolio</description>
-    <generator>Hugo -- 0.125.5</generator>
-    <language>en</language>
-    <lastBuildDate>Thu, 02 May 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://whaverals.github.io/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>My First Post</title>
-      <link>https://whaverals.github.io/posts/my-first-post/</link>
-      <pubDate>Thu, 02 May 2024 00:00:00 +0000</pubDate>
-      <guid>https://whaverals.github.io/posts/my-first-post/</guid>
-      <description>Content goes here.</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Wouter's Portfolio</title><link>https://whaverals.github.io/</link><description>Recent content on Wouter's Portfolio</description><generator>Hugo -- 0.145.0</generator><language>en</language><lastBuildDate>Thu, 02 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://whaverals.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>About Me</title><link>https://whaverals.github.io/about/</link><pubDate>Thu, 02 May 2024 00:00:00 +0000</pubDate><guid>https://whaverals.github.io/about/</guid><description>&lt;h2 id="hello-im-wouter">Hello, I&amp;rsquo;m Wouter&lt;/h2>
+&lt;p>I&amp;rsquo;m a software engineer and data scientist passionate about building solutions that make a difference. This is my personal portfolio where I share my projects, thoughts, and experiences.&lt;/p>
+&lt;h3 id="skills">Skills&lt;/h3>
+&lt;ul>
+&lt;li>Programming Languages: Python, JavaScript, Go&lt;/li>
+&lt;li>Data Science: Machine Learning, Data Analysis, Visualization&lt;/li>
+&lt;li>Web Development: React, Node.js, Hugo&lt;/li>
+&lt;li>Cloud Services: AWS, Google Cloud&lt;/li>
+&lt;/ul>
+&lt;h3 id="education">Education&lt;/h3>
+&lt;ul>
+&lt;li>MSc in Computer Science, University of X (2018-2020)&lt;/li>
+&lt;li>BSc in Applied Mathematics, University of Y (2014-2018)&lt;/li>
+&lt;/ul>
+&lt;h3 id="experience">Experience&lt;/h3>
+&lt;p>I&amp;rsquo;ve worked with various organizations on projects ranging from data analytics to full-stack web development. My experience includes:&lt;/p></description></item><item><title>Sample Project</title><link>https://whaverals.github.io/projects/project-1/</link><pubDate>Thu, 02 May 2024 00:00:00 +0000</pubDate><guid>https://whaverals.github.io/projects/project-1/</guid><description>&lt;h1 id="project-title-data-analysis-dashboard">Project Title: Data Analysis Dashboard&lt;/h1>
+&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This project is a data visualization dashboard that helps users analyze and interpret complex datasets through interactive charts and graphs.&lt;/p>
+&lt;h2 id="features">Features&lt;/h2>
+&lt;ul>
+&lt;li>Interactive data visualization&lt;/li>
+&lt;li>Support for multiple data sources&lt;/li>
+&lt;li>Customizable charts and graphs&lt;/li>
+&lt;li>Export functionality for reports&lt;/li>
+&lt;li>Real-time data processing&lt;/li>
+&lt;/ul>
+&lt;h2 id="technologies-used">Technologies Used&lt;/h2>
+&lt;ul>
+&lt;li>Python (Pandas, NumPy)&lt;/li>
+&lt;li>Dash and Plotly for visualization&lt;/li>
+&lt;li>Flask for backend API&lt;/li>
+&lt;li>PostgreSQL for data storage&lt;/li>
+&lt;li>Docker for containerization&lt;/li>
+&lt;/ul>
+&lt;h2 id="challenges-and-solutions">Challenges and Solutions&lt;/h2>
+&lt;p>One of the main challenges was handling large datasets efficiently. I implemented data chunking and asynchronous loading to improve performance without sacrificing functionality.&lt;/p></description></item><item><title>Welcome to My Portfolio</title><link>https://whaverals.github.io/posts/my-first-post/</link><pubDate>Thu, 02 May 2024 00:00:00 +0000</pubDate><guid>https://whaverals.github.io/posts/my-first-post/</guid><description>&lt;h1 id="welcome-to-my-portfolio-website">Welcome to My Portfolio Website!&lt;/h1>
+&lt;p>I&amp;rsquo;m excited to share my journey, projects, and thoughts with you through this platform. This site will serve as a hub for my professional work, personal projects, and blog posts about technology and other interests.&lt;/p>
+&lt;h2 id="what-to-expect">What to Expect&lt;/h2>
+&lt;p>On this site, you&amp;rsquo;ll find:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Projects&lt;/strong>: Detailed breakdowns of my technical projects with links to code repositories&lt;/li>
+&lt;li>&lt;strong>Blog Posts&lt;/strong>: Thoughts, tutorials, and insights about technology, programming, and data science&lt;/li>
+&lt;li>&lt;strong>About Me&lt;/strong>: My professional background, skills, and experience&lt;/li>
+&lt;/ul>
+&lt;h2 id="why-hugo-with-papermod">Why Hugo with PaperMod?&lt;/h2>
+&lt;p>I chose to build this site with &lt;a href="https://gohugo.io/">Hugo&lt;/a> and the &lt;a href="https://github.com/adityatelange/hugo-PaperMod">PaperMod&lt;/a> theme for several reasons:&lt;/p></description></item></channel></rss>
