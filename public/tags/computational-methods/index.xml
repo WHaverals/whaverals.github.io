@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Computational Methods on Wouter&#39;s Portfolio</title>
+    <link>http://localhost:1313/tags/computational-methods/</link>
+    <description>Recent content in Computational Methods on Wouter&#39;s Portfolio</description>
+    <generator>Hugo -- 0.145.0</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 02 May 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/computational-methods/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Computational Methods for Research</title>
+      <link>http://localhost:1313/projects/project-2/</link>
+      <pubDate>Thu, 02 May 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/projects/project-2/</guid>
+      <description>&lt;h1 id=&#34;computational-methods-for-research&#34;&gt;Computational Methods for Research&lt;/h1&gt;
+&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+&lt;p&gt;This project focused on developing specialized computational methods to address complex research questions. The work involved creating efficient algorithms and implementations for data-intensive academic research.&lt;/p&gt;
+&lt;h2 id=&#34;challenge&#34;&gt;Challenge&lt;/h2&gt;
+&lt;p&gt;Modern research often involves processing large and complex datasets that can&amp;rsquo;t be handled effectively with traditional approaches. The challenge was to create computational methods that were both powerful enough to handle these datasets and accessible to researchers without extensive programming backgrounds.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
