@@ -1,4 +1,5 @@
 /* eslint-disable react/no-unknown-property */
+'use client';
 import { useEffect, useRef, useState } from 'react';
 import { Canvas, extend, useFrame } from '@react-three/fiber';
 import { useGLTF, useTexture, Environment, Lightformer, Text } from '@react-three/drei';
@@ -6,13 +7,14 @@ import { BallCollider, CuboidCollider, Physics, RigidBody, useRopeJoint, useSphe
 import { MeshLineGeometry, MeshLineMaterial } from 'meshline';
 import * as THREE from 'three';
 
-// Since we don't have the actual 3D models, we'll create a placeholder card
-import cardTexture from './placeholder-card.png';
-import lanyardTexture from './placeholder-lanyard.png';
+// Since we may not have the actual 3D models/textures, we'll create a placeholder
+// In a real implementation, you would import the actual assets:
+// import cardGLB from "./assets/lanyard/card.glb";
+// import lanyard from "./assets/lanyard/lanyard.png";
 
 extend({ MeshLineGeometry, MeshLineMaterial });
 
-export default function Lanyard({ position = [0, 0, 30], gravity = [0, -40, 0], fov = 20, transparent = true, name = "Wouter Haverals" }) {
+export default function Lanyard({ position = [0, 0, 30], gravity = [0, -40, 0], fov = 20, transparent = true }) {
   return (
     <div className="lanyard-wrapper">
       <Canvas
@@ -22,7 +24,7 @@ export default function Lanyard({ position = [0, 0, 30], gravity = [0, -40, 0], 
       >
         <ambientLight intensity={Math.PI} />
         <Physics gravity={gravity} timeStep={1 / 60}>
-          <Band name={name} />
+          <SimplifiedBand name="Wouter Haverals" />
         </Physics>
         <Environment blur={0.75}>
           <Lightformer intensity={2} color="white" position={[0, -1, 5]} rotation={[0, 0, Math.PI / 3]} scale={[100, 0.1, 1]} />
@@ -35,13 +37,13 @@ export default function Lanyard({ position = [0, 0, 30], gravity = [0, -40, 0], 
   );
 }
 
-// Simplified placeholder Band component
-function Band({ maxSpeed = 50, minSpeed = 0, name = "Wouter Haverals" }) {
+// Simplified version of the Band component that doesn't require external assets
+function SimplifiedBand({ maxSpeed = 50, minSpeed = 0, name = "Wouter Haverals" }) {
   const band = useRef(), fixed = useRef(), j1 = useRef(), j2 = useRef(), j3 = useRef(), card = useRef();
   const vec = new THREE.Vector3(), ang = new THREE.Vector3(), rot = new THREE.Vector3(), dir = new THREE.Vector3();
   const segmentProps = { type: 'dynamic', canSleep: true, colliders: false, angularDamping: 4, linearDamping: 4 };
   
-  // Since we don't have the actual models, we'll create a simple placeholder card
+  // Create simple geometry instead of using imported GLB
   const [curve] = useState(() => new THREE.CatmullRomCurve3([new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3()]));
   const [dragged, drag] = useState(false);
   const [hovered, hover] = useState(false);
@@ -49,9 +51,11 @@ function Band({ maxSpeed = 50, minSpeed = 0, name = "Wouter Haverals" }) {
     typeof window !== 'undefined' && window.innerWidth < 1024
   );
 
-  // Create placeholder texture
-  const texture = new THREE.TextureLoader().load(lanyardTexture);
-  
+  useRopeJoint(fixed, j1, [[0, 0, 0], [0, 0, 0], 1]);
+  useRopeJoint(j1, j2, [[0, 0, 0], [0, 0, 0], 1]);
+  useRopeJoint(j2, j3, [[0, 0, 0], [0, 0, 0], 1]);
+  useSphericalJoint(j3, card, [[0, 0, 0], [0, 1.50, 0]]);
+
   useEffect(() => {
     if (hovered) {
       document.body.style.cursor = dragged ? 'grabbing' : 'grab';
@@ -95,7 +99,6 @@ function Band({ maxSpeed = 50, minSpeed = 0, name = "Wouter Haverals" }) {
   });
 
   curve.curveType = 'chordal';
-  texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
 
   return (
     <>
@@ -120,7 +123,7 @@ function Band({ maxSpeed = 50, minSpeed = 0, name = "Wouter Haverals" }) {
             onPointerUp={(e) => (e.target.releasePointerCapture(e.pointerId), drag(false))}
             onPointerDown={(e) => (e.target.setPointerCapture(e.pointerId), drag(new THREE.Vector3().copy(e.point).sub(vec.copy(card.current.translation()))))}>
             
-            {/* Simplified card mesh */}
+            {/* Simple card mesh */}
             <mesh>
               <boxGeometry args={[1.6, 2.25, 0.05]} />
               <meshPhysicalMaterial color="#ffffff" clearcoat={1} clearcoatRoughness={0.15} roughness={0.9} metalness={0.8} />
@@ -145,9 +148,6 @@ function Band({ maxSpeed = 50, minSpeed = 0, name = "Wouter Haverals" }) {
           color="white"
           depthTest={false}
           resolution={isSmall ? [1000, 2000] : [1000, 1000]}
-          useMap
-          map={texture}
-          repeat={[-4, 1]}
           lineWidth={1}
         />
       </mesh>

@@ -7,16 +7,7 @@
 {{ partial "home_info.html" . }}
 
 <!-- Add Lanyard Component Container -->
-<div id="lanyard-container" style="height: 60vh; width: 100%; margin-bottom: 2rem;"></div>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Check if the mounting function is available (provided by the React app)
-    if (typeof window.mountLanyard === 'function') {
-      window.mountLanyard('lanyard-container', 'Wouter Haverals');
-    }
-  });
-</script>
+<div id="root" style="height: 60vh; width: 100%; margin-bottom: 2rem;"></div>
 
 {{ $paginator := .Paginate (where site.RegularPages "Type" "in" site.Params.mainSections) }}
 {{ if gt $paginator.TotalPages 0 }}

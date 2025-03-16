@@ -1,45 +1,13 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Projects on Wouter&#39;s Portfolio</title>
-    <link>http://localhost:1313/categories/projects/</link>
-    <description>Recent content in Projects on Wouter&#39;s Portfolio</description>
-    <generator>Hugo -- 0.145.0</generator>
-    <language>en</language>
-    <lastBuildDate>Thu, 02 May 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/projects/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Carthusian Digital Archive</title>
-      <link>http://localhost:1313/projects/project-2/</link>
-      <pubDate>Thu, 02 May 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/project-2/</guid>
-      <description>&lt;h1 id=&#34;carthusian-digital-archive-herne-manuscript-collection&#34;&gt;Carthusian Digital Archive: Herne Manuscript Collection&lt;/h1&gt;
-&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
-&lt;p&gt;This project involved leading the digital transcription and analysis of the complete manuscript collection from the Carthusian monastery of Herne (14th century). This comprehensive digital archive makes accessible an important corpus of Middle Dutch texts that have significant historical and linguistic value.&lt;/p&gt;
-&lt;h2 id=&#34;historical-significance&#34;&gt;Historical Significance&lt;/h2&gt;
-&lt;p&gt;The Carthusian monastery of Herne was a major center for manuscript production and translation in the 14th century, responsible for introducing numerous Latin works to the Low Countries through vernacular translations. These manuscripts represent a crucial phase in the development of scholarly Middle Dutch and reflect important cultural exchanges in medieval Europe.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>CATMuS: Multilingual HTR Dataset</title>
-      <link>http://localhost:1313/projects/project-3/</link>
-      <pubDate>Thu, 02 May 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/project-3/</guid>
-      <description>&lt;h1 id=&#34;catmus-multilingual-dataset-for-htr-research&#34;&gt;CATMuS: Multilingual Dataset for HTR Research&lt;/h1&gt;
-&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
-&lt;p&gt;I contributed the Middle Dutch component to CATMuS (Comprehensive Archive of Transcribed Multilingual Sources), a pioneering multilingual dataset for Handwritten Text Recognition (HTR) research across European languages. This collaborative project brings together manuscript data from multiple languages, periods, and scribal traditions to enable more robust cross-lingual HTR research.&lt;/p&gt;
-&lt;h2 id=&#34;the-challenge&#34;&gt;The Challenge&lt;/h2&gt;
-&lt;p&gt;Handwritten Text Recognition systems have traditionally been developed for specific languages or even specific manuscript collections, limiting their applicability across the diversity of historical documents. CATMuS was created to address this fragmentation by providing a standardized, comprehensive dataset spanning multiple languages.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>CERberus: HTR Evaluation Tool</title>
-      <link>http://localhost:1313/projects/project-1/</link>
-      <pubDate>Thu, 02 May 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/project-1/</guid>
-      <description>&lt;h1 id=&#34;cerberus-handwritten-text-recognition-evaluation-tool&#34;&gt;CERberus: Handwritten Text Recognition Evaluation Tool&lt;/h1&gt;
-&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
-&lt;p&gt;CERberus is an open-source tool I designed and implemented for evaluating Handwritten Text Recognition (HTR) systems. The project was nominated for Best DH Tool in 2023 and has become an important resource for digital humanities researchers working with historical manuscripts.&lt;/p&gt;
-&lt;h2 id=&#34;challenge&#34;&gt;Challenge&lt;/h2&gt;
-&lt;p&gt;Evaluating the quality of automated transcriptions from historical manuscripts is complex, requiring specialized metrics that account for historical spelling variations, scribal abbreviations, and language-specific features. Existing tools were either too simplistic (focusing only on Character Error Rate) or too specialized for broader adoption.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Projects on Wouter's Portfolio</title><link>https://whaverals.github.io/categories/projects/</link><description>Recent content in Projects on Wouter's Portfolio</description><generator>Hugo -- 0.145.0</generator><language>en</language><lastBuildDate>Thu, 02 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://whaverals.github.io/categories/projects/index.xml" rel="self" type="application/rss+xml"/><item><title>Carthusian Digital Archive</title><link>https://whaverals.github.io/projects/project-2/</link><pubDate>Thu, 02 May 2024 00:00:00 +0000</pubDate><guid>https://whaverals.github.io/projects/project-2/</guid><description>&lt;h1 id="carthusian-digital-archive-herne-manuscript-collection">Carthusian Digital Archive: Herne Manuscript Collection&lt;/h1>
+&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This project involved leading the digital transcription and analysis of the complete manuscript collection from the Carthusian monastery of Herne (14th century). This comprehensive digital archive makes accessible an important corpus of Middle Dutch texts that have significant historical and linguistic value.&lt;/p>
+&lt;h2 id="historical-significance">Historical Significance&lt;/h2>
+&lt;p>The Carthusian monastery of Herne was a major center for manuscript production and translation in the 14th century, responsible for introducing numerous Latin works to the Low Countries through vernacular translations. These manuscripts represent a crucial phase in the development of scholarly Middle Dutch and reflect important cultural exchanges in medieval Europe.&lt;/p></description></item><item><title>CATMuS: Multilingual HTR Dataset</title><link>https://whaverals.github.io/projects/project-3/</link><pubDate>Thu, 02 May 2024 00:00:00 +0000</pubDate><guid>https://whaverals.github.io/projects/project-3/</guid><description>&lt;h1 id="catmus-multilingual-dataset-for-htr-research">CATMuS: Multilingual Dataset for HTR Research&lt;/h1>
+&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>I contributed the Middle Dutch component to CATMuS (Comprehensive Archive of Transcribed Multilingual Sources), a pioneering multilingual dataset for Handwritten Text Recognition (HTR) research across European languages. This collaborative project brings together manuscript data from multiple languages, periods, and scribal traditions to enable more robust cross-lingual HTR research.&lt;/p>
+&lt;h2 id="the-challenge">The Challenge&lt;/h2>
+&lt;p>Handwritten Text Recognition systems have traditionally been developed for specific languages or even specific manuscript collections, limiting their applicability across the diversity of historical documents. CATMuS was created to address this fragmentation by providing a standardized, comprehensive dataset spanning multiple languages.&lt;/p></description></item><item><title>CERberus: HTR Evaluation Tool</title><link>https://whaverals.github.io/projects/project-1/</link><pubDate>Thu, 02 May 2024 00:00:00 +0000</pubDate><guid>https://whaverals.github.io/projects/project-1/</guid><description>&lt;h1 id="cerberus-handwritten-text-recognition-evaluation-tool">CERberus: Handwritten Text Recognition Evaluation Tool&lt;/h1>
+&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>CERberus is an open-source tool I designed and implemented for evaluating Handwritten Text Recognition (HTR) systems. The project was nominated for Best DH Tool in 2023 and has become an important resource for digital humanities researchers working with historical manuscripts.&lt;/p>
+&lt;h2 id="challenge">Challenge&lt;/h2>
+&lt;p>Evaluating the quality of automated transcriptions from historical manuscripts is complex, requiring specialized metrics that account for historical spelling variations, scribal abbreviations, and language-specific features. Existing tools were either too simplistic (focusing only on Character Error Rate) or too specialized for broader adoption.&lt;/p></description></item></channel></rss>

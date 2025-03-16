@@ -1,23 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Open Source on Wouter&#39;s Portfolio</title>
-    <link>http://localhost:1313/tags/open-source/</link>
-    <description>Recent content in Open Source on Wouter&#39;s Portfolio</description>
-    <generator>Hugo -- 0.145.0</generator>
-    <language>en</language>
-    <lastBuildDate>Thu, 02 May 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/open-source/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>CERberus: HTR Evaluation Tool</title>
-      <link>http://localhost:1313/projects/project-1/</link>
-      <pubDate>Thu, 02 May 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/project-1/</guid>
-      <description>&lt;h1 id=&#34;cerberus-handwritten-text-recognition-evaluation-tool&#34;&gt;CERberus: Handwritten Text Recognition Evaluation Tool&lt;/h1&gt;
-&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
-&lt;p&gt;CERberus is an open-source tool I designed and implemented for evaluating Handwritten Text Recognition (HTR) systems. The project was nominated for Best DH Tool in 2023 and has become an important resource for digital humanities researchers working with historical manuscripts.&lt;/p&gt;
-&lt;h2 id=&#34;challenge&#34;&gt;Challenge&lt;/h2&gt;
-&lt;p&gt;Evaluating the quality of automated transcriptions from historical manuscripts is complex, requiring specialized metrics that account for historical spelling variations, scribal abbreviations, and language-specific features. Existing tools were either too simplistic (focusing only on Character Error Rate) or too specialized for broader adoption.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Open Source on Wouter's Portfolio</title><link>https://whaverals.github.io/tags/open-source/</link><description>Recent content in Open Source on Wouter's Portfolio</description><generator>Hugo -- 0.145.0</generator><language>en</language><lastBuildDate>Thu, 02 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://whaverals.github.io/tags/open-source/index.xml" rel="self" type="application/rss+xml"/><item><title>CERberus: HTR Evaluation Tool</title><link>https://whaverals.github.io/projects/project-1/</link><pubDate>Thu, 02 May 2024 00:00:00 +0000</pubDate><guid>https://whaverals.github.io/projects/project-1/</guid><description>&lt;h1 id="cerberus-handwritten-text-recognition-evaluation-tool">CERberus: Handwritten Text Recognition Evaluation Tool&lt;/h1>
+&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>CERberus is an open-source tool I designed and implemented for evaluating Handwritten Text Recognition (HTR) systems. The project was nominated for Best DH Tool in 2023 and has become an important resource for digital humanities researchers working with historical manuscripts.&lt;/p>
+&lt;h2 id="challenge">Challenge&lt;/h2>
+&lt;p>Evaluating the quality of automated transcriptions from historical manuscripts is complex, requiring specialized metrics that account for historical spelling variations, scribal abbreviations, and language-specific features. Existing tools were either too simplistic (focusing only on Character Error Rate) or too specialized for broader adoption.&lt;/p></description></item></channel></rss>
