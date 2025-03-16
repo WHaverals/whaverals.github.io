@@ -1,0 +1,22 @@
+/* Custom styles */
+
+/* Reduce space after home info */
+.first-entry {
+    margin-bottom: 20px;
+}
+
+/* Style social icons in home info */
+.home-info .social-icons {
+    margin-top: 15px;
+    text-align: left;
+}
+
+.home-info .social-icons a {
+    margin-right: 12px;
+}
+
+/* Make icons more prominent */
+.social-icons a svg {
+    height: 24px;
+    width: 24px;
+}
