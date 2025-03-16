@@ -34,8 +34,8 @@ params:
   # Profile mode
   profileMode:
     enabled: true
-    title: "Wouter's Portfolio"
-    subtitle: "Software Engineer & Data Scientist"
+    title: "Wouter Haverals"
+    subtitle: "Associate Research Scholar at The Center for Digital Humanities & Perkins Fellow and Lecturer at the Humanities Council, Princeton University. Medieval manuscripts by day, pizza chef by night."
     imageUrl: "/images/profile.jpg"
     buttons:
       - name: Posts
