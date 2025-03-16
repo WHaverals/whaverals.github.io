@@ -1,0 +1,29 @@
+{{- with site.Params.homeInfoParams }}
+<article class="first-entry home-info">
+    <header class="entry-header">
+        <h1>{{ .Title | markdownify }}</h1>
+    </header>
+    <div class="entry-content">
+        {{ .Content | markdownify }}
+    </div>
+    {{- with .buttons }}
+    <div class="entry-buttons">
+        {{- range . }}
+        <a class="button" href="{{ .url | relURL }}">
+            <span>{{ .name }}</span>
+        </a>
+        {{- end }}
+    </div>
+    {{- end }}
+    
+    <div id="lanyard-container" style="height: 50vh; width: 100%;"></div>
+    
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            // This is where we would initialize the React component
+            // But it requires a full React build process that's beyond what we can do directly
+            console.log('Lanyard component would be initialized here');
+        });
+    </script>
+</article>
+{{- end }}

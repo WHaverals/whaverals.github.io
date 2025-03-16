@@ -1,0 +1,13 @@
+{{- /* This file allows you to add custom CSS/JS/meta tags to your theme */ -}}
+<!-- React Lanyard Component -->
+{{ if .IsHome }}
+<script src="{{ "react-app/assets/main.js" | relURL }}" type="module"></script>
+{{ end }}
+
+{{- with .Site.Params.analytics.google.SiteVerificationTag }}
+<meta name="google-site-verification" content="{{ . }}" />
+{{- end }}
+
+{{- with .Site.Params.analytics.bing.SiteVerificationTag }}
+<meta name="msvalidate.01" content="{{ . }}" />
+{{- end }}

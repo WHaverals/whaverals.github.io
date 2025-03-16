@@ -1,0 +1,54 @@
+{{ define "main" }}
+{{ if .Site.Params.profileMode.enabled }}
+<div class="profile-mode">
+  {{ partial "index_profile.html" . }}
+</div>
+{{ else }}
+{{ partial "home_info.html" . }}
+
+<!-- Add Lanyard Component Container -->
+<div id="lanyard-container" style="height: 60vh; width: 100%; margin-bottom: 2rem;"></div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Check if the mounting function is available (provided by the React app)
+    if (typeof window.mountLanyard === 'function') {
+      window.mountLanyard('lanyard-container', 'Wouter Haverals');
+    }
+  });
+</script>
+
+{{ $paginator := .Paginate (where site.RegularPages "Type" "in" site.Params.mainSections) }}
+{{ if gt $paginator.TotalPages 0 }}
+{{ range $paginator.Pages }}
+<article class="post-entry">
+  {{- $isHidden := (site.Params.cover.hidden | default site.Params.cover.hiddenInList) }}
+  {{- partial "cover.html" (dict "cxt" . "IsHome" true "isHidden" $isHidden) }}
+  <header class="entry-header">
+    <h2>{{ .Title }}</h2>
+  </header>
+  <div class="entry-content">
+    <p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
+  </div>
+  <footer class="entry-footer">
+    {{- partial "post_meta.html" . -}}
+  </footer>
+  <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
+</article>
+{{ end }}
+{{ end }}
+
+{{- if gt $paginator.TotalPages 1 }}
+<footer class="page-footer">
+  <nav class="pagination">
+    {{- if $paginator.HasPrev }}
+    <a class="prev" href="{{ $paginator.Prev.URL | absURL }}">« {{ i18n "prev_page" }}</a>
+    {{- end }}
+    {{- if $paginator.HasNext }}
+    <a class="next" href="{{ $paginator.Next.URL | absURL }}">{{ i18n "next_page" }} »</a>
+    {{- end }}
+  </nav>
+</footer>
+{{- end }}
+{{ end }}
+{{ end }}

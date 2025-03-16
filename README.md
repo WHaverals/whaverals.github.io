@@ -8,6 +8,7 @@ This repository contains my personal portfolio website built with [Hugo](https:/
 
 - [Hugo Extended](https://gohugo.io/installation/) (v0.125.7 or higher)
 - Git
+- Node.js and npm (for React components)
 
 ### Local Development
 
@@ -22,12 +23,20 @@ This repository contains my personal portfolio website built with [Hugo](https:/
    git submodule update --init --recursive
    ```
 
-3. Run the Hugo development server:
+3. Build the React components (optional, only if using React features):
+   ```bash
+   cd react-app
+   npm install
+   npm run build
+   cd ..
+   ```
+
+4. Run the Hugo development server:
    ```bash
    hugo server -D
    ```
 
-4. Visit http://localhost:1313 in your browser
+5. Visit http://localhost:1313 in your browser
 
 ## Site Structure
 
@@ -38,6 +47,7 @@ This repository contains my personal portfolio website built with [Hugo](https:/
 - `static/`: Static files like images
 - `themes/PaperMod/`: The theme (installed as a git submodule)
 - `hugo.yaml`: Main configuration file
+- `react-app/`: React components (like the lanyard)
 
 ## Adding Content
 
@@ -57,25 +67,44 @@ hugo new content projects/my-new-project.md
 
 Then edit the file at `content/projects/my-new-project.md`.
 
+## React Components
+
+The site incorporates React components for interactive elements:
+
+### Lanyard Component
+
+The homepage features an interactive lanyard component built with React and Three.js. To update or modify this component:
+
+1. Navigate to the react-app directory
+2. Make changes to the src files
+3. Rebuild the component with `npm run build`
+
 ## Deployment
 
 This site is automatically deployed to GitHub Pages when changes are pushed to the main branch.
 
 ### Manual Deployment
 
-1. Build the site:
+1. Build the React components (if using):
+   ```bash
+   cd react-app
+   npm run build
+   cd ..
+   ```
+
+2. Build the site:
    ```bash
    hugo --minify
    ```
 
-2. Commit and push changes:
+3. Commit and push changes:
    ```bash
    git add .
    git commit -m "Your commit message"
    git push
    ```
 
-3. GitHub Actions will automatically deploy the site to GitHub Pages
+4. GitHub Actions will automatically deploy the site to GitHub Pages
 
 ## GitHub Actions Workflow
 

@@ -1,0 +1,24 @@
+{
+  "name": "hugo-react-lanyard",
+  "version": "1.0.0",
+  "description": "React component integration for Hugo site",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "three": "^0.159.0",
+    "@react-three/fiber": "^8.15.11",
+    "@react-three/drei": "^9.88.11",
+    "@react-three/rapier": "^1.1.1",
+    "meshline": "^3.1.6"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.0",
+    "vite": "^5.0.0"
+  }
+}
