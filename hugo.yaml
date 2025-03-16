@@ -1,5 +1,5 @@
 baseURL: "https://whaverals.github.io/"
-title: "Wouter's Portfolio"
+title: "Wouter Haverals"
 theme: "PaperMod"
 
 # Enable search
@@ -20,30 +20,34 @@ menu:
       name: Posts
       url: /posts/
       weight: 20
-    - identifier: tags
-      name: Tags
-      url: /tags/
+    - identifier: projects
+      name: Projects
+      url: /projects/
       weight: 30
+    - identifier: teaching
+      name: Teaching
+      url: /teaching/
+      weight: 40
     - identifier: about
       name: About
       url: /about/
-      weight: 40
+      weight: 50
+    - identifier: tags
+      name: Tags
+      url: /tags/
+      weight: 60
 
 # Theme parameters
 params:
-  # Profile mode
-  profileMode:
-    enabled: true
-    title: "Wouter Haverals"
-    subtitle: "Associate Research Scholar at The Center for Digital Humanities & Perkins Fellow and Lecturer at the Humanities Council, Princeton University. Medieval manuscripts by day, pizza chef by night."
-    imageUrl: "/images/profile_pic_WouterHaverals_smallest.jpg"
-    imageWidth: 200
-    imageHeight: 200
-    buttons:
-      - name: Posts
-        url: posts
-      - name: Projects
-        url: projects
+  # Home Info Mode
+  homeInfoParams:
+    Title: "Wouter Haverals"
+    Content: >
+      Associate Research Scholar at The Center for Digital Humanities & Perkins Fellow and Lecturer at the Humanities Council, Princeton University. 
+      
+      **My work** focuses on applying computational methods to medieval manuscripts and literary-historical research. 
+      
+      **Medieval manuscripts by day, pizza chef by night.**
 
   # Social icons
   socialIcons:

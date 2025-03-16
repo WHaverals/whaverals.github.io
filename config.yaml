@@ -4,7 +4,7 @@ theme: "PaperMod"
 
 params:
   env: production
-  ShowReadingTime: true
+  ShowReadingTime: false
   ShowPostNavLinks: true
 
 markup:

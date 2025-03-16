@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Wouter&#39;s Portfolio</title>
+    <title>Wouter Haverals</title>
     <link>http://localhost:1313/</link>
-    <description>Recent content on Wouter&#39;s Portfolio</description>
+    <description>Recent content on Wouter Haverals</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en</language>
     <lastBuildDate>Thu, 02 May 2024 00:00:00 +0000</lastBuildDate>
@@ -94,6 +94,26 @@
 &lt;p&gt;The intersection of digital technologies and historical manuscript studies has opened new horizons for understanding our textual heritage. As someone working in this interdisciplinary space, I&amp;rsquo;d like to share some reflections on the challenges and opportunities of applying computational methods to medieval texts.&lt;/p&gt;
 &lt;h2 id=&#34;the-digital-humanities-revolution&#34;&gt;The Digital Humanities Revolution&lt;/h2&gt;
 &lt;p&gt;Medieval manuscript studies has undergone a transformation in recent decades through digital approaches. What was once a discipline limited by physical access to rare materials has become increasingly democratized through:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Teaching</title>
+      <link>http://localhost:1313/teaching/</link>
+      <pubDate>Thu, 02 May 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/teaching/</guid>
+      <description>&lt;h1 id=&#34;teaching-philosophy--courses&#34;&gt;Teaching Philosophy &amp;amp; Courses&lt;/h1&gt;
+&lt;p&gt;My teaching integrates digital methods with traditional humanities scholarship, creating opportunities for students to engage with historical texts and cultural heritage through both close and distant reading approaches.&lt;/p&gt;
+&lt;h2 id=&#34;current-courses&#34;&gt;Current Courses&lt;/h2&gt;
+&lt;h3 id=&#34;digital-approaches-to-medieval-manuscripts&#34;&gt;Digital Approaches to Medieval Manuscripts&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;Princeton University, Spring 2025&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;This course introduces students to computational methods for analyzing medieval manuscripts. Students learn how to:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Apply Handwritten Text Recognition (HTR) to historical documents&lt;/li&gt;
+&lt;li&gt;Create digital editions using TEI XML encoding&lt;/li&gt;
+&lt;li&gt;Analyze textual patterns using computational stylometry&lt;/li&gt;
+&lt;li&gt;Visualize manuscript networks and textual relationships&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;introduction-to-digital-humanities&#34;&gt;Introduction to Digital Humanities&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;Princeton University, Fall 2024&lt;/em&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
