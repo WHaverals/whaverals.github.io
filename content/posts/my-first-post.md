@@ -1,47 +1,61 @@
 ---
-title: "Research at the Intersection of Technology"
+title: "Digital Approaches to Medieval Manuscripts"
 date: 2024-05-02
 draft: false
-tags: ["research", "technology", "introduction"]
+tags: ["digital humanities", "medieval manuscripts", "HTR", "computational methods"]
 categories: ["research"]
 ---
 
-# Research at the Intersection of Technology
+# Digital Approaches to Medieval Manuscripts
 
-In my work, I explore the powerful opportunities that arise when advanced technology meets academic research. This intersection creates possibilities for both enhancing traditional research methodologies and opening entirely new avenues of investigation.
+The intersection of digital technologies and historical manuscript studies has opened new horizons for understanding our textual heritage. As someone working in this interdisciplinary space, I'd like to share some reflections on the challenges and opportunities of applying computational methods to medieval texts.
 
-## The Technological Research Landscape
+## The Digital Humanities Revolution
 
-The landscape of research is being transformed by:
+Medieval manuscript studies has undergone a transformation in recent decades through digital approaches. What was once a discipline limited by physical access to rare materials has become increasingly democratized through:
 
-- **Computational power**: Enabling analyses that were previously impractical
-- **Data availability**: Providing unprecedented access to information
-- **Methodological innovation**: Creating new approaches to longstanding questions
-- **Collaborative tools**: Breaking down barriers between disciplines and institutions
+- High-resolution digitization making manuscripts globally accessible
+- HTR (Handwritten Text Recognition) technology reducing transcription barriers
+- Computational analysis revealing patterns across large corpora
+- Digital editions enabling new forms of scholarly interaction
+- Linked open data connecting previously isolated research
 
-These developments don't just accelerate existing work—they fundamentally alter what questions we can ask and what insights we can gain.
+These developments have not only made existing research more efficient but have fundamentally changed the questions we can ask about historical texts.
 
-## Bridging Technical Expertise and Domain Knowledge
+## Bridging Traditional and Computational Methods
 
-One of the most valuable contributions I strive to make is bridging the gap between technical capabilities and domain expertise. This involves:
+The most productive approaches combine the depth of traditional philological expertise with the breadth of computational analysis. This integration requires:
 
-1. Understanding the core research questions in a field
-2. Identifying where computational methods can provide leverage
-3. Developing tailored solutions that address specific research needs
-4. Ensuring tools remain accessible to domain experts
-5. Maintaining scientific rigor throughout the process
+1. Respecting the material specificity of historical documents
+2. Acknowledging the limitations of computational methods for historical languages
+3. Developing tools that augment rather than replace scholarly judgment
+4. Creating frameworks that make technical innovations accessible to humanities scholars
+5. Maintaining the nuance and context that gives historical texts their meaning
 
-## Looking Forward
+## Current Challenges in Historical HTR
 
-I'm particularly interested in continuing to develop tools and methodologies that:
+While we've made remarkable progress in automated transcription of historical documents, significant challenges remain:
 
-- Support open, reproducible research
-- Scale effectively to handle increasingly complex data
-- Remain accessible to researchers across various domains
-- Facilitate new collaborations across traditional boundaries
+- Historical abbreviations and non-standard orthography
+- Script variations within and across manuscripts
+- Multilingual content and code-switching
+- Material damage and degradation
+- Limited training data for many historical languages and scripts
 
-Through this blog, I'll be sharing insights, challenges, and developments from this work at the intersection of technology and research. I look forward to engaging with others interested in these areas.
+Addressing these challenges requires collaboration between paleographers, linguists, historians, and computer scientists.
+
+## The Future of Digital Manuscript Studies
+
+Looking ahead, I'm particularly excited about:
+
+- More sophisticated language models for historical languages
+- Integration of visual and textual analysis for manuscript studies
+- Cross-lingual transfer learning for low-resource historical languages
+- Neural approaches to scribal hand identification
+- Interactive platforms that democratize access to cultural heritage
+
+These developments promise to transform not only how we study historical texts but also how we preserve and share our cultural heritage.
 
 ---
 
-*This post marks the beginning of sharing my professional journey and insights. I welcome connections with others working in related fields.*
+*This post reflects my ongoing work at the intersection of medieval studies and computational methods. I welcome connections with others interested in digital approaches to historical texts.*

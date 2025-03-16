@@ -1,29 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Posts on Wouter&#39;s Portfolio</title>
-    <link>http://localhost:1313/posts/</link>
-    <description>Recent content in Posts on Wouter&#39;s Portfolio</description>
-    <generator>Hugo -- 0.145.0</generator>
-    <language>en</language>
-    <lastBuildDate>Thu, 02 May 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Research at the Intersection of Technology</title>
-      <link>http://localhost:1313/posts/my-first-post/</link>
-      <pubDate>Thu, 02 May 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/my-first-post/</guid>
-      <description>&lt;h1 id=&#34;research-at-the-intersection-of-technology&#34;&gt;Research at the Intersection of Technology&lt;/h1&gt;
-&lt;p&gt;In my work, I explore the powerful opportunities that arise when advanced technology meets academic research. This intersection creates possibilities for both enhancing traditional research methodologies and opening entirely new avenues of investigation.&lt;/p&gt;
-&lt;h2 id=&#34;the-technological-research-landscape&#34;&gt;The Technological Research Landscape&lt;/h2&gt;
-&lt;p&gt;The landscape of research is being transformed by:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Computational power&lt;/strong&gt;: Enabling analyses that were previously impractical&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Data availability&lt;/strong&gt;: Providing unprecedented access to information&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Methodological innovation&lt;/strong&gt;: Creating new approaches to longstanding questions&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Collaborative tools&lt;/strong&gt;: Breaking down barriers between disciplines and institutions&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;These developments don&amp;rsquo;t just accelerate existing work—they fundamentally alter what questions we can ask and what insights we can gain.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on Wouter's Portfolio</title><link>https://whaverals.github.io/posts/</link><description>Recent content in Posts on Wouter's Portfolio</description><generator>Hugo -- 0.145.0</generator><language>en</language><lastBuildDate>Thu, 02 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://whaverals.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Digital Approaches to Medieval Manuscripts</title><link>https://whaverals.github.io/posts/my-first-post/</link><pubDate>Thu, 02 May 2024 00:00:00 +0000</pubDate><guid>https://whaverals.github.io/posts/my-first-post/</guid><description>&lt;h1 id="digital-approaches-to-medieval-manuscripts">Digital Approaches to Medieval Manuscripts&lt;/h1>
+&lt;p>The intersection of digital technologies and historical manuscript studies has opened new horizons for understanding our textual heritage. As someone working in this interdisciplinary space, I&amp;rsquo;d like to share some reflections on the challenges and opportunities of applying computational methods to medieval texts.&lt;/p>
+&lt;h2 id="the-digital-humanities-revolution">The Digital Humanities Revolution&lt;/h2>
+&lt;p>Medieval manuscript studies has undergone a transformation in recent decades through digital approaches. What was once a discipline limited by physical access to rare materials has become increasingly democratized through:&lt;/p></description></item></channel></rss>

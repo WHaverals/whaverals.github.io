@@ -49,8 +49,10 @@ params:
       url: "https://github.com/whaverals"
     - name: linkedin
       url: "https://linkedin.com/in/wouter-haverals"
+    - name: bluesky
+      url: "wouterhaverals.bsky.social"
     - name: email
-      url: "mailto:youremail@example.com"
+      url: "mailto:wouter.haverals@princeton.edu"
 
   # Theme appearance
   defaultTheme: auto

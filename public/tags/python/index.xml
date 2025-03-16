@@ -1,39 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Python on Wouter&#39;s Portfolio</title>
-    <link>http://localhost:1313/tags/python/</link>
-    <description>Recent content in Python on Wouter&#39;s Portfolio</description>
-    <generator>Hugo -- 0.145.0</generator>
-    <language>en</language>
-    <lastBuildDate>Thu, 02 May 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/python/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Sample Project</title>
-      <link>http://localhost:1313/projects/project-1/</link>
-      <pubDate>Thu, 02 May 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/project-1/</guid>
-      <description>&lt;h1 id=&#34;project-title-data-analysis-dashboard&#34;&gt;Project Title: Data Analysis Dashboard&lt;/h1&gt;
-&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
-&lt;p&gt;This project is a data visualization dashboard that helps users analyze and interpret complex datasets through interactive charts and graphs.&lt;/p&gt;
-&lt;h2 id=&#34;features&#34;&gt;Features&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Interactive data visualization&lt;/li&gt;
-&lt;li&gt;Support for multiple data sources&lt;/li&gt;
-&lt;li&gt;Customizable charts and graphs&lt;/li&gt;
-&lt;li&gt;Export functionality for reports&lt;/li&gt;
-&lt;li&gt;Real-time data processing&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;technologies-used&#34;&gt;Technologies Used&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Python (Pandas, NumPy)&lt;/li&gt;
-&lt;li&gt;Dash and Plotly for visualization&lt;/li&gt;
-&lt;li&gt;Flask for backend API&lt;/li&gt;
-&lt;li&gt;PostgreSQL for data storage&lt;/li&gt;
-&lt;li&gt;Docker for containerization&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;challenges-and-solutions&#34;&gt;Challenges and Solutions&lt;/h2&gt;
-&lt;p&gt;One of the main challenges was handling large datasets efficiently. I implemented data chunking and asynchronous loading to improve performance without sacrificing functionality.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Python on Wouter's Portfolio</title><link>https://whaverals.github.io/tags/python/</link><description>Recent content in Python on Wouter's Portfolio</description><generator>Hugo -- 0.145.0</generator><language>en</language><lastBuildDate>Thu, 02 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://whaverals.github.io/tags/python/index.xml" rel="self" type="application/rss+xml"/><item><title>CERberus: HTR Evaluation Tool</title><link>https://whaverals.github.io/projects/project-1/</link><pubDate>Thu, 02 May 2024 00:00:00 +0000</pubDate><guid>https://whaverals.github.io/projects/project-1/</guid><description>&lt;h1 id="cerberus-handwritten-text-recognition-evaluation-tool">CERberus: Handwritten Text Recognition Evaluation Tool&lt;/h1>
+&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>CERberus is an open-source tool I designed and implemented for evaluating Handwritten Text Recognition (HTR) systems. The project was nominated for Best DH Tool in 2023 and has become an important resource for digital humanities researchers working with historical manuscripts.&lt;/p>
+&lt;h2 id="challenge">Challenge&lt;/h2>
+&lt;p>Evaluating the quality of automated transcriptions from historical manuscripts is complex, requiring specialized metrics that account for historical spelling variations, scribal abbreviations, and language-specific features. Existing tools were either too simplistic (focusing only on Character Error Rate) or too specialized for broader adoption.&lt;/p></description></item></channel></rss>

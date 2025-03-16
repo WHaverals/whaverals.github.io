@@ -1,99 +1,53 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Wouter&#39;s Portfolio</title>
-    <link>http://localhost:1313/</link>
-    <description>Recent content on Wouter&#39;s Portfolio</description>
-    <generator>Hugo -- 0.145.0</generator>
-    <language>en</language>
-    <lastBuildDate>Thu, 02 May 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>About Me</title>
-      <link>http://localhost:1313/about/</link>
-      <pubDate>Thu, 02 May 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/about/</guid>
-      <description>&lt;h2 id=&#34;hello-im-wouter-haverals&#34;&gt;Hello, I&amp;rsquo;m Wouter Haverals&lt;/h2&gt;
-&lt;p&gt;I&amp;rsquo;m a researcher and software engineer with expertise in data science and computational methods. My work focuses on developing innovative solutions at the intersection of technology and research.&lt;/p&gt;
-&lt;h3 id=&#34;professional-focus&#34;&gt;Professional Focus&lt;/h3&gt;
-&lt;p&gt;My professional interests include:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Data analysis and visualization&lt;/li&gt;
-&lt;li&gt;Machine learning applications&lt;/li&gt;
-&lt;li&gt;Research software engineering&lt;/li&gt;
-&lt;li&gt;Academic collaboration&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;skills&#34;&gt;Skills&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Programming&lt;/strong&gt;: Python, R, JavaScript&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Data Science&lt;/strong&gt;: Statistical analysis, Machine learning&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Software Development&lt;/strong&gt;: Web applications, Research tools&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Languages&lt;/strong&gt;: Dutch (native), English (professional)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;experience-highlights&#34;&gt;Experience Highlights&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Research in data-driven methodologies&lt;/li&gt;
-&lt;li&gt;Development of analytical tools for research applications&lt;/li&gt;
-&lt;li&gt;Collaborative projects with academic institutions&lt;/li&gt;
-&lt;li&gt;Technical writing and documentation&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;education&#34;&gt;Education&lt;/h3&gt;
-&lt;p&gt;I hold advanced degrees in fields related to computing and data science, providing me with a strong foundation for my research and development work.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Computational Methods for Research</title>
-      <link>http://localhost:1313/projects/project-2/</link>
-      <pubDate>Thu, 02 May 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/project-2/</guid>
-      <description>&lt;h1 id=&#34;computational-methods-for-research&#34;&gt;Computational Methods for Research&lt;/h1&gt;
-&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
-&lt;p&gt;This project focused on developing specialized computational methods to address complex research questions. The work involved creating efficient algorithms and implementations for data-intensive academic research.&lt;/p&gt;
-&lt;h2 id=&#34;challenge&#34;&gt;Challenge&lt;/h2&gt;
-&lt;p&gt;Modern research often involves processing large and complex datasets that can&amp;rsquo;t be handled effectively with traditional approaches. The challenge was to create computational methods that were both powerful enough to handle these datasets and accessible to researchers without extensive programming backgrounds.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Research at the Intersection of Technology</title>
-      <link>http://localhost:1313/posts/my-first-post/</link>
-      <pubDate>Thu, 02 May 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/my-first-post/</guid>
-      <description>&lt;h1 id=&#34;research-at-the-intersection-of-technology&#34;&gt;Research at the Intersection of Technology&lt;/h1&gt;
-&lt;p&gt;In my work, I explore the powerful opportunities that arise when advanced technology meets academic research. This intersection creates possibilities for both enhancing traditional research methodologies and opening entirely new avenues of investigation.&lt;/p&gt;
-&lt;h2 id=&#34;the-technological-research-landscape&#34;&gt;The Technological Research Landscape&lt;/h2&gt;
-&lt;p&gt;The landscape of research is being transformed by:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Computational power&lt;/strong&gt;: Enabling analyses that were previously impractical&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Data availability&lt;/strong&gt;: Providing unprecedented access to information&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Methodological innovation&lt;/strong&gt;: Creating new approaches to longstanding questions&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Collaborative tools&lt;/strong&gt;: Breaking down barriers between disciplines and institutions&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;These developments don&amp;rsquo;t just accelerate existing work—they fundamentally alter what questions we can ask and what insights we can gain.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Research Data Platform</title>
-      <link>http://localhost:1313/projects/project-1/</link>
-      <pubDate>Thu, 02 May 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/project-1/</guid>
-      <description>&lt;h1 id=&#34;research-data-analysis-platform&#34;&gt;Research Data Analysis Platform&lt;/h1&gt;
-&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
-&lt;p&gt;This project involved developing a comprehensive platform for research data analysis and visualization, designed to support academic research workflows and enhance data-driven decision making.&lt;/p&gt;
-&lt;h2 id=&#34;features&#34;&gt;Features&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Interactive visualization of complex research datasets&lt;/li&gt;
-&lt;li&gt;Statistical analysis tools for research validation&lt;/li&gt;
-&lt;li&gt;Collaborative annotation and sharing capabilities&lt;/li&gt;
-&lt;li&gt;Integration with existing research databases&lt;/li&gt;
-&lt;li&gt;Export functionality for publications and presentations&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;technologies-used&#34;&gt;Technologies Used&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Python (Pandas, NumPy, SciPy)&lt;/li&gt;
-&lt;li&gt;Interactive visualization libraries (Plotly, D3.js)&lt;/li&gt;
-&lt;li&gt;Backend services in Django&lt;/li&gt;
-&lt;li&gt;Authentication and access control&lt;/li&gt;
-&lt;li&gt;Containerized deployment&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;approach&#34;&gt;Approach&lt;/h2&gt;
-&lt;p&gt;The platform was developed through close collaboration with research teams to ensure it met their specific needs. The development process followed an iterative approach, continuously refining features based on user feedback.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Wouter's Portfolio</title><link>https://whaverals.github.io/</link><description>Recent content on Wouter's Portfolio</description><generator>Hugo -- 0.145.0</generator><language>en</language><lastBuildDate>Thu, 02 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://whaverals.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>About Me</title><link>https://whaverals.github.io/about/</link><pubDate>Thu, 02 May 2024 00:00:00 +0000</pubDate><guid>https://whaverals.github.io/about/</guid><description>&lt;h2 id="hello-im-wouter-haverals">Hello, I&amp;rsquo;m Wouter Haverals&lt;/h2>
+&lt;p>I&amp;rsquo;m a researcher and software engineer working at the intersection of computational methods and literary-historical research. My work focuses on creating innovative approaches to study cultural heritage through digital humanities methodologies.&lt;/p>
+&lt;h3 id="professional-focus">Professional Focus&lt;/h3>
+&lt;p>My work spans the intersection of computational methods and literary-historical research, creating innovative approaches to study cultural heritage. I focus on:&lt;/p>
+&lt;ul>
+&lt;li>Applying digital humanities methodologies to historical texts across languages and time periods&lt;/li>
+&lt;li>Developing open-source tools for manuscript analysis and transcription&lt;/li>
+&lt;li>Building bridges between traditional philological scholarship and computational approaches&lt;/li>
+&lt;li>Exploring patterns of textual transmission and literary development through data-driven methods&lt;/li>
+&lt;li>Democratizing access to cultural heritage through digital frameworks&lt;/li>
+&lt;/ul>
+&lt;h3 id="skills">Skills&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>Programming&lt;/strong>: Python, R, JavaScript, SQL, XML/TEI&lt;/li>
+&lt;li>&lt;strong>Digital Humanities&lt;/strong>: HTR (Handwritten Text Recognition), stylometry, computational literary analysis, digital scholarly editing&lt;/li>
+&lt;li>&lt;strong>Data Science&lt;/strong>: Machine learning, statistical analysis, data visualization, natural language processing&lt;/li>
+&lt;li>&lt;strong>Historical Linguistics&lt;/strong>: Middle Dutch, Middle French, Medieval Latin, historical language processing&lt;/li>
+&lt;li>&lt;strong>Languages&lt;/strong>: Dutch (native), English (professional), French (advanced), German (intermediate), Latin (reading)&lt;/li>
+&lt;li>&lt;strong>Project Management&lt;/strong>: Research team coordination, international collaboration, grant writing&lt;/li>
+&lt;/ul>
+&lt;h3 id="experience-highlights">Experience Highlights&lt;/h3>
+&lt;ul>
+&lt;li>Designed and implemented CERberus, an open-source tool for evaluating HTR systems (nominated for Best DH Tool, 2023)&lt;/li>
+&lt;li>Led the digital transcription of the complete manuscript collection from the Carthusian monastery of Herne (14th century)&lt;/li>
+&lt;li>Served as Programme Chair for the Computational Humanities Research Conference 2024&lt;/li>
+&lt;li>Contributed the Middle Dutch component to CATMuS, a multilingual dataset for HTR research across European languages&lt;/li>
+&lt;li>Developed innovative computational approaches to analyze medieval poetic meter and rhythm&lt;/li>
+&lt;/ul>
+&lt;h3 id="education">Education&lt;/h3>
+&lt;ul>
+&lt;li>PhD in Language and Literature, University of Antwerp (2019)&lt;/li>
+&lt;li>Master of Arts in Language and Literature, University of Antwerp (2014, Magna Cum Laude)&lt;/li>
+&lt;li>Teacher Training Program, University of Antwerp (2015, Magna Cum Laude)&lt;/li>
+&lt;li>Bachelor of Arts in Dutch and English Language and Literature, University of Antwerp (2013, Cum Laude)&lt;/li>
+&lt;li>Exchange Program, Hamilton High School, Wisconsin, USA (2009-2010)&lt;/li>
+&lt;/ul>
+&lt;h3 id="connect">Connect&lt;/h3>
+&lt;p>I&amp;rsquo;m always interested in new collaborations at the intersection of humanities and technology. Whether you&amp;rsquo;re working on manuscript digitization, computational literary analysis, or exploring new applications of AI for cultural heritage, I&amp;rsquo;d love to discuss potential projects and partnerships.&lt;/p></description></item><item><title>Carthusian Digital Archive</title><link>https://whaverals.github.io/projects/project-2/</link><pubDate>Thu, 02 May 2024 00:00:00 +0000</pubDate><guid>https://whaverals.github.io/projects/project-2/</guid><description>&lt;h1 id="carthusian-digital-archive-herne-manuscript-collection">Carthusian Digital Archive: Herne Manuscript Collection&lt;/h1>
+&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This project involved leading the digital transcription and analysis of the complete manuscript collection from the Carthusian monastery of Herne (14th century). This comprehensive digital archive makes accessible an important corpus of Middle Dutch texts that have significant historical and linguistic value.&lt;/p>
+&lt;h2 id="historical-significance">Historical Significance&lt;/h2>
+&lt;p>The Carthusian monastery of Herne was a major center for manuscript production and translation in the 14th century, responsible for introducing numerous Latin works to the Low Countries through vernacular translations. These manuscripts represent a crucial phase in the development of scholarly Middle Dutch and reflect important cultural exchanges in medieval Europe.&lt;/p></description></item><item><title>CATMuS: Multilingual HTR Dataset</title><link>https://whaverals.github.io/projects/project-3/</link><pubDate>Thu, 02 May 2024 00:00:00 +0000</pubDate><guid>https://whaverals.github.io/projects/project-3/</guid><description>&lt;h1 id="catmus-multilingual-dataset-for-htr-research">CATMuS: Multilingual Dataset for HTR Research&lt;/h1>
+&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>I contributed the Middle Dutch component to CATMuS (Comprehensive Archive of Transcribed Multilingual Sources), a pioneering multilingual dataset for Handwritten Text Recognition (HTR) research across European languages. This collaborative project brings together manuscript data from multiple languages, periods, and scribal traditions to enable more robust cross-lingual HTR research.&lt;/p>
+&lt;h2 id="the-challenge">The Challenge&lt;/h2>
+&lt;p>Handwritten Text Recognition systems have traditionally been developed for specific languages or even specific manuscript collections, limiting their applicability across the diversity of historical documents. CATMuS was created to address this fragmentation by providing a standardized, comprehensive dataset spanning multiple languages.&lt;/p></description></item><item><title>CERberus: HTR Evaluation Tool</title><link>https://whaverals.github.io/projects/project-1/</link><pubDate>Thu, 02 May 2024 00:00:00 +0000</pubDate><guid>https://whaverals.github.io/projects/project-1/</guid><description>&lt;h1 id="cerberus-handwritten-text-recognition-evaluation-tool">CERberus: Handwritten Text Recognition Evaluation Tool&lt;/h1>
+&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>CERberus is an open-source tool I designed and implemented for evaluating Handwritten Text Recognition (HTR) systems. The project was nominated for Best DH Tool in 2023 and has become an important resource for digital humanities researchers working with historical manuscripts.&lt;/p>
+&lt;h2 id="challenge">Challenge&lt;/h2>
+&lt;p>Evaluating the quality of automated transcriptions from historical manuscripts is complex, requiring specialized metrics that account for historical spelling variations, scribal abbreviations, and language-specific features. Existing tools were either too simplistic (focusing only on Character Error Rate) or too specialized for broader adoption.&lt;/p></description></item><item><title>Digital Approaches to Medieval Manuscripts</title><link>https://whaverals.github.io/posts/my-first-post/</link><pubDate>Thu, 02 May 2024 00:00:00 +0000</pubDate><guid>https://whaverals.github.io/posts/my-first-post/</guid><description>&lt;h1 id="digital-approaches-to-medieval-manuscripts">Digital Approaches to Medieval Manuscripts&lt;/h1>
+&lt;p>The intersection of digital technologies and historical manuscript studies has opened new horizons for understanding our textual heritage. As someone working in this interdisciplinary space, I&amp;rsquo;d like to share some reflections on the challenges and opportunities of applying computational methods to medieval texts.&lt;/p>
+&lt;h2 id="the-digital-humanities-revolution">The Digital Humanities Revolution&lt;/h2>
+&lt;p>Medieval manuscript studies has undergone a transformation in recent decades through digital approaches. What was once a discipline limited by physical access to rare materials has become increasingly democratized through:&lt;/p></description></item></channel></rss>
