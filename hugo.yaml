@@ -9,6 +9,15 @@ outputs:
     - RSS
     - JSON
 
+# Allow raw HTML in Markdown content
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
+# Suppress HTML warnings
+ignoreLogs: ['warning-goldmark-raw-html']
+
 # Menu items
 menu:
   main:
@@ -16,45 +25,57 @@ menu:
       name: Home
       url: /
       weight: 10
-    - identifier: posts
-      name: Posts
-      url: /posts/
-      weight: 20
-    - identifier: projects
-      name: Projects
-      url: /projects/
-      weight: 30
-    - identifier: teaching
-      name: Teaching
-      url: /teaching/
-      weight: 40
-    - identifier: about
-      name: About
-      url: /about/
-      weight: 50
-    - identifier: tags
-      name: Tags
-      url: /tags/
-      weight: 60
+    #- identifier: posts
+    #  name: Posts
+    #  url: /posts/
+    #  weight: 20
+    #- identifier: projects
+    #  name: Projects
+    #  url: /projects/
+    #  weight: 30
+    #- identifier: teaching
+    #  name: Teaching
+    #  url: /teaching/
+    #  weight: 40
+    #- identifier: about
+    #  name: About
+    #  url: /about/
+    #  weight: 50
+    #- identifier: tags
+    #  name: Tags
+    #  url: /tags/
+    #  weight: 60
 
 # Theme parameters
 params:
+  # Disable listing posts on homepage
+  mainSections: []
+  
   # Home Info Mode
   homeInfoParams:
-    Title: "Wouter Haverals"
+    #Title: "Wouter Haverals"
     Content: >
-      Associate Research Scholar at The Center for Digital Humanities & Perkins Fellow and Lecturer at the Humanities Council, Princeton University. 
+      Hello, I'm Wouter Haverals, a computational humanities scholar at Princeton University, where I serve as an Associate Research Scholar at the Center for Digital Humanities and Perkins Fellow and Lecturer at the Humanities Council.<br><br>
       
-      **My work** focuses on applying computational methods to medieval manuscripts and literary-historical research.
+      My work bridges traditional humanities scholarship with computational methods, with a focus on three main areas: <br><br>
+            
+      - **Computational literary analysis**: I apply stylometry, computational poetics, and natural language processing to investigate questions of style, authorship, and literary development across different time periods. <br><br>
+      
+      - **Medieval manuscript studies and textual scholarship**: My research applies digital methods to historical texts, revealing new insights about medieval literary production. I've developed computational approaches to analyze scribal practices in 14th-century Carthusian manuscripts from Herne and created data-driven methods to reconstruct rhythmic patterns in Middle Dutch poetry. My work bridges traditional humanities scholarship with computational techniques including Handwritten Text Recognition (HTR), stylometry, and algorithmic analysis of medieval texts.<br><br>
+      
+      - **Developing digital humanities methods**: I create tools and techniques for humanities scholars, particularly in handwritten text recognition (HTR) and text analysis.<br><br>
+            
+      Currently, I'm exploring the intersection of AI and humanities through the project "Exercises in Stylistics", investigating how humanistic perspectives can illuminate concepts of "similarity" and "style" in the age of Large Language Models.<br><br>
+      
+      <em>This website is currently under construction with more content coming soon. If you'd like to get in touch, please do!</em><br><br>
+
 
   # Social icons
   socialIcons:
     - name: github
       url: "https://github.com/whaverals"
-    - name: linkedin
-      url: "https://linkedin.com/in/wouter-haverals"
     - name: bluesky
-      url: "wouterhaverals.bsky.social"
+      url: "https://bsky.app/profile/wouterhaverals.bsky.social"
     - name: email
       url: "mailto:wouter.haverals@princeton.edu"
 
@@ -63,11 +84,11 @@ params:
   disableThemeToggle: false
   
   # Layout settings
-  ShowReadingTime: true
-  ShowShareButtons: true
+  ShowReadingTime: false
+  ShowShareButtons: false
   ShowPostNavLinks: true
   ShowBreadCrumbs: true
-  ShowCodeCopyButtons: true
+  ShowCodeCopyButtons: false
   
   # Content settings
   cover:
@@ -75,3 +96,12 @@ params:
     
   # Footer settings
   hideFooter: true
+  
+  # Favicon settings
+  assets:
+    favicon: "/favicon/favicon.ico"
+    favicon16x16: "/favicon/favicon-16x16.png"
+    favicon32x32: "/favicon/favicon-32x32.png"
+    apple_touch_icon: "/favicon/apple-touch-icon.png"
+    theme_color: "#ffffff"
+    msapplication_TileColor: "#ffffff"

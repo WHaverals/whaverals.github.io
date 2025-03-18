@@ -1,6 +1,5 @@
 ---
 title: "Digital Approaches to Medieval Manuscripts"
-date: 2024-05-02
 draft: false
 tags: ["digital humanities", "medieval manuscripts", "HTR", "computational methods"]
 categories: ["research"]

@@ -20,3 +20,8 @@
     height: 24px;
     width: 24px;
 }
+
+/* Make list pages use the same background as other pages */
+.list {
+    background: var(--theme);
+}

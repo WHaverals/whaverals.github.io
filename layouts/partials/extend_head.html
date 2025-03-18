@@ -1,0 +1,41 @@
+<!-- Favicon configuration with cache control -->
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png?v=2">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png?v=2">
+<link rel="shortcut icon" href="/favicon/favicon.ico?v=2">
+<link rel="manifest" href="/favicon/site.webmanifest">
+<meta name="theme-color" content="#ffffff">
+
+<!-- Fix for dark mode toggle -->
+<style>
+  #moon {
+    display: var(--display-moon, inline);
+  }
+  #sun {
+    display: var(--display-sun, none);
+  }
+  body.dark #moon {
+    display: var(--display-sun, none);
+  }
+  body.dark #sun {
+    display: var(--display-moon, inline);
+  }
+</style>
+
+<!-- Force dark mode toggle to work -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+      themeToggle.addEventListener('click', function() {
+        if (document.body.classList.contains('dark')) {
+          document.body.classList.remove('dark');
+          localStorage.setItem("pref-theme", 'light');
+        } else {
+          document.body.classList.add('dark');
+          localStorage.setItem("pref-theme", 'dark');
+        }
+      });
+    }
+  });
+</script>

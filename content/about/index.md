@@ -1,6 +1,5 @@
 ---
 title: "About Me"
-date: 2024-05-02
 draft: false
 ---
 
@@ -20,12 +19,6 @@ My work spans the intersection of computational methods and literary-historical 
 
 ### Skills
 
-- **Programming**: Python, R, JavaScript, SQL, XML/TEI
-- **Digital Humanities**: HTR (Handwritten Text Recognition), stylometry, computational literary analysis, digital scholarly editing
-- **Data Science**: Machine learning, statistical analysis, data visualization, natural language processing
-- **Historical Linguistics**: Middle Dutch, Middle French, Medieval Latin, historical language processing
-- **Languages**: Dutch (native), English (professional), French (advanced), German (intermediate), Latin (reading)
-- **Project Management**: Research team coordination, international collaboration, grant writing
 
 ### Experience Highlights
 
