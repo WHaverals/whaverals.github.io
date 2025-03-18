@@ -79,19 +79,13 @@ languages:
       homeInfoParams:
         #Title: "Wouter Haverals"
         Content: >
-          Hallo\! Ik ben Wouter Haverals, onderzoeker op het gebied van computationele geesteswetenschappen aan Princeton University. Daar werk ik als Associate Research Scholar bij het Center for Digital Humanities en geef ik les als Perkins Fellow bij de Humanities Council.<br><br>
+          Hallo! Ik ben Wouter Haverals, onderzoeker op het gebied van computationele geesteswetenschappen aan Princeton University. Daar werk ik als Associate Research Scholar bij het Center for Digital Humanities en geef ik les als Perkins Fellow bij de Humanities Council.<br><br>
           
-          Mijn werk combineert traditioneel geesteswetenschappelijk onderzoek met computationele methoden, voornamelijk met een focus op de volgende drie gebieden: <br><br>
-                
-          - **Computationele literaire analyse**: Ik pas stylometrie, computationele poëtica en natuurlijke taalverwerking toe om vragen over stijl, auteurschap en literaire ontwikkeling in verschillende tijdsperioden te onderzoeken. <br><br>
+          Mijn werk combineert traditioneel geesteswetenschappelijk onderzoek met computationele methoden.<br><br>
+                                
+          Momenteel onderzoek ik het snijvlak van AI en geesteswetenschappen via het project "Exercises in Stylistics". Hierin onderzoek ik hoe traditionele literaire kaders en concepten zich verhouden tot door AI gegenereerde literaire fictie.<br><br>
           
-          - **Middeleeuwse manuscriptstudies en tekstwetenschap**: Mijn onderzoek past digitale methoden toe op historische teksten, waardoor nieuwe inzichten in middeleeuwse literaire productie ontstaan. Ik heb computationele benaderingen ontwikkeld om schrijfpraktijken in 14e-eeuwse Kartuizer-manuscripten uit Herne te analyseren en datagestuurde methoden gecreëerd om ritmische patronen in Middelnederlandse poëzie te reconstrueren. Mijn werk verbindt traditioneel geesteswetenschappelijk onderzoek met computationele technieken, waaronder Handwritten Text Recognition (HTR), stylometrie en algoritmische analyse van middeleeuwse teksten.<br><br>
-          
-          - **Ontwikkelen van digital humanities methoden**: Ik creëer tools en technieken voor geesteswetenschappers, met name op het gebied van handschriftherkenning (HTR) en tekstanalyse.<br><br>
-                
-          Momenteel onderzoek ik het snijvlak van AI en geesteswetenschappen via het project "Exercises in Stylistics", waarin ik onderzoek hoe geesteswetenschappelijke perspectieven concepten als "gelijkenis" en "stijl" kunnen belichten in het tijdperk van Grote Taalmodellen.<br><br>
-          
-          <em>Deze website is momenteel in aanbouw met meer inhoud die binnenkort komt. Als je contact wilt opnemen, doe dat dan gerust\!</em><br><br>
+          <em>Deze website is volop in opbouw!</em><br><br>
 
 theme: "PaperMod"
 
