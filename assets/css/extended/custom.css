@@ -25,3 +25,21 @@
 .list {
     background: var(--theme);
 }
+
+/* Darker text color for better contrast */
+:root {
+    --secondary: rgb(85, 85, 85);  /* Darker gray than default */
+    --content: rgb(25, 25, 25);    /* Slightly darker content text */
+}
+
+body {
+    color: var(--content);
+}
+
+.entry-content {
+    color: var(--content);
+}
+
+.post-content {
+    color: var(--content);
+}
