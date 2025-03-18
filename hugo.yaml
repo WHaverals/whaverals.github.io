@@ -1,5 +1,98 @@
 baseURL: "https://whaverals.github.io/"
-title: "Wouter Haverals"
+
+# Language configuration
+defaultContentLanguage: en
+languages:
+  en:
+    languageName: "English"
+    weight: 1
+    title: "Wouter Haverals"
+    languageAltTitle: "English"
+    menu:
+      main:
+        - identifier: home
+          name: Home
+          url: /
+          weight: 10
+        #- identifier: posts
+        #  name: Posts
+        #  url: /posts/
+        #  weight: 20
+        #- identifier: projects
+        #  name: Projects
+        #  url: /projects/
+        #  weight: 30
+        #- identifier: teaching
+        #  name: Teaching
+        #  url: /teaching/
+        #  weight: 40
+        #- identifier: about
+        #  name: About
+        #  url: /about/
+        #  weight: 50
+    params:
+      homeInfoParams:
+        #Title: "Wouter Haverals"
+        Content: >
+          Hello, I'm Wouter Haverals, a computational humanities scholar at Princeton University, where I serve as an Associate Research Scholar at the Center for Digital Humanities and Perkins Fellow and Lecturer at the Humanities Council.<br><br>
+          
+          My work bridges traditional humanities scholarship with computational methods, with a focus on three main areas: <br><br>
+                
+          - **Computational literary analysis**: I apply stylometry, computational poetics, and natural language processing to investigate questions of style, authorship, and literary development across different time periods. <br><br>
+          
+          - **Medieval manuscript studies and textual scholarship**: My research applies digital methods to historical texts, revealing new insights about medieval literary production. I've developed computational approaches to analyze scribal practices in 14th-century Carthusian manuscripts from Herne and created data-driven methods to reconstruct rhythmic patterns in Middle Dutch poetry. My work bridges traditional humanities scholarship with computational techniques including Handwritten Text Recognition (HTR), stylometry, and algorithmic analysis of medieval texts.<br><br>
+          
+          - **Developing digital humanities methods**: I create tools and techniques for humanities scholars, particularly in handwritten text recognition (HTR) and text analysis.<br><br>
+                
+          Currently, I'm exploring the intersection of AI and humanities through the project "Exercises in Stylistics", investigating how humanistic perspectives can illuminate concepts of "similarity" and "style" in the age of Large Language Models.<br><br>
+          
+          <em>This website is currently under construction with more content coming soon. If you'd like to get in touch, please do\!</em><br><br>
+
+  nl:
+    languageName: "Nederlands"
+    weight: 2
+    title: "Wouter Haverals" 
+    languageAltTitle: "Nederlands"
+    menu:
+      main:
+        - identifier: home
+          name: Home
+          url: /
+          weight: 10
+        #- identifier: posts
+        #  name: Berichten
+        #  url: /posts/
+        #  weight: 20
+        #- identifier: projects
+        #  name: Projecten
+        #  url: /projects/
+        #  weight: 30
+        #- identifier: teaching
+        #  name: Onderwijs
+        #  url: /teaching/
+        #  weight: 40
+        #- identifier: about
+        #  name: Over mij
+        #  url: /about/
+        #  weight: 50
+    params:
+      homeInfoParams:
+        #Title: "Wouter Haverals"
+        Content: >
+          Hallo\! Ik ben Wouter Haverals, onderzoeker op het gebied van computationele geesteswetenschappen aan Princeton University. Daar werk ik als Associate Research Scholar bij het Center for Digital Humanities en geef ik les als Perkins Fellow bij de Humanities Council.<br><br>
+          
+          Mijn werk combineert traditioneel geesteswetenschappelijk onderzoek met computationele methoden, voornamelijk met een focus op de volgende drie gebieden: <br><br>
+                
+          - **Computationele literaire analyse**: Ik pas stylometrie, computationele poëtica en natuurlijke taalverwerking toe om vragen over stijl, auteurschap en literaire ontwikkeling in verschillende tijdsperioden te onderzoeken. <br><br>
+          
+          - **Middeleeuwse manuscriptstudies en tekstwetenschap**: Mijn onderzoek past digitale methoden toe op historische teksten, waardoor nieuwe inzichten in middeleeuwse literaire productie ontstaan. Ik heb computationele benaderingen ontwikkeld om schrijfpraktijken in 14e-eeuwse Kartuizer-manuscripten uit Herne te analyseren en datagestuurde methoden gecreëerd om ritmische patronen in Middelnederlandse poëzie te reconstrueren. Mijn werk verbindt traditioneel geesteswetenschappelijk onderzoek met computationele technieken, waaronder Handwritten Text Recognition (HTR), stylometrie en algoritmische analyse van middeleeuwse teksten.<br><br>
+          
+          - **Ontwikkelen van digital humanities methoden**: Ik creëer tools en technieken voor geesteswetenschappers, met name op het gebied van handschriftherkenning (HTR) en tekstanalyse.<br><br>
+                
+          Momenteel onderzoek ik het snijvlak van AI en geesteswetenschappen via het project "Exercises in Stylistics", waarin ik onderzoek hoe geesteswetenschappelijke perspectieven concepten als "gelijkenis" en "stijl" kunnen belichten in het tijdperk van Grote Taalmodellen.<br><br>
+          
+          <em>Deze website is momenteel in aanbouw met meer inhoud die binnenkort komt. Als je contact wilt opnemen, doe dat dan gerust\!</em><br><br>
+
 theme: "PaperMod"
 
 # Enable search
@@ -18,57 +111,13 @@ markup:
 # Suppress HTML warnings
 ignoreLogs: ['warning-goldmark-raw-html']
 
-# Menu items
-menu:
-  main:
-    - identifier: home
-      name: Home
-      url: /
-      weight: 10
-    #- identifier: posts
-    #  name: Posts
-    #  url: /posts/
-    #  weight: 20
-    #- identifier: projects
-    #  name: Projects
-    #  url: /projects/
-    #  weight: 30
-    #- identifier: teaching
-    #  name: Teaching
-    #  url: /teaching/
-    #  weight: 40
-    #- identifier: about
-    #  name: About
-    #  url: /about/
-    #  weight: 50
-    #- identifier: tags
-    #  name: Tags
-    #  url: /tags/
-    #  weight: 60
-
 # Theme parameters
 params:
   # Disable listing posts on homepage
   mainSections: []
   
-  # Home Info Mode
-  homeInfoParams:
-    #Title: "Wouter Haverals"
-    Content: >
-      Hello, I'm Wouter Haverals, a computational humanities scholar at Princeton University, where I serve as an Associate Research Scholar at the Center for Digital Humanities and Perkins Fellow and Lecturer at the Humanities Council.<br><br>
-      
-      My work bridges traditional humanities scholarship with computational methods, with a focus on three main areas: <br><br>
-            
-      - **Computational literary analysis**: I apply stylometry, computational poetics, and natural language processing to investigate questions of style, authorship, and literary development across different time periods. <br><br>
-      
-      - **Medieval manuscript studies and textual scholarship**: My research applies digital methods to historical texts, revealing new insights about medieval literary production. I've developed computational approaches to analyze scribal practices in 14th-century Carthusian manuscripts from Herne and created data-driven methods to reconstruct rhythmic patterns in Middle Dutch poetry. My work bridges traditional humanities scholarship with computational techniques including Handwritten Text Recognition (HTR), stylometry, and algorithmic analysis of medieval texts.<br><br>
-      
-      - **Developing digital humanities methods**: I create tools and techniques for humanities scholars, particularly in handwritten text recognition (HTR) and text analysis.<br><br>
-            
-      Currently, I'm exploring the intersection of AI and humanities through the project "Exercises in Stylistics", investigating how humanistic perspectives can illuminate concepts of "similarity" and "style" in the age of Large Language Models.<br><br>
-      
-      <em>This website is currently under construction with more content coming soon. If you'd like to get in touch, please do!</em><br><br>
-
+  # Enable language switch
+  ShowLanguageSwitcher: true
 
   # Social icons
   socialIcons:
