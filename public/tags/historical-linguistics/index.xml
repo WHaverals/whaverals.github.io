@@ -1,23 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Historical Linguistics on Wouter Haverals</title>
-    <link>http://localhost:1313/tags/historical-linguistics/</link>
-    <description>Recent content in Historical Linguistics on Wouter Haverals</description>
-    <generator>Hugo -- 0.145.0</generator>
-    <language>en</language>
-    <lastBuildDate>Thu, 02 May 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/historical-linguistics/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Carthusian Digital Archive</title>
-      <link>http://localhost:1313/projects/project-2/</link>
-      <pubDate>Thu, 02 May 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/project-2/</guid>
-      <description>&lt;h1 id=&#34;carthusian-digital-archive-herne-manuscript-collection&#34;&gt;Carthusian Digital Archive: Herne Manuscript Collection&lt;/h1&gt;
-&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
-&lt;p&gt;This project involved leading the digital transcription and analysis of the complete manuscript collection from the Carthusian monastery of Herne (14th century). This comprehensive digital archive makes accessible an important corpus of Middle Dutch texts that have significant historical and linguistic value.&lt;/p&gt;
-&lt;h2 id=&#34;historical-significance&#34;&gt;Historical Significance&lt;/h2&gt;
-&lt;p&gt;The Carthusian monastery of Herne was a major center for manuscript production and translation in the 14th century, responsible for introducing numerous Latin works to the Low Countries through vernacular translations. These manuscripts represent a crucial phase in the development of scholarly Middle Dutch and reflect important cultural exchanges in medieval Europe.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Historical Linguistics on Wouter Haverals</title><link>https://whaverals.github.io/tags/historical-linguistics/</link><description>Recent content in Historical Linguistics on Wouter Haverals</description><generator>Hugo -- 0.145.0</generator><language>en</language><lastBuildDate>Thu, 02 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://whaverals.github.io/tags/historical-linguistics/index.xml" rel="self" type="application/rss+xml"/><item><title>Carthusian Digital Archive</title><link>https://whaverals.github.io/projects/project-2/</link><pubDate>Thu, 02 May 2024 00:00:00 +0000</pubDate><guid>https://whaverals.github.io/projects/project-2/</guid><description>&lt;h1 id="carthusian-digital-archive-herne-manuscript-collection">Carthusian Digital Archive: Herne Manuscript Collection&lt;/h1>
+&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>This project involved leading the digital transcription and analysis of the complete manuscript collection from the Carthusian monastery of Herne (14th century). This comprehensive digital archive makes accessible an important corpus of Middle Dutch texts that have significant historical and linguistic value.&lt;/p>
+&lt;h2 id="historical-significance">Historical Significance&lt;/h2>
+&lt;p>The Carthusian monastery of Herne was a major center for manuscript production and translation in the 14th century, responsible for introducing numerous Latin works to the Low Countries through vernacular translations. These manuscripts represent a crucial phase in the development of scholarly Middle Dutch and reflect important cultural exchanges in medieval Europe.&lt;/p></description></item></channel></rss>
