@@ -1,6 +1,47 @@
+# Hugo generated files
+/public/
+/resources/
+
+# OS files
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*~
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# Node modules (if you have any Node.js dependencies)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Hugo cache
+.hugo_build.lock
+
+# Environment files
+.env
+.env.local
+
+# Backup files
+*.bak
+*.backup
+*.tmp
+
+# Personal files (keep your existing ignores)
 static/resumes_letters_etc/Curriculum_Vitae_Wouter_Haverals.pdf
-.gitignore
 static/resumes_letters_etc/Sollicitatiebijlage-voor-ZAP_NL_WouterHaverals.pdf
 public/resumes_letters_etc/Curriculum_Vitae_Wouter_Haverals.pdf
 public/resumes_letters_etc/Sollicitatiebijlage-voor-ZAP_NL_WouterHaverals.pdf
