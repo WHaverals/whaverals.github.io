@@ -1,0 +1,34 @@
+{{- define "main" }}
+
+{{- if (and site.Params.profileMode.enabled .IsHome) }}
+{{- partial "index_profile.html" . }}
+{{- else }}
+
+{{- /* Show home info at the top */ -}}
+{{- if and .IsHome site.Params.homeInfoParams }}
+{{- partial "home_info.html" . }}
+{{- end }}
+
+{{- /* What I've been doing lately section */ -}}
+{{- $recentWork := .Language.Params.recentWork | default site.Params.recentWork }}
+{{- if $recentWork }}
+<section class="home-section recent-work">
+  <header class="section-header">
+    <h2 class="section-title">{{ $recentWork.title }}</h2>
+  </header>
+  <div class="recent-work-content">
+    <ul class="recent-work-list">
+      {{- range $recentWork.items }}
+      <li>
+        {{ .content | markdownify }}
+      </li>
+      {{- end }}
+    </ul>
+  </div>
+</section>
+{{- end }}
+
+{{- end }}{{/* end profileMode check */}}
+
+{{- end }}{{- /* end main */ -}}
+
