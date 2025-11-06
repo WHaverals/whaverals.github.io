@@ -34,19 +34,7 @@ languages:
       homeInfoParams:
         #Title: "Wouter Haverals"
         Content: >
-          Hello, I'm Wouter Haverals, a computational humanities scholar at Princeton University, where I serve as an Associate Research Scholar at the Center for Digital Humanities and Perkins Fellow and Lecturer at the Humanities Council.<br><br>
-          
-          My work bridges traditional humanities scholarship with computational methods, with a focus on three main areas: <br><br>
-                
-          - **Computational literary analysis**: I apply stylometry, computational poetics, and natural language processing to investigate questions of style, authorship, and literary development across different time periods. <br><br>
-          
-          - **Medieval manuscript studies and textual scholarship**: My research applies digital methods to historical texts, revealing new insights about medieval literary production. I've developed computational approaches to analyze scribal practices in 14th-century Carthusian manuscripts from Herne and created data-driven methods to reconstruct rhythmic patterns in Middle Dutch poetry. My work bridges traditional humanities scholarship with computational techniques including Handwritten Text Recognition (HTR), stylometry, and algorithmic analysis of medieval texts.<br><br>
-          
-          - **Developing digital humanities methods**: I create tools and techniques for humanities scholars, particularly in handwritten text recognition (HTR) and text analysis.<br><br>
-                
-          Currently, I'm exploring the intersection of AI and humanities through the project "Exercises in Stylistics", investigating how humanistic perspectives can illuminate concepts of "similarity" and "style" in the age of Large Language Models.<br><br>
-          
-          <em>This website is currently under construction with more content coming soon. If you'd like to get in touch, please do\!</em><br><br>
+          Hello, I'm Wouter Haverals, an Associate Research Scholar at Princeton University's [Center for Digital Humanities](https://cdh.princeton.edu/) and Perkins Fellow and Lecturer at the Humanities Council. My research bridges traditional humanities scholarship with computational methods, focusing on computational literary analysis, medieval manuscript studies, and developing digital tools for textual scholarship. I'm particularly interested in exploring how humanistic perspectives can inform our understanding of concepts like literary and narrative style and "similarity" in times of large language models.
 
   nl:
     languageName: "Nederlands"
@@ -79,13 +67,20 @@ languages:
       homeInfoParams:
         #Title: "Wouter Haverals"
         Content: >
-          Hallo! Ik ben Wouter Haverals, onderzoeker op het gebied van computationele geesteswetenschappen aan Princeton University. Daar werk ik als Associate Research Scholar bij het Center for Digital Humanities en geef ik les als Perkins Fellow bij de Humanities Council.<br><br>
-          
-          Mijn werk combineert traditioneel geesteswetenschappelijk onderzoek met computationele methoden.<br><br>
-                                
-          Momenteel onderzoek ik het snijvlak van AI en geesteswetenschappen via het project "Exercises in Stylistics". Hierin onderzoek ik hoe traditionele literaire kaders en concepten zich verhouden tot door AI gegenereerde literaire fictie.<br><br>
-          
-          <em>Deze website is volop in opbouw!</em><br><br>
+          Hallo, ik ben Wouter Haverals, Associate Research Scholar aan het [Center for Digital Humanities](https://cdh.princeton.edu/) van Princeton University en Perkins Fellow en Lecturer bij de Humanities Council. Mijn onderzoek verbindt traditionele geesteswetenschappen met computationele methoden, met een focus op computationele literaire analyse, middeleeuwse manuscriptstudies en de ontwikkeling van digitale tools voor tekstwetenschap. Ik ben vooral geïnteresseerd in hoe geesteswetenschappelijke perspectieven ons begrip van concepten als literaire en narratieve stijl en "gelijkenis" kunnen verhelderen in dit tijdperk van Grote Taalmodellen.
+      recentWork:
+        title: "Recent werk"
+        items:
+          - content: >
+              Wouter Haverals en Meredith Martin, **Everyone prefers human writers, including AI** – AI-modellen vertonen een sterkere voorkeur voor menselijk auteurschap dan mensen zelf bij het evalueren van literaire teksten. [arXiv:2510.08831](https://arxiv.org/abs/2510.08831)
+          - content: >
+              Caroline Vandyck, Wouter Haverals, en Mike Kestemont, **Making Characters Count** – Identificatie van middeleeuwse scribentenhanden door computationele analyse van afkortingspraktijken en linguïstische kenmerken in 14e-eeuwse Middelnederlandsemanuscripten. [arXiv:2509.00067](https://arxiv.org/abs/2509.00067)
+          - content: >
+              Maggie Wang (briljante Princeton-student!) en Wouter Haverals, **Prompt-Character Divergence: A Responsibility Compass for Human-AI Creative Collaboration** – Een diagnostische tool die makers helpt hun eigen intenties te onderscheiden van de invloed van AI-modellen in generatieve output. Geaccepteerd voor [NeurIPS 2025 Creative AI Track](https://neurips.cc/Conferences/2025/CallForCreativeAI).
+          - content: >
+              James Zhang (briljante Princeton-student!), Wouter Haverals, Mary Naydan, en Brian Kernighan, **Post-OCR Correction with OpenAI's GPT Models on Challenging English Prosody Texts** – Het gebruik van LLMs om de OCR-nauwkeurigheid te verbeteren bij de digitalisering van historische documenten. [DocEng 2024](https://dl.acm.org/doi/10.1145/3685650.3685669)
+          - content: >
+              **Computational Narratology in the Age of AI** – Panel op de [40th Annual International Conference on Narrative](https://www.thenarrativesociety.org/2025-conference), Miami, april 2025, met Claudia Carroll, Kate Elkins, Evelyn Gius, en David Bamman over de mogelijkheden en beperkingen van AI in het begrijpen van literaire stijl en narratieve structuur.
 
 theme: "PaperMod"
 
@@ -140,6 +135,21 @@ params:
   # Footer settings
   hideFooter: true
   
+  # Recent work section
+  recentWork:
+    title: "What I've been working on lately"
+    items:
+      - content: >
+          Wouter Haverals and Meredith Martin, **Everyone prefers human writers, including AI** – AI models show 2.5x stronger pro-human authorship bias than humans when evaluating literary content. [arXiv:2510.08831](https://arxiv.org/abs/2510.08831)
+      - content: >
+          Caroline Vandyck, Wouter Haverals, and Mike Kestemont, **Making Characters Count** – Identifying medieval scribal hands through computational analysis of abbreviation practices and linguistic features in 14th-century manuscripts. [arXiv:2509.00067](https://arxiv.org/abs/2509.00067)
+      - content: >
+          Maggie Wang (brilliant Princeton student alert!) and Wouter Haverals, **Prompt-Character Divergence: A Responsibility Compass for Human-AI Creative Collaboration** – A diagnostic tool to help creators distinguish their intent from AI model influence in generative output. Accepted to [NeurIPS 2025 Creative AI Track](https://neurips.cc/Conferences/2025/CallForCreativeAI).
+      - content: >
+          **Computational Narratology in the Age of AI** – Panel at the [40th Annual International Conference on Narrative](https://www.thenarrativesociety.org/2025-conference), Miami, April 2025, with Claudia Carroll, Kate Elkins, Evelyn Gius, and David Bamman presenting on AI's capabilities and limitations in understanding literary style and narrative.
+      - content: >
+          James Zhang (brilliant Princeton student alert!), Wouter Haverals, Mary Naydan, and Brian Kernighan, **Post-OCR Correction with OpenAI's GPT Models on Challenging English Prosody Texts** – Using LLMs to improve OCR accuracy for historical document digitization. [DocEng 2024](https://dl.acm.org/doi/10.1145/3685650.3685669)
+
   # Favicon settings
   assets:
     favicon: "/favicon/favicon.ico"
