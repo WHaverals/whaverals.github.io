@@ -127,6 +127,8 @@ params:
       url: "https://bsky.app/profile/wouterhaverals.bsky.social"
     - name: email
       url: "mailto:wouter.haverals@princeton.edu"
+    - name: orcid
+      url: "https://orcid.org/0000-0002-5687-6787"
 
   # Author information for SEO
   author: "Wouter Haverals"
