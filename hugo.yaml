@@ -137,6 +137,11 @@ params:
   # Keywords for SEO
   keywords: ["Wouter Haverals", "computational humanities", "digital humanities", "medieval manuscripts", "Princeton University", "HTR", "handwritten text recognition", "computational literary analysis", "Middle Dutch", "stylometry", "CERberus", "Carthusian manuscripts"]
   
+  # Google Search Console verification
+  analytics:
+    google:
+      SiteVerificationTag: "HLF9bzkHOcQzP5SrjXTBJJIyeVWQ8UItdkY__hL00o8"
+  
   # Theme appearance
   defaultTheme: auto
   disableThemeToggle: false
