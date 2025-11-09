@@ -39,3 +39,44 @@
     }
   });
 </script>
+
+<!-- Structured Data (JSON-LD) for SEO - Person/Profile Schema -->
+{{- if .IsHome }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Wouter Haverals",
+  "url": "https://whaverals.github.io/",
+  "image": "https://whaverals.github.io/images/profile_pic_WouterHaverals_smallest.jpg",
+  "jobTitle": "Associate Research Scholar",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Princeton University",
+    "department": {
+      "@type": "Organization",
+      "name": "Center for Digital Humanities"
+    }
+  },
+  "alumniOf": {
+    "@type": "EducationalOrganization",
+    "name": "University of Antwerp"
+  },
+  "email": "wouter.haverals@princeton.edu",
+  "sameAs": [
+    "https://github.com/whaverals",
+    "https://bsky.app/profile/wouterhaverals.bsky.social"
+  ],
+  "knowsAbout": [
+    "Computational Humanities",
+    "Digital Humanities",
+    "Medieval Manuscripts",
+    "Handwritten Text Recognition",
+    "Computational Literary Analysis",
+    "Middle Dutch",
+    "Stylometry"
+  ],
+  "description": "Computational Humanities Scholar at Princeton University specializing in computational literary analysis, medieval manuscript studies, and digital humanities tools."
+}
+</script>
+{{- end }}

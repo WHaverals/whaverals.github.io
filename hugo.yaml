@@ -1,5 +1,9 @@
 baseURL: "https://whaverals.github.io/"
 
+# Site metadata for SEO
+title: "Wouter Haverals. Research in quantitative literary analysis and omputational linguistics."
+description: "Wouter Haverals is an Associate Research Scholar at Princeton University's Center for Digital Humanities, specializing in computational literary analysis, medieval manuscript studies, and digital humanities."
+
 # Language configuration
 defaultContentLanguage: en
 languages:
@@ -8,6 +12,8 @@ languages:
     weight: 1
     title: "Wouter Haverals"
     languageAltTitle: "English"
+    description: "Wouter Haverals - Computational Humanities Scholar at Princeton University. Research in computational literary analysis, medieval manuscript studies, and digital humanities."
+    keywords: ["Wouter Haverals", "computational humanities", "computational linguistics", "digital humanities", "medieval manuscripts", "Princeton University", "HTR", "handwritten text recognition", "computational literary analysis", "Middle Dutch", "stylometry"]
     menu:
       main:
         - identifier: home
@@ -41,6 +47,8 @@ languages:
     weight: 2
     title: "Wouter Haverals" 
     languageAltTitle: "Nederlands"
+    description: "Wouter Haverals - Computationele Geesteswetenschapper aan Princeton University. Onderzoek in computationele literaire analyse, middeleeuwse manuscriptstudies en digitale geesteswetenschappen."
+    keywords: ["Wouter Haverals", "computationele geesteswetenschappen", "digitale geesteswetenschappen", "middeleeuwse manuscripten", "Princeton University", "HTR", "handgeschreven tekstherkenning", "computationele literaire analyse", "Middelnederlands"]
     menu:
       main:
         - identifier: home
@@ -102,6 +110,9 @@ ignoreLogs: ['warning-goldmark-raw-html']
 
 # Theme parameters
 params:
+  # Environment (set to production for SEO)
+  env: production
+  
   # Disable listing posts on homepage
   mainSections: []
   
@@ -117,6 +128,15 @@ params:
     - name: email
       url: "mailto:wouter.haverals@princeton.edu"
 
+  # Author information for SEO
+  author: "Wouter Haverals"
+  
+  # Site description for SEO
+  description: "Wouter Haverals - Computational Humanities Scholar at Princeton University. Research in computational literary analysis, medieval manuscript studies, and digital humanities tools."
+  
+  # Keywords for SEO
+  keywords: ["Wouter Haverals", "computational humanities", "digital humanities", "medieval manuscripts", "Princeton University", "HTR", "handwritten text recognition", "computational literary analysis", "Middle Dutch", "stylometry", "CERberus", "Carthusian manuscripts"]
+  
   # Theme appearance
   defaultTheme: auto
   disableThemeToggle: false

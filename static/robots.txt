@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://whaverals.github.io/sitemap.xml
+
