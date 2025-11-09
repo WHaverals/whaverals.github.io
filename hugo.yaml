@@ -140,7 +140,7 @@ params:
   # Google Search Console verification
   analytics:
     google:
-      SiteVerificationTag: "HLF9bzkHOcQzP5SrjXTBJJIyeVWQ8UItdkY__hL00o8"
+      SiteVerificationTag: "oz0uo5dDogxcOwP9F7bLYjIkA6OdMxt5JGhGiezSZcQ"
   
   # Theme appearance
   defaultTheme: auto
