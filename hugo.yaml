@@ -80,15 +80,19 @@ languages:
         title: "Recent werk"
         items:
           - content: >
-              Wouter Haverals en Meredith Martin, **Everyone prefers human writers, including AI** – AI-modellen vertonen een sterkere voorkeur voor menselijk auteurschap dan mensen zelf bij het evalueren van literaire teksten. [arXiv:2510.08831](https://arxiv.org/abs/2510.08831)
+              [Okt 2025] Wouter Haverals en Meredith Martin, **Everyone prefers human writers, including AI** – AI-modellen vertonen een sterkere voorkeur voor menselijk auteurschap dan mensen zelf bij het evalueren van literaire teksten. [arXiv:2510.08831](https://arxiv.org/abs/2510.08831)
           - content: >
-              Caroline Vandyck, Wouter Haverals, en Mike Kestemont, **Making Characters Count** – Identificatie van middeleeuwse scribentenhanden door computationele analyse van afkortingspraktijken en linguïstische kenmerken in 14e-eeuwse Middelnederlandsemanuscripten. [arXiv:2509.00067](https://arxiv.org/abs/2509.00067)
+              [Okt 2025] Maggie Wang en Wouter Haverals, **Prompt-Character Divergence: A Responsibility Compass for Human-AI Creative Collaboration** – Een diagnostische tool die makers helpt hun eigen intenties te onderscheiden van de invloed van AI-modellen in generatieve output. Geaccepteerd voor [NeurIPS 2025 Creative AI Track](https://neurips.cc/Conferences/2025/CallForCreativeAI).
           - content: >
-              Maggie Wang en Wouter Haverals, **Prompt-Character Divergence: A Responsibility Compass for Human-AI Creative Collaboration** – Een diagnostische tool die makers helpt hun eigen intenties te onderscheiden van de invloed van AI-modellen in generatieve output. Geaccepteerd voor [NeurIPS 2025 Creative AI Track](https://neurips.cc/Conferences/2025/CallForCreativeAI).
+              [Aug 2025] Caroline Vandyck, Wouter Haverals, en Mike Kestemont, **Making Characters Count** – Identificatie van middeleeuwse scribentenhanden door computationele analyse van afkortingspraktijken en linguïstische kenmerken in 14e-eeuwse Middelnederlandse manuscripten. [arXiv:2509.00067](https://arxiv.org/abs/2509.00067)
           - content: >
-              James Zhang, Wouter Haverals, Mary Naydan, en Brian Kernighan, **Post-OCR Correction with OpenAI's GPT Models on Challenging English Prosody Texts** – Het gebruik van LLMs om de OCR-nauwkeurigheid te verbeteren bij de digitalisering van historische documenten. [DocEng 2024](https://dl.acm.org/doi/10.1145/3685650.3685669)
+              [Mei 2025] Wouter Haverals, **When Humans and Machines Translate Char: Computational Insights into *Feuillets d'Hypnos* Across Languages** – Presentatie op [Resistance and its Futures: Translating the (Untranslatable) Wartime Poetry of Rene Char](https://complit.princeton.edu/events/resistance-and-its-futures-translating-untranslatable-wartime-poetry-rene-char), Princeton University, mei 2025.
           - content: >
-              **Computational Narratology in the Age of AI** – Panel op de [40th Annual International Conference on Narrative](https://www.thenarrativesociety.org/2025-conference), Miami, april 2025, met Claudia Carroll, Kate Elkins, Evelyn Gius, en David Bamman over de mogelijkheden en beperkingen van AI in het begrijpen van literaire stijl en narratieve structuur.
+              [Apr 2025] **Computational Narratology in the Age of AI** – Panel op de [40th Annual International Conference on Narrative](https://www.thenarrativesociety.org/2025-conference), Miami, april 2025, met Claudia Carroll, Kate Elkins, Evelyn Gius, en David Bamman over de mogelijkheden en beperkingen van AI in het begrijpen van literaire stijl en narratieve structuur.
+          - content: >
+              [Dec 2024] **Programmachair en Editor**, [Computational Humanities Research (CHR) 2024](https://2024.computational-humanities-research.org/) – Programmachair met Marijn Koolen en Laure Thompson en co-editor van de proceedings van deze conferentie (https://ceur-ws.org/Vol-3834/).
+          - content: >
+              [Nov 2024] James Zhang, Wouter Haverals, Mary Naydan, en Brian Kernighan, **Post-OCR Correction with OpenAI's GPT Models on Challenging English Prosody Texts** – Inzetten van LLMs om de OCR-nauwkeurigheid te verbeteren bij de digitalisering van historische documenten. [DocEng 2024](https://dl.acm.org/doi/10.1145/3685650.3685669)
 
 theme: "PaperMod"
 
@@ -164,18 +168,22 @@ params:
   
   # Recent work section
   recentWork:
-    title: "Recent Highlights"
+    title: "Recent highlights"
     items:
       - content: >
-          Wouter Haverals and Meredith Martin, **Everyone prefers human writers, including AI** – AI models show 2.5x stronger pro-human authorship bias than humans when evaluating literary content. [arXiv:2510.08831](https://arxiv.org/abs/2510.08831)
+          [Oct 2025] Wouter Haverals and Meredith Martin, **Everyone prefers human writers, including AI** – AI models show 2.5x stronger pro-human authorship bias than humans when evaluating literary content. [arXiv:2510.08831](https://arxiv.org/abs/2510.08831)
       - content: >
-          Caroline Vandyck, Wouter Haverals, and Mike Kestemont, **Making Characters Count** – Identifying medieval scribal hands through computational analysis of abbreviation practices and linguistic features in 14th-century manuscripts. [arXiv:2509.00067](https://arxiv.org/abs/2509.00067)
+          [Oct 2025] Maggie Wang and Wouter Haverals, **Prompt-Character Divergence: A Responsibility Compass for Human-AI Creative Collaboration** – A diagnostic tool to help creators distinguish their intent from AI model influence in generative output. Accepted to [NeurIPS 2025 Creative AI Track](https://neurips.cc/Conferences/2025/CallForCreativeAI).
       - content: >
-          Maggie Wang and Wouter Haverals, **Prompt-Character Divergence: A Responsibility Compass for Human-AI Creative Collaboration** – A diagnostic tool to help creators distinguish their intent from AI model influence in generative output. Accepted to [NeurIPS 2025 Creative AI Track](https://neurips.cc/Conferences/2025/CallForCreativeAI).
+          [Aug 2025] Caroline Vandyck, Wouter Haverals, and Mike Kestemont, **Making Characters Count** – Identifying medieval scribal hands through computational analysis of abbreviation practices and linguistic features in 14th-century manuscripts. [arXiv:2509.00067](https://arxiv.org/abs/2509.00067)
       - content: >
-          **Computational Narratology in the Age of AI** – Panel at the [40th Annual International Conference on Narrative](https://www.thenarrativesociety.org/2025-conference), Miami, April 2025, with Claudia Carroll, Kate Elkins, Evelyn Gius, and David Bamman presenting on AI's capabilities and limitations in understanding literary style and narrative.
+          [May 2025] Wouter Haverals, **When Humans and Machines Translate Char: Computational Insights into *Feuillets d'Hypnos* Across Languages** – Presentation at [Resistance and its Futures: Translating the (Untranslatable) Wartime Poetry of Rene Char](https://complit.princeton.edu/events/resistance-and-its-futures-translating-untranslatable-wartime-poetry-rene-char), Princeton University, May 2025.
       - content: >
-          James Zhang, Wouter Haverals, Mary Naydan, and Brian Kernighan, **Post-OCR Correction with OpenAI's GPT Models on Challenging English Prosody Texts** – Using LLMs to improve OCR accuracy for historical document digitization. [DocEng 2024](https://dl.acm.org/doi/10.1145/3685650.3685669)
+          [Apr 2025] **Computational Narratology in the Age of AI** – Panel at the [40th Annual International Conference on Narrative](https://www.thenarrativesociety.org/2025-conference), Miami, April 2025, with Claudia Carroll, Kate Elkins, Evelyn Gius, and David Bamman presenting on AI's capabilities and limitations in understanding literary style and narrative.
+      - content: >
+          [Dec 2024] **Programme Chair and Editor**, [Computational Humanities Research (CHR) 2024](https://2024.computational-humanities-research.org/) – Co-programme chair with Marijn Koolen and Laure Thompson and co-editor of the proceedings for the annual CHR conference, Aarhus University, Denmark.
+      - content: >
+          [Nov 2024] James Zhang, Wouter Haverals, Mary Naydan, and Brian Kernighan, **Post-OCR Correction with OpenAI's GPT Models on Challenging English Prosody Texts** – Using LLMs to improve OCR accuracy for historical document digitization. [DocEng 2024](https://dl.acm.org/doi/10.1145/3685650.3685669)
 
   # Favicon settings
   assets:
