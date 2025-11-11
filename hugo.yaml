@@ -102,6 +102,11 @@ outputs:
     - HTML
     - RSS
     - JSON
+  
+  # explicitly enable sitemap generation
+  section:
+    - HTML
+    - RSS
 
 # Allow raw HTML in Markdown content
 markup:
