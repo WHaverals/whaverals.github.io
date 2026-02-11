@@ -18,6 +18,10 @@
       <button id="resetBtn" type="button" title="Reset selection and view">Reset</button>
     </div>
 
+    <input id="search" type="search" list="poet-list" spellcheck="false"
+      placeholder="Search poet (or QID), press Enter…" />
+    <datalist id="poet-list"></datalist>
+
     <div id="hint">Click a node to highlight neighbors. Click background to clear.</div>
     <div id="status" aria-live="polite">Loading…</div>
     <div id="details"></div>
@@ -27,6 +31,6 @@
   <!-- Use UMD builds to avoid ESM bare-import issues (e.g. "events") -->
   <script src="https://cdn.jsdelivr.net/npm/graphology@0.25.4/dist/graphology.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sigma@3.0.2/dist/sigma.min.js"></script>
-  <script src="./app.js?v=20260211-clickonly"></script>
+  <script src="./app.js?v=20260211-search"></script>
 </body>
 </html>

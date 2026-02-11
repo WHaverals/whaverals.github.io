@@ -10,6 +10,10 @@
 // that import bare specifiers like "events", which browsers cannot resolve.
 // So we parse GEXF with the browser's native DOMParser (no extra libraries).
 (function () {
+  function normLabel(s) {
+    return (s || "").toString().trim().toLowerCase();
+  }
+
   function setStatus(msg) {
     const el = document.getElementById("status");
     if (el) el.textContent = msg || "";
@@ -227,6 +231,8 @@
 
     // ---- UI wiring ----
     const resetBtn = document.getElementById("resetBtn");
+    const search = document.getElementById("search");
+    const poetList = document.getElementById("poet-list");
 
     // Base style caches
     const baseNodeColor = new Map();
@@ -238,6 +244,23 @@
 
     // No degree filter in click-only mode
     const minDegree = 0;
+
+    // Search index + suggestions
+    const labelToNodes = new Map(); // normalized label -> [nodeIds]
+    const labels = [];
+    graph.forEachNode((node, attrs) => {
+      const lab = attrs.label || "";
+      labels.push(lab);
+      const k = normLabel(lab);
+      if (!k) return;
+      const arr = labelToNodes.get(k);
+      if (arr) arr.push(node);
+      else labelToNodes.set(k, [node]);
+    });
+    labels.sort((a, b) => String(a).localeCompare(String(b)));
+    if (poetList) {
+      poetList.innerHTML = labels.slice(0, 5000).map(l => `<option value="${escapeHtml(l)}"></option>`).join("");
+    }
 
     // Selection state
     let selectedNode = null;
@@ -251,6 +274,20 @@
       else setDetails(node, graph.getNodeAttributes(node), graph.neighbors(node).length);
 
       renderer.refresh();
+    }
+
+    function focusNode(node) {
+      if (!node) return;
+      // Use Sigma's display data coordinates (more reliable than raw attrs when auto-rescale is on)
+      const dd = renderer.getNodeDisplayData(node);
+      if (!dd) return;
+      const { x, y } = dd;
+      if (!Number.isFinite(x) || !Number.isFinite(y)) return;
+
+      const current = camera.getState();
+      // Zoom in a bit, but don't go crazy
+      const targetRatio = Math.max(0.05, Math.min(current.ratio, 0.25));
+      camera.animate({ x, y, ratio: targetRatio }, { duration: 600 });
     }
 
     // Reducers: degree filter + 1-hop highlight
@@ -306,16 +343,57 @@
     });
 
     // Events
-    renderer.on("clickNode", ({ node }) => setSelected(node));
+    renderer.on("clickNode", ({ node }) => {
+      setSelected(node);
+      focusNode(node);
+    });
     renderer.on("clickStage", () => setSelected(null));
 
     function resetAll() {
+      if (search) search.value = "";
       setSelected(null);
       camera.animate(initialCameraState, { duration: 500 });
       renderer.refresh();
     }
 
     if (resetBtn) resetBtn.addEventListener("click", () => resetAll());
+
+    function findNodeByQuery(qNorm, qRaw) {
+      if (!qNorm && !qRaw) return null;
+      // Allow searching by node id (QID)
+      if (qRaw && graph.hasNode(qRaw)) return qRaw;
+      // Exact label match
+      const exact = labelToNodes.get(qNorm);
+      if (exact && exact.length) return exact[0];
+      // startsWith then includes
+      for (const [lab, nodes] of labelToNodes.entries()) {
+        if (lab.startsWith(qNorm)) return nodes[0];
+      }
+      for (const [lab, nodes] of labelToNodes.entries()) {
+        if (lab.includes(qNorm)) return nodes[0];
+      }
+      return null;
+    }
+
+    function runSearch() {
+      if (!search) return;
+      const raw = (search.value || "").trim();
+      const q = normLabel(raw);
+      const node = findNodeByQuery(q, raw);
+      if (!node) return;
+      setSelected(node);
+      focusNode(node);
+    }
+
+    if (search) {
+      search.addEventListener("keydown", (e) => {
+        if (e.key !== "Enter") return;
+        e.preventDefault();
+        runSearch();
+      });
+      // Selecting an option from the datalist triggers change
+      search.addEventListener("change", () => runSearch());
+    }
 
     setStatus(`Ready. ${graph.order.toLocaleString()} nodes, ${graph.size.toLocaleString()} edges`);
   })().catch((e) => {
