@@ -214,7 +214,14 @@
     if (!container) throw new Error("Missing #container element");
 
     // Sigma settings (keep robust, enable extras when available)
-    const sigmaSettings = { renderEdgeLabels: false, zIndex: true };
+    const sigmaSettings = {
+      renderEdgeLabels: false,
+      zIndex: true,
+      // Label typography (https://www.sigmajs.org/docs/advanced/customization/)
+      labelFont: "Inter",
+      labelWeight: "600",
+      labelSize: 14,
+    };
     if (hasCurveEdges) {
       sigmaSettings.edgeProgramClasses = { curve: rendering.EdgeCurveProgram };
     }
