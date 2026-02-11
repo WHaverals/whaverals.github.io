@@ -1,5 +1,5 @@
 import Graph from "https://cdn.jsdelivr.net/npm/graphology@0.25.4/dist/graphology.esm.min.js";
-import Sigma from "https://cdn.jsdelivr.net/npm/sigma@3.0.0-beta.18/build/sigma.esm.min.js";
+import Sigma from "https://cdn.jsdelivr.net/npm/sigma@3.0.2/dist/sigma.esm.min.js";
 import { parse } from "https://cdn.jsdelivr.net/npm/graphology-gexf@0.10.1/browser/graphology-gexf.js";
 
 // ---------- helpers ----------
@@ -109,7 +109,7 @@ graph.forEachEdge((edge, attrs) => {
 
 // ---------- render ----------
 const container = document.getElementById("container");
-const renderer = new Sigma(graph, container, { renderEdgeLabels: false });
+const renderer = new Sigma(graph, container, { renderEdgeLabels: false, zIndex: true });
 
 // ---------- base style caches (so reducers can override safely) ----------
 const baseNodeColor = new Map();
