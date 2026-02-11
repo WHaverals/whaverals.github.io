@@ -20,10 +20,12 @@
     </div>
 
     <div id="hint">Click a node to highlight neighbors. Click background to reset.</div>
+    <div id="status" style="margin-top:8px;font-size:12px;opacity:.8"></div>
     <div id="details"></div>
   </div>
 
   <div id="container"></div>
-  <script type="module" src="./app.js"></script>
+  <!-- Cache-bust so new deployments are picked up immediately -->
+  <script type="module" src="./app.js?v=20260211-1"></script>
 </body>
 </html>

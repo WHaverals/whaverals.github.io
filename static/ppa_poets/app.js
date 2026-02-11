@@ -7,6 +7,11 @@ function normLabel(s) {
   return (s || "").toString().trim().toLowerCase();
 }
 
+function setStatus(msg) {
+  const el = document.getElementById("status");
+  if (el) el.textContent = msg || "";
+}
+
 function escapeHtml(s) {
   return (s ?? "")
     .toString()
@@ -52,20 +57,18 @@ function setDetails(node, attrs) {
   `;
 }
 
-// ---------- load & parse GEXF ----------
-let gexfText = "";
+// ---------- main ----------
 try {
-  gexfText = await fetch("./poets.gexf").then(r => {
+  setStatus("Loading graph…");
+
+  // ---------- load & parse GEXF ----------
+  const gexfText = await fetch("./poets.gexf").then(r => {
     if (!r.ok) throw new Error(`Failed to load poets.gexf: ${r.status} ${r.statusText}`);
     return r.text();
   });
-} catch (e) {
-  const details = document.getElementById("details");
-  if (details) details.innerHTML = `<div><strong>Error loading graph:</strong> ${escapeHtml(e?.message || String(e))}</div>`;
-  throw e;
-}
 
-const graph = parse(Graph, gexfText);
+  const graph = parse(Graph, gexfText);
+  setStatus(`Loaded ${graph.order.toLocaleString()} nodes, ${graph.size.toLocaleString()} edges`);
 
 // ---------- normalize node attrs for Sigma ----------
 graph.forEachNode((node, attrs) => {
@@ -113,6 +116,7 @@ graph.forEachEdge((edge, attrs) => {
 
 // ---------- render ----------
 const container = document.getElementById("container");
+if (!container) throw new Error("Missing #container element");
 const renderer = new Sigma(graph, container, { renderEdgeLabels: false, zIndex: true });
 
 // ---------- base style caches (so reducers can override safely) ----------
@@ -285,3 +289,10 @@ search.addEventListener("keydown", (e) => {
 search.addEventListener("change", () => {
   runSearch();
 });
+} catch (e) {
+  // If *anything* goes wrong, show it on the page (so we don't get silent blank canvas)
+  setStatus("Error (see details below)");
+  const details = document.getElementById("details");
+  if (details) details.innerHTML = `<div><strong>Error:</strong> ${escapeHtml(e?.stack || e?.message || String(e))}</div>`;
+  throw e;
+}
