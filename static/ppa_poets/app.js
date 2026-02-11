@@ -267,6 +267,8 @@
     })();
 
     // ---- UI wiring ----
+    const aboutBtn = document.getElementById("aboutBtn");
+    const aboutPanel = document.getElementById("aboutPanel");
     const resetBtn = document.getElementById("resetBtn");
     const search = document.getElementById("search");
     const poetList = document.getElementById("poet-list");
@@ -388,12 +390,22 @@
 
     function resetAll() {
       if (search) search.value = "";
+      if (aboutPanel) aboutPanel.hidden = true;
+      if (aboutBtn) aboutBtn.setAttribute("aria-expanded", "false");
       setSelected(null);
       camera.animate(initialCameraState, { duration: 500 });
       renderer.refresh();
     }
 
     if (resetBtn) resetBtn.addEventListener("click", () => resetAll());
+
+    if (aboutBtn && aboutPanel) {
+      aboutBtn.addEventListener("click", () => {
+        const nextHidden = !aboutPanel.hidden ? true : false;
+        aboutPanel.hidden = nextHidden;
+        aboutBtn.setAttribute("aria-expanded", String(!nextHidden));
+      });
+    }
 
     function findNodeByQuery(qNorm, qRaw) {
       if (!qNorm && !qRaw) return null;

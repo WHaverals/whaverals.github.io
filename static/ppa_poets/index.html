@@ -15,12 +15,25 @@
   <div id="ui">
     <div class="titleRow">
       <div class="title">PPA Poets</div>
-      <button id="resetBtn" type="button" title="Reset selection and view">Reset</button>
+      <div class="titleActions">
+        <button id="aboutBtn" type="button" aria-expanded="false" aria-controls="aboutPanel">About</button>
+        <button id="resetBtn" type="button" title="Reset selection and view">Reset</button>
+      </div>
     </div>
 
     <input id="search" type="search" list="poet-list" spellcheck="false"
       placeholder="Search poet (or QID), press Enter…" />
     <datalist id="poet-list"></datalist>
+
+    <div id="aboutPanel" hidden>
+      <div class="aboutTitle">About this network</div>
+      <div class="aboutBody">
+        Poets are Wikidata-linked identities in the Princeton Prosody Archive. Edges connect poets repeatedly co-mentioned
+        within overlapping 5-page windows; colors indicate modularity communities.
+        <span class="aboutStats">n=2,223 · m=33,573</span>
+      </div>
+      <a class="aboutLink" href="https://prosody.princeton.edu/" target="_blank" rel="noreferrer">Princeton Prosody Archive →</a>
+    </div>
 
     <div id="hint">Click a node to highlight neighbors. Click background to clear.</div>
     <div id="status" aria-live="polite">Loading…</div>
