@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PPA Poets Network</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div id="ui">
+    <div class="title">PPA Poets</div>
+
+    <input id="search" type="search" list="poet-list" spellcheck="false"
+      placeholder="Search (type a poet name, press Enter)..." />
+    <datalist id="poet-list"></datalist>
+
+    <div class="row">
+      <label for="minDegree">Min degree: <span id="minDegreeVal">0</span></label>
+      <input id="minDegree" type="range" min="0" max="2000" value="0" step="1" />
+    </div>
+
+    <div id="hint">Click a node to highlight neighbors. Click background to reset.</div>
+    <div id="details"></div>
+  </div>
+
+  <div id="container"></div>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
