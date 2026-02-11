@@ -240,17 +240,17 @@
         if (typeof bindWebGLLayer !== "function" || typeof createContoursProgram !== "function") return;
 
         const contourOptions = {
-          border: { color: "#2a2a2a", thickness: 3 },
+          border: { color: "rgba(90,90,90,0.35)", thickness: 2 },
           levels: [
-            { color: "#fafafa", threshold: 0.90 },
-            { color: "#f2f2f2", threshold: 0.80 },
-            { color: "#e8e8e8", threshold: 0.70 },
-            { color: "#dddddd", threshold: 0.60 },
-            { color: "#d0d0d0", threshold: 0.50 },
-            { color: "#bfbfbf", threshold: 0.40 },
-            { color: "#ababab", threshold: 0.30 },
-            { color: "#929292", threshold: 0.20 },
-            { color: "#7a7a7a", threshold: -0.10 },
+            { color: "#ffffff", threshold: 0.92 },
+            { color: "#fbfbfb", threshold: 0.84 },
+            { color: "#f6f6f6", threshold: 0.76 },
+            { color: "#f1f1f1", threshold: 0.68 },
+            { color: "#ececec", threshold: 0.60 },
+            { color: "#e6e6e6", threshold: 0.52 },
+            { color: "#dfdfdf", threshold: 0.44 },
+            { color: "#d7d7d7", threshold: 0.36 },
+            { color: "#cecece", threshold: 0.28 },
           ],
         };
 
