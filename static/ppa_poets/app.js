@@ -1,6 +1,6 @@
 import Graph from "https://cdn.jsdelivr.net/npm/graphology@0.25.4/dist/graphology.esm.min.js";
 import Sigma from "https://cdn.jsdelivr.net/npm/sigma@3.0.2/dist/sigma.esm.min.js";
-import { parse } from "https://cdn.jsdelivr.net/npm/graphology-gexf@0.10.1/browser/graphology-gexf.js";
+import { parse } from "https://cdn.jsdelivr.net/npm/graphology-gexf@0.10.1/+esm";
 
 // ---------- helpers ----------
 function normLabel(s) {
@@ -61,8 +61,7 @@ try {
   throw e;
 }
 
-const graph = new Graph();
-parse(graph, gexfText);
+const graph = parse(Graph, gexfText);
 
 // ---------- normalize node attrs for Sigma ----------
 graph.forEachNode((node, attrs) => {
