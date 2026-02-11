@@ -229,6 +229,43 @@
     const camera = renderer.getCamera();
     const initialCameraState = camera.getState();
 
+    // Optional: WebGL contour background layer (like sigma-layer-webgl story).
+    // Uses dynamic import so we can keep the rest of the app on UMD scripts.
+    // https://www.sigmajs.org/storybook/?path=/story/sigma-layer-webgl--plain-contour-line
+    (async () => {
+      try {
+        const mod = await import("https://cdn.jsdelivr.net/npm/@sigma/layer-webgl@3.0.0/+esm");
+        const bindWebGLLayer = mod.bindWebGLLayer;
+        const createContoursProgram = mod.createContoursProgram;
+        if (typeof bindWebGLLayer !== "function" || typeof createContoursProgram !== "function") return;
+
+        const contourOptions = {
+          border: { color: "#2a2a2a", thickness: 3 },
+          levels: [
+            { color: "#fafafa", threshold: 0.90 },
+            { color: "#f2f2f2", threshold: 0.80 },
+            { color: "#e8e8e8", threshold: 0.70 },
+            { color: "#dddddd", threshold: 0.60 },
+            { color: "#d0d0d0", threshold: 0.50 },
+            { color: "#bfbfbf", threshold: 0.40 },
+            { color: "#ababab", threshold: 0.30 },
+            { color: "#929292", threshold: 0.20 },
+            { color: "#7a7a7a", threshold: -0.10 },
+          ],
+        };
+
+        // Bind as a background layer (drawn behind the graph).
+        // The program uses node display positions from the renderer.
+        bindWebGLLayer("contours", renderer, createContoursProgram(graph.nodes(), contourOptions), {
+          // Put behind edges/nodes:
+          zIndex: -1,
+        });
+      } catch (e) {
+        // Non-fatal: WebGL2 not supported or module blocked.
+        console.warn("Contour layer not available:", e);
+      }
+    })();
+
     // ---- UI wiring ----
     const resetBtn = document.getElementById("resetBtn");
     const search = document.getElementById("search");
