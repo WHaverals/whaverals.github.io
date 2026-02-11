@@ -30,12 +30,16 @@ function setDetails(node, attrs) {
   if (!node) { el.innerHTML = ""; return; }
 
   const qid = node;
-  const name = attrs.d2 || attrs.label || node;
-  const cohort = attrs.d7 || "";
-  const birth = attrs.d3 ?? "";
-  const eligible = attrs.d4 ?? "";
-  const entry = attrs.d5 ?? "";
-  const degree = attrs.degree ?? "";
+  // Depending on the parser build, attributes can be keyed by:
+  // - Gephi internal ids (d2/d7/...) OR
+  // - attribute titles (poet_name/cohort/...) OR
+  // - special title-cased fields (Degree)
+  const name = attrs.poet_name ?? attrs.d2 ?? attrs.label ?? node;
+  const cohort = attrs.cohort ?? attrs.d7 ?? "";
+  const birth = attrs.birth_year ?? attrs.d3 ?? "";
+  const eligible = attrs.eligible_year ?? attrs.d4 ?? "";
+  const entry = attrs.entry_year ?? attrs.d5 ?? "";
+  const degree = attrs.degree ?? attrs.Degree ?? "";
 
   el.innerHTML = `
     <div><strong>${escapeHtml(name)}</strong></div>
@@ -96,7 +100,8 @@ graph.forEachNode((node, attrs) => {
   }
 
   // Degree (from your GEXF attribute id="degree")
-  const d = (attrs.degree != null) ? Number(attrs.degree) : graph.degree(node);
+  const rawDegree = (attrs.degree ?? attrs.Degree);
+  const d = (rawDegree != null) ? Number(rawDegree) : graph.degree(node);
   graph.setNodeAttribute(node, "degree", d);
 });
 
