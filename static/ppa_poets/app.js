@@ -3,7 +3,7 @@
 // This avoids "Failed to resolve module specifier 'events'" errors caused by
 // ESM builds that contain bare Node-style imports.
 
-// Minimal “load GEXF + render” setup using only Sigma + Graphology.
+// PPA Poets: load GEXF + interactions (search, min-degree filter, 1-hop highlight).
 //
 // Note: When loading modules directly in the browser (no bundler), some CDNs /
 // ESM wrappers of `graphology-gexf` end up pulling in Node-oriented dependencies
@@ -13,6 +13,16 @@
   function setStatus(msg) {
     const el = document.getElementById("status");
     if (el) el.textContent = msg || "";
+  }
+
+  function escapeHtml(s) {
+    return (s ?? "")
+      .toString()
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
   }
 
   function nextFrame() {
@@ -129,6 +139,28 @@
     return graph;
   }
 
+  function setDetails(node, attrs, neighborsCount) {
+    const el = document.getElementById("details");
+    if (!el) return;
+    if (!node) { el.innerHTML = ""; return; }
+
+    const name = attrs.poet_name ?? attrs.d2 ?? attrs.label ?? node;
+    const birth = attrs.birth_year ?? attrs.d3 ?? "";
+    const entry = attrs.entry_year ?? attrs.d5 ?? "";
+    const degree = attrs.degree ?? attrs.Degree ?? "";
+    const modularity = attrs.modularity_class ?? "";
+
+    el.innerHTML = `
+      <div style="font-weight:700;font-size:14px;margin-bottom:6px">${escapeHtml(name)}</div>
+      <div><span style="opacity:.7">QID:</span> ${escapeHtml(node)}</div>
+      ${birth !== "" ? `<div><span style="opacity:.7">Birth year:</span> ${escapeHtml(birth)}</div>` : ""}
+      ${entry !== "" ? `<div><span style="opacity:.7">Entry year:</span> ${escapeHtml(entry)}</div>` : ""}
+      ${degree !== "" ? `<div><span style="opacity:.7">Degree:</span> ${escapeHtml(degree)}</div>` : ""}
+      ${modularity !== "" ? `<div><span style="opacity:.7">Modularity class:</span> ${escapeHtml(modularity)}</div>` : ""}
+      ${Number.isFinite(neighborsCount) ? `<div><span style="opacity:.7">Neighbors:</span> ${neighborsCount}</div>` : ""}
+    `;
+  }
+
   (async function main() {
     setStatus("Fetching poets.gexf…");
 
@@ -157,20 +189,135 @@
       if (typeof attrs.size !== "number") graph.setNodeAttribute(node, "size", 2);
       if (!attrs.color) graph.setNodeAttribute(node, "color", "#777");
       if (!attrs.label) graph.setNodeAttribute(node, "label", node);
+      // Normalize numeric degree for filtering
+      const rawDeg = attrs.degree ?? attrs.Degree;
+      const deg = (rawDeg != null && rawDeg !== "") ? Number(rawDeg) : graph.degree(node);
+      graph.setNodeAttribute(node, "degree", Number.isFinite(deg) ? deg : 0);
     });
+
+    // Optional rendering extras (use if present in this Sigma UMD build)
+    const rendering = window.Sigma && window.Sigma.rendering ? window.Sigma.rendering : null;
+    const hasCurveEdges = !!(rendering && rendering.EdgeCurveProgram);
+    const hasBorderProgram = !!(rendering && rendering.createNodeBorderProgram && rendering.NodeCircleProgram);
 
     graph.forEachEdge((edge, attrs) => {
       if (typeof attrs.size !== "number") graph.setEdgeAttribute(edge, "size", 0.5);
       if (!attrs.color) graph.setEdgeAttribute(edge, "color", "rgba(0,0,0,0.06)");
+      if (hasCurveEdges) graph.setEdgeAttribute(edge, "type", "curve");
     });
 
     const container = document.getElementById("container");
     if (!container) throw new Error("Missing #container element");
 
-    // eslint-disable-next-line no-new
-    new window.Sigma(graph, container, { renderEdgeLabels: false });
+    // Sigma settings (keep robust, enable extras when available)
+    const sigmaSettings = { renderEdgeLabels: false, zIndex: true };
+    if (hasCurveEdges) {
+      sigmaSettings.edgeProgramClasses = { curve: rendering.EdgeCurveProgram };
+    }
+    if (hasBorderProgram) {
+      sigmaSettings.defaultNodeType = "circle";
+      sigmaSettings.nodeProgramClasses = {
+        circle: rendering.NodeCircleProgram,
+        border: rendering.createNodeBorderProgram(),
+      };
+    }
+    const renderer = new window.Sigma(graph, container, sigmaSettings);
+    const camera = renderer.getCamera();
+    const initialCameraState = camera.getState();
 
-    setStatus(`Rendered ${graph.order.toLocaleString()} nodes, ${graph.size.toLocaleString()} edges`);
+    // ---- UI wiring ----
+    const resetBtn = document.getElementById("resetBtn");
+
+    // Base style caches
+    const baseNodeColor = new Map();
+    const baseNodeSize = new Map();
+    graph.forEachNode((n, a) => {
+      baseNodeColor.set(n, a.color);
+      baseNodeSize.set(n, a.size);
+    });
+
+    // No degree filter in click-only mode
+    const minDegree = 0;
+
+    // Selection state
+    let selectedNode = null;
+    let selectedNeighborhood = null; // Set<string> | null
+
+    function setSelected(node) {
+      selectedNode = node;
+      selectedNeighborhood = node ? new Set([node, ...graph.neighbors(node)]) : null;
+
+      if (!node) setDetails(null, {}, NaN);
+      else setDetails(node, graph.getNodeAttributes(node), graph.neighbors(node).length);
+
+      renderer.refresh();
+    }
+
+    // Reducers: degree filter + 1-hop highlight
+    renderer.setSetting("nodeReducer", (node, data) => {
+      const d = data.degree ?? 0;
+      if (d < minDegree) return { ...data, hidden: true };
+      if (!selectedNeighborhood) return { ...data, hidden: false };
+
+      const inN = selectedNeighborhood.has(node);
+      if (node === selectedNode) {
+        return {
+          ...data,
+          // Keep original node color; emphasize size & label
+          color: baseNodeColor.get(node) ?? data.color,
+          ...(hasBorderProgram ? { type: "border", borderColor: "#fff" } : {}),
+          size: (baseNodeSize.get(node) ?? data.size) * 1.6,
+          hidden: false,
+          zIndex: 2,
+          forceLabel: true,
+        };
+      }
+      if (inN) {
+        return {
+          ...data,
+          color: baseNodeColor.get(node) ?? data.color,
+          size: (baseNodeSize.get(node) ?? data.size) * 1.15,
+          hidden: false,
+          zIndex: 1,
+        };
+      }
+      // Dim non-neighbors instead of hiding (hiding can blank out on some builds)
+      return {
+        ...data,
+        color: "rgba(200,200,200,0.03)",
+        size: Math.max(0.5, (baseNodeSize.get(node) ?? data.size) * 0.18),
+        label: "",
+        hidden: false,
+        zIndex: 0,
+      };
+    });
+
+    renderer.setSetting("edgeReducer", (edge, data) => {
+      const s = graph.source(edge);
+      const t = graph.target(edge);
+      const ds = graph.getNodeAttribute(s, "degree");
+      const dt = graph.getNodeAttribute(t, "degree");
+      if (ds < minDegree || dt < minDegree) return { ...data, hidden: true };
+      if (!selectedNeighborhood) return { ...data, hidden: false };
+
+      const keep = selectedNeighborhood.has(s) && selectedNeighborhood.has(t);
+      if (keep) return { ...data, color: "rgba(0,0,0,0.18)", hidden: false };
+      return { ...data, color: "rgba(0,0,0,0.004)", hidden: false };
+    });
+
+    // Events
+    renderer.on("clickNode", ({ node }) => setSelected(node));
+    renderer.on("clickStage", () => setSelected(null));
+
+    function resetAll() {
+      setSelected(null);
+      camera.animate(initialCameraState, { duration: 500 });
+      renderer.refresh();
+    }
+
+    if (resetBtn) resetBtn.addEventListener("click", () => resetAll());
+
+    setStatus(`Ready. ${graph.order.toLocaleString()} nodes, ${graph.size.toLocaleString()} edges`);
   })().catch((e) => {
     const msg = e && (e.stack || e.message) ? (e.stack || e.message) : String(e);
     console.error(e);

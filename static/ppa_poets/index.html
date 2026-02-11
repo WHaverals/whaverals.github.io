@@ -9,25 +9,24 @@
   <style>
     html, body { height: 100%; margin: 0; }
     #container { position: fixed; inset: 0; }
-    #status {
-      position: fixed; top: 12px; left: 12px; z-index: 10;
-      max-width: min(560px, calc(100vw - 24px));
-      padding: 10px 12px; border-radius: 12px;
-      border: 1px solid rgba(0,0,0,0.08);
-      background: rgba(255,255,255,0.92);
-      box-shadow: 0 6px 24px rgba(0,0,0,0.12);
-      font: 13px/1.3 system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-      white-space: pre-wrap;
-    }
   </style>
 </head>
 <body>
-  <div id="status" aria-live="polite">Loading…</div>
+  <div id="ui">
+    <div class="titleRow">
+      <div class="title">PPA Poets</div>
+      <button id="resetBtn" type="button" title="Reset selection and view">Reset</button>
+    </div>
+
+    <div id="hint">Click a node to highlight neighbors. Click background to clear.</div>
+    <div id="status" aria-live="polite">Loading…</div>
+    <div id="details"></div>
+  </div>
 
   <div id="container"></div>
   <!-- Use UMD builds to avoid ESM bare-import issues (e.g. "events") -->
   <script src="https://cdn.jsdelivr.net/npm/graphology@0.25.4/dist/graphology.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sigma@3.0.2/dist/sigma.min.js"></script>
-  <script src="./app.js?v=20260211-umd"></script>
+  <script src="./app.js?v=20260211-clickonly"></script>
 </body>
 </html>
