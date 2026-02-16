@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Stork</title>
+  <style>
+    :root { color-scheme: light; }
+    html, body { height: 100%; margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background: #fafafa; }
+    body { display: grid; place-items: center; }
+    .wrap { width: min(720px, calc(100vw - 32px)); padding: 16px; }
+    .card { background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 14px; padding: 14px; box-shadow: 0 10px 30px rgba(0,0,0,0.06); }
+    .row { display: flex; gap: 10px; align-items: center; }
+    input[type="password"] { flex: 1 1 auto; padding: 10px 12px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.14); font-size: 14px; outline: none; }
+    input[type="password"]:focus { border-color: rgba(0,0,0,0.26); }
+    button { flex: 0 0 auto; padding: 10px 12px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.14); background: #fff; font-size: 13px; cursor: pointer; }
+    button:hover { border-color: rgba(0,0,0,0.22); }
+    .err { margin-top: 8px; font-size: 12px; color: #b42318; display: none; }
+    .gallery { margin-top: 18px; display: none; gap: 14px; }
+    .gallery img { width: 100%; height: auto; display: block; border-radius: 14px; border: 1px solid rgba(0,0,0,0.10); background: #fff; }
+    .grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+    @media (min-width: 840px) { .grid { grid-template-columns: 1fr 1fr; } .grid img:nth-child(1) { grid-column: 1 / -1; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card" id="lockCard">
+      <div class="row">
+        <input id="pw" type="password" autocomplete="current-password" placeholder="password" aria-label="password" />
+        <button id="unlockBtn" type="button">Unlock</button>
+      </div>
+      <div class="err" id="err">Incorrect password.</div>
+    </div>
+
+    <div class="gallery" id="gallery">
+      <div class="grid">
+        <img src="./nuna1.jpeg" alt="" loading="lazy" />
+        <img src="./nuna2.jpeg" alt="" loading="lazy" />
+        <img src="./nuna3.jpeg" alt="" loading="lazy" />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // NOTE: This is a client-side gate. The image URLs remain accessible if someone knows/guesses them.
+    // Change the password by replacing PASSWORD_HASH with a sha256 hex digest of your desired password.
+    // Default password: "nuna"
+    const PASSWORD_HASH = "f5698886c7af9a7c119a0d33b1db5acdc8bb833c6794124c819851c8f3195f35";
+    const KEY = "stork_authed_v1";
+
+    const lockCard = document.getElementById("lockCard");
+    const gallery = document.getElementById("gallery");
+    const pw = document.getElementById("pw");
+    const unlockBtn = document.getElementById("unlockBtn");
+    const err = document.getElementById("err");
+
+    async function sha256Hex(str) {
+      const data = new TextEncoder().encode(str);
+      const digest = await crypto.subtle.digest("SHA-256", data);
+      return Array.from(new Uint8Array(digest)).map(b => b.toString(16).padStart(2, "0")).join("");
+    }
+
+    function setAuthed(on) {
+      if (on) sessionStorage.setItem(KEY, "1");
+      else sessionStorage.removeItem(KEY);
+      lockCard.style.display = on ? "none" : "block";
+      gallery.style.display = on ? "block" : "none";
+    }
+
+    async function unlock() {
+      err.style.display = "none";
+      const attempt = (pw.value || "").trim();
+      if (!attempt) return;
+      const h = await sha256Hex(attempt);
+      if (h === PASSWORD_HASH) setAuthed(true);
+      else err.style.display = "block";
+    }
+
+    unlockBtn.addEventListener("click", unlock);
+    pw.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") unlock();
+    });
+
+    // Restore session if previously unlocked in this tab/session
+    setAuthed(sessionStorage.getItem(KEY) === "1");
+    pw.focus();
+  </script>
+</body>
+</html>
