@@ -1,0 +1,10 @@
+{
+  "run_id": "20260221_185822",
+  "coding_version": "v5",
+  "n_pairs_total_successful": 1326,
+  "n_pairs_consensus_flips": 742,
+  "n_flip_case_rows": 1709,
+  "n_pair_text_rows": 74,
+  "n_evidence_per_coder_rows": 20331,
+  "n_evidence_consensus_rows": 2651
+}
