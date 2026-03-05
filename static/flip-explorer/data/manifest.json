@@ -1,10 +1,16 @@
 {
-  "run_id": "20260221_185822",
+  "run_id": "20260222_002610",
   "coding_version": "v5",
-  "n_pairs_total_successful": 1326,
-  "n_pairs_consensus_flips": 742,
-  "n_flip_case_rows": 1709,
-  "n_pair_text_rows": 74,
-  "n_evidence_per_coder_rows": 20331,
-  "n_evidence_consensus_rows": 2651
+  "n_pairs_total_successful": 1856,
+  "n_pairs_consensus_flips": 1042,
+  "n_flip_case_rows": 2403,
+  "n_pair_text_rows": 1042,
+  "text_source_name": "pairs_min",
+  "text_source_coverage": 1.0,
+  "text_source_n_pairs_covered": 1042,
+  "n_evidence_per_coder_rows": 28509,
+  "n_evidence_consensus_rows": 3734,
+  "n_evidence_offset_rows": 32243,
+  "n_evidence_offset_found": 31855,
+  "evidence_offset_match_rate": 0.9879663802995999
 }
