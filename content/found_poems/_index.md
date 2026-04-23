@@ -3,6 +3,8 @@ title: "Poetry, found in the PPA"
 description: "Reception history of poetry, found in the Princeton Prosody Archive"
 draft: false
 layout: single
+ShowBreadCrumbs: false
+hideAuthor: true
 ---
 
 This page introduces an interactive map of poetic reception in the [Princeton Prosody Archive](https://ppa.princeton.edu/) (PPA). 
