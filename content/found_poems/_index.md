@@ -11,5 +11,5 @@ The visualization encodes how poems travel together: two poems are neighbours in
 
 Each dot is a poem; two dots sit close together when the same PPA hosts tend to quote them both. Colour marks community membership (a Leiden clustering on a kNN graph built from the poems' shared PPA-host signatures), and dot size encodes how many hosts cite the poem (drastically weighted to keep large anthologies--quoting *a lot* of poetry--from dominating the geometry).
 
-A longer write-up of the data, the filters, and the methods is in preparation; for now, the map itself is the argument → [Open the interactive map](https://whaverals.github.io/found_poems/found_poems.html).
+A longer write-up of the data, the filters, and the methods is in preparation; for now, the map itself is the argument → **[Open the interactive map](https://whaverals.github.io/found_poems/found_poems.html)**.
 
