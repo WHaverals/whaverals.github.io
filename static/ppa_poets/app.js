@@ -312,6 +312,7 @@
     const sliceSlider = document.getElementById("sliceSlider");
     const sliceLabel = document.getElementById("sliceLabel");
     const sliceStats = document.getElementById("sliceStats");
+    const highlightNewToggle = document.getElementById("highlightNewToggle");
 
     // Base style caches
     const baseNodeColor = new Map();
@@ -333,6 +334,14 @@
     let activeEdges = new Set();
     let newNodes = new Set();
     let activeNodeStats = {};
+    let highlightNew = false;
+
+    function updateReadyStatus() {
+      setStatus(
+        `Ready. ${graph.order.toLocaleString()} nodes, ${graph.size.toLocaleString()} edges` +
+        (activeSlice ? ` · showing ${activeSlice.label}` : "")
+      );
+    }
 
     function setTemporalControlsEnabled(enabled) {
       if (!sliceSlider) return;
@@ -355,6 +364,7 @@
         if (sliceLabel) sliceLabel.textContent = "All years";
         if (sliceStats) sliceStats.textContent = "Temporal index not loaded.";
         setTemporalControlsEnabled(false);
+        updateReadyStatus();
         return;
       }
 
@@ -378,9 +388,26 @@
       }
 
       setTemporalControlsEnabled(true);
+      updateReadyStatus();
     }
 
     updateTemporalState(activeSliceIndex);
+    if (highlightNewToggle) {
+      highlightNewToggle.checked = false;
+      highlightNewToggle.addEventListener("change", () => {
+        highlightNew = !!highlightNewToggle.checked;
+        if (selectedNode) {
+          setDetails(
+            selectedNode,
+            graph.getNodeAttributes(selectedNode),
+            graph.neighbors(selectedNode).length,
+            activeSlice,
+            activeNodeStats[selectedNode],
+          );
+        }
+        renderer.refresh();
+      });
+    }
 
     // Search index + suggestions
     const labelToNodes = new Map(); // normalized label -> [nodeIds]
@@ -440,20 +467,13 @@
 
       const hasTemporalFilter = !!activeSlice;
       const activeInSlice = !hasTemporalFilter || activeNodes.has(node);
-      const firstAppearance = hasTemporalFilter && newNodes.has(node);
+      const firstAppearance = highlightNew && hasTemporalFilter && newNodes.has(node);
       const baseColor = baseNodeColor.get(node) ?? data.color;
       const baseSize = baseNodeSize.get(node) ?? data.size;
 
       if (!selectedNeighborhood) {
         if (!activeInSlice) {
-          return {
-            ...data,
-            color: "rgba(200,200,200,0.045)",
-            size: Math.max(0.35, baseSize * 0.16),
-            label: "",
-            hidden: false,
-            zIndex: 0,
-          };
+          return { ...data, hidden: true };
         }
         if (firstAppearance) {
           return {
@@ -468,6 +488,9 @@
       }
 
       const inN = selectedNeighborhood.has(node);
+      if (!activeInSlice) {
+        return { ...data, hidden: true };
+      }
       if (node === selectedNode) {
         return {
           ...data,
@@ -510,13 +533,13 @@
       const hasTemporalFilter = !!activeSlice;
       const activeInSlice = !hasTemporalFilter || activeEdges.has(edgeKey(s, t));
       if (!selectedNeighborhood) {
-        if (!activeInSlice) return { ...data, color: "rgba(0,0,0,0.002)", hidden: false };
+        if (!activeInSlice) return { ...data, hidden: true };
         return { ...data, color: "rgba(0,0,0,0.08)", hidden: false };
       }
 
       const keep = selectedNeighborhood.has(s) && selectedNeighborhood.has(t);
       if (keep && activeInSlice) return { ...data, color: "rgba(0,0,0,0.18)", hidden: false };
-      if (keep) return { ...data, color: "rgba(0,0,0,0.025)", hidden: false };
+      if (keep) return { ...data, hidden: true };
       return { ...data, color: "rgba(0,0,0,0.004)", hidden: false };
     });
 
@@ -600,10 +623,7 @@
       search.addEventListener("change", () => runSearch());
     }
 
-    setStatus(
-      `Ready. ${graph.order.toLocaleString()} nodes, ${graph.size.toLocaleString()} edges` +
-      (activeSlice ? ` · showing ${activeSlice.label}` : "")
-    );
+    updateReadyStatus();
   })().catch((e) => {
     const msg = e && (e.stack || e.message) ? (e.stack || e.message) : String(e);
     console.error(e);

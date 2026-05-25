@@ -101,6 +101,22 @@ html, body {
   opacity: 0.82;
 }
 
+.toggleRow {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 9px;
+  font-size: 12px;
+  line-height: 1.25;
+  opacity: 0.86;
+  user-select: none;
+}
+
+.toggleRow input {
+  margin: 0;
+  accent-color: #c0392b;
+}
+
 #aboutBtn,
 #resetBtn {
   flex: 0 0 auto;
