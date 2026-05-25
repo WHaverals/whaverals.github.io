@@ -42,8 +42,7 @@
 
   function defaultSliceIndex(slices) {
     if (!slices.length) return -1;
-    const preferred = slices.findIndex((slice) => slice.slice_id === "1800_1820" || slice.label === "1800–1829");
-    return preferred >= 0 ? preferred : Math.floor((slices.length - 1) / 2);
+    return slices.length;
   }
 
   function nextFrame() {
@@ -332,7 +331,8 @@
     const minDegree = 0;
 
     // Temporal publication-window state. The graph/layout stays archive-wide;
-    // reducers use these sets to fade nodes/edges outside the selected window.
+    // reducers use these sets to hide nodes/edges outside the selected window.
+    // The final slider position is "Full archive", with no temporal filter.
     const temporalSlices = Array.isArray(temporalIndex && temporalIndex.slices) ? temporalIndex.slices : [];
     const initialSliceIndex = defaultSliceIndex(temporalSlices);
     let activeSliceIndex = initialSliceIndex;
@@ -344,9 +344,10 @@
     let highlightNew = false;
 
     function updateReadyStatus() {
+      const fullArchive = temporalSlices.length && activeSliceIndex === temporalSlices.length;
       setStatus(
         `Ready. ${graph.order.toLocaleString()} nodes, ${graph.size.toLocaleString()} edges` +
-        (activeSlice ? ` · showing ${activeSlice.label}` : "")
+        (activeSlice ? ` · showing ${activeSlice.label}` : fullArchive ? " · showing Full archive" : "")
       );
     }
 
@@ -355,7 +356,7 @@
       sliceSlider.disabled = !enabled;
       if (enabled) {
         sliceSlider.min = "0";
-        sliceSlider.max = String(Math.max(temporalSlices.length - 1, 0));
+        sliceSlider.max = String(Math.max(temporalSlices.length, 0));
         sliceSlider.step = "1";
       }
     }
@@ -375,24 +376,51 @@
         return;
       }
 
-      activeSliceIndex = Math.max(0, Math.min(Number(index) || 0, temporalSlices.length - 1));
-      activeSlice = temporalSlices[activeSliceIndex];
-      activeNodes = new Set(activeSlice.nodes || []);
-      activeEdges = new Set(activeSlice.edges || []);
-      newNodes = new Set(activeSlice.new_nodes || activeSlice.newNodes || []);
-      activeNodeStats = activeSlice.node_stats || activeSlice.nodeStats || {};
+      activeSliceIndex = Math.max(0, Math.min(Number(index) || 0, temporalSlices.length));
+      const fullArchive = activeSliceIndex === temporalSlices.length;
+
+      if (fullArchive) {
+        activeSlice = null;
+        activeNodes = new Set();
+        activeEdges = new Set();
+        newNodes = new Set();
+        activeNodeStats = {};
+      } else {
+        activeSlice = temporalSlices[activeSliceIndex];
+        activeNodes = new Set(activeSlice.nodes || []);
+        activeEdges = new Set(activeSlice.edges || []);
+        newNodes = new Set(activeSlice.new_nodes || activeSlice.newNodes || []);
+        activeNodeStats = activeSlice.node_stats || activeSlice.nodeStats || {};
+      }
 
       setTemporalControlsEnabled(true);
       if (sliceSlider) sliceSlider.value = String(activeSliceIndex);
-      if (sliceLabel) sliceLabel.textContent = activeSlice.label || `${activeSlice.start_year}–${activeSlice.end_year}`;
+      if (sliceLabel) {
+        sliceLabel.textContent = fullArchive
+          ? "Full archive"
+          : activeSlice.label || `${activeSlice.start_year}–${activeSlice.end_year}`;
+      }
 
-      const summary = activeSlice.summary || {};
       if (sliceStats) {
-        sliceStats.textContent =
-          `${formatNumber(summary.works)} works · ` +
-          `${formatNumber(summary.active_poets)} poets · ` +
-          `${formatNumber(summary.active_edges)} links · ` +
-          `${formatNumber(summary.new_entries)} first PPA appearances`;
+        if (fullArchive) {
+          sliceStats.textContent =
+            `All publication years · ${formatNumber(graph.order)} poets · ${formatNumber(graph.size)} links`;
+        } else {
+          const summary = activeSlice.summary || {};
+          sliceStats.textContent =
+            `${formatNumber(summary.works)} works · ` +
+            `${formatNumber(summary.active_poets)} poets · ` +
+            `${formatNumber(summary.active_edges)} links · ` +
+            `${formatNumber(summary.new_entries)} first PPA appearances`;
+        }
+      }
+
+      if (highlightNewToggle) {
+        highlightNewToggle.disabled = fullArchive;
+        if (fullArchive) {
+          highlightNew = false;
+          highlightNewToggle.checked = false;
+        }
       }
 
       updateReadyStatus();
