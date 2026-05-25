@@ -40,6 +40,12 @@
     return sa < sb ? `${sa}|${sb}` : `${sb}|${sa}`;
   }
 
+  function defaultSliceIndex(slices) {
+    if (!slices.length) return -1;
+    const preferred = slices.findIndex((slice) => slice.slice_id === "1800_1820" || slice.label === "1800–1829");
+    return preferred >= 0 ? preferred : Math.floor((slices.length - 1) / 2);
+  }
+
   function nextFrame() {
     return new Promise((resolve) => requestAnimationFrame(resolve));
   }
@@ -165,6 +171,7 @@
     const degree = attrs.degree ?? attrs.Degree ?? "";
     const modularity = attrs.modularity_class ?? "";
     const wikidataUrl = `https://www.wikidata.org/wiki/${encodeURIComponent(node)}`;
+    const qidLink = `<a class="detailLink" href="${wikidataUrl}" target="_blank" rel="noreferrer">${escapeHtml(node)}</a>`;
     const temporalDetails = slice
       ? (
         nodeStats
@@ -175,14 +182,13 @@
 
     el.innerHTML = `
       <div style="font-weight:700;font-size:14px;margin-bottom:6px">${escapeHtml(name)}</div>
-      <div><span style="opacity:.7">QID:</span> ${escapeHtml(node)}</div>
+      <div><span style="opacity:.7">QID:</span> ${qidLink}</div>
       ${birth !== "" ? `<div><span style="opacity:.7">Birth year:</span> ${escapeHtml(birth)}</div>` : ""}
       ${entry !== "" ? `<div><span style="opacity:.7">Entry year:</span> ${escapeHtml(entry)}</div>` : ""}
       ${degree !== "" ? `<div><span style="opacity:.7">Degree:</span> ${escapeHtml(degree)}</div>` : ""}
       ${modularity !== "" ? `<div><span style="opacity:.7">Modularity class:</span> ${escapeHtml(modularity)}</div>` : ""}
       ${Number.isFinite(neighborsCount) ? `<div><span style="opacity:.7">Neighbors:</span> ${neighborsCount}</div>` : ""}
       ${temporalDetails}
-      <a class="detailLink" href="${wikidataUrl}" target="_blank" rel="noreferrer">Open in Wikidata</a>
     `;
   }
 
@@ -328,7 +334,8 @@
     // Temporal publication-window state. The graph/layout stays archive-wide;
     // reducers use these sets to fade nodes/edges outside the selected window.
     const temporalSlices = Array.isArray(temporalIndex && temporalIndex.slices) ? temporalIndex.slices : [];
-    let activeSliceIndex = temporalSlices.length ? temporalSlices.length - 1 : -1;
+    const initialSliceIndex = defaultSliceIndex(temporalSlices);
+    let activeSliceIndex = initialSliceIndex;
     let activeSlice = activeSliceIndex >= 0 ? temporalSlices[activeSliceIndex] : null;
     let activeNodes = new Set();
     let activeEdges = new Set();
@@ -375,19 +382,19 @@
       newNodes = new Set(activeSlice.new_nodes || activeSlice.newNodes || []);
       activeNodeStats = activeSlice.node_stats || activeSlice.nodeStats || {};
 
+      setTemporalControlsEnabled(true);
       if (sliceSlider) sliceSlider.value = String(activeSliceIndex);
       if (sliceLabel) sliceLabel.textContent = activeSlice.label || `${activeSlice.start_year}–${activeSlice.end_year}`;
 
       const summary = activeSlice.summary || {};
       if (sliceStats) {
         sliceStats.textContent =
-          `${activeSlice.label} · ${formatNumber(summary.works)} works · ` +
+          `${formatNumber(summary.works)} works · ` +
           `${formatNumber(summary.active_poets)} poets · ` +
           `${formatNumber(summary.active_edges)} links · ` +
           `${formatNumber(summary.new_entries)} first PPA appearances`;
       }
 
-      setTemporalControlsEnabled(true);
       updateReadyStatus();
     }
 
@@ -531,7 +538,9 @@
       if (ds < minDegree || dt < minDegree) return { ...data, hidden: true };
 
       const hasTemporalFilter = !!activeSlice;
-      const activeInSlice = !hasTemporalFilter || activeEdges.has(edgeKey(s, t));
+      const activeInSlice =
+        !hasTemporalFilter ||
+        (activeEdges.has(edgeKey(s, t)) && activeNodes.has(s) && activeNodes.has(t));
       if (!selectedNeighborhood) {
         if (!activeInSlice) return { ...data, hidden: true };
         return { ...data, color: "rgba(0,0,0,0.08)", hidden: false };
@@ -570,7 +579,7 @@
       if (search) search.value = "";
       if (aboutPanel) aboutPanel.hidden = true;
       if (aboutBtn) aboutBtn.setAttribute("aria-expanded", "false");
-      if (temporalSlices.length) updateTemporalState(temporalSlices.length - 1);
+      if (temporalSlices.length) updateTemporalState(initialSliceIndex);
       setSelected(null);
       camera.animate(initialCameraState, { duration: 500 });
       renderer.refresh();

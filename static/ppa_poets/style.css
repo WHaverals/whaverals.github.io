@@ -199,9 +199,9 @@ html, body {
 }
 
 .detailLink {
-  display: inline-block;
-  margin-top: 8px;
-  font-size: 12px;
+  display: inline;
+  margin-top: 0;
+  font-size: inherit;
   text-decoration: none;
 }
 
