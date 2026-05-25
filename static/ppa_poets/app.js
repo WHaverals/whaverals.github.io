@@ -29,6 +29,17 @@
       .replaceAll("'", "&#039;");
   }
 
+  function formatNumber(n) {
+    const x = Number(n);
+    return Number.isFinite(x) ? x.toLocaleString() : "0";
+  }
+
+  function edgeKey(a, b) {
+    const sa = String(a);
+    const sb = String(b);
+    return sa < sb ? `${sa}|${sb}` : `${sb}|${sa}`;
+  }
+
   function nextFrame() {
     return new Promise((resolve) => requestAnimationFrame(resolve));
   }
@@ -143,7 +154,7 @@
     return graph;
   }
 
-  function setDetails(node, attrs, neighborsCount) {
+  function setDetails(node, attrs, neighborsCount, slice, nodeStats) {
     const el = document.getElementById("details");
     if (!el) return;
     if (!node) { el.innerHTML = ""; return; }
@@ -153,6 +164,14 @@
     const entry = attrs.entry_year ?? attrs.d5 ?? "";
     const degree = attrs.degree ?? attrs.Degree ?? "";
     const modularity = attrs.modularity_class ?? "";
+    const wikidataUrl = `https://www.wikidata.org/wiki/${encodeURIComponent(node)}`;
+    const temporalDetails = slice
+      ? (
+        nodeStats
+          ? `<div style="margin-top:6px"><span style="opacity:.7">${escapeHtml(slice.label)}:</span> ${formatNumber(nodeStats.works)} works${nodeStats.new ? " · first PPA appearance" : ""}</div>`
+          : `<div style="margin-top:6px;opacity:.7">Not active in ${escapeHtml(slice.label)}</div>`
+      )
+      : "";
 
     el.innerHTML = `
       <div style="font-weight:700;font-size:14px;margin-bottom:6px">${escapeHtml(name)}</div>
@@ -162,6 +181,8 @@
       ${degree !== "" ? `<div><span style="opacity:.7">Degree:</span> ${escapeHtml(degree)}</div>` : ""}
       ${modularity !== "" ? `<div><span style="opacity:.7">Modularity class:</span> ${escapeHtml(modularity)}</div>` : ""}
       ${Number.isFinite(neighborsCount) ? `<div><span style="opacity:.7">Neighbors:</span> ${neighborsCount}</div>` : ""}
+      ${temporalDetails}
+      <a class="detailLink" href="${wikidataUrl}" target="_blank" rel="noreferrer">Open in Wikidata</a>
     `;
   }
 
@@ -177,6 +198,15 @@
     const gexfText = await fetch("./poets.gexf").then(r => {
       if (!r.ok) throw new Error(`Failed to load poets.gexf: ${r.status} ${r.statusText}`);
       return r.text();
+    });
+
+    setStatus("Fetching temporal_index.json…");
+    const temporalIndex = await fetch("./temporal_index.json").then(r => {
+      if (!r.ok) throw new Error(`Failed to load temporal_index.json: ${r.status} ${r.statusText}`);
+      return r.json();
+    }).catch((e) => {
+      console.warn("Temporal index unavailable:", e);
+      return null;
     });
 
     // Let the browser paint the status before parsing.
@@ -279,6 +309,9 @@
     const resetBtn = document.getElementById("resetBtn");
     const search = document.getElementById("search");
     const poetList = document.getElementById("poet-list");
+    const sliceSlider = document.getElementById("sliceSlider");
+    const sliceLabel = document.getElementById("sliceLabel");
+    const sliceStats = document.getElementById("sliceStats");
 
     // Base style caches
     const baseNodeColor = new Map();
@@ -290,6 +323,64 @@
 
     // No degree filter in click-only mode
     const minDegree = 0;
+
+    // Temporal publication-window state. The graph/layout stays archive-wide;
+    // reducers use these sets to fade nodes/edges outside the selected window.
+    const temporalSlices = Array.isArray(temporalIndex && temporalIndex.slices) ? temporalIndex.slices : [];
+    let activeSliceIndex = temporalSlices.length ? temporalSlices.length - 1 : -1;
+    let activeSlice = activeSliceIndex >= 0 ? temporalSlices[activeSliceIndex] : null;
+    let activeNodes = new Set();
+    let activeEdges = new Set();
+    let newNodes = new Set();
+    let activeNodeStats = {};
+
+    function setTemporalControlsEnabled(enabled) {
+      if (!sliceSlider) return;
+      sliceSlider.disabled = !enabled;
+      if (enabled) {
+        sliceSlider.min = "0";
+        sliceSlider.max = String(Math.max(temporalSlices.length - 1, 0));
+        sliceSlider.step = "1";
+      }
+    }
+
+    function updateTemporalState(index) {
+      if (!temporalSlices.length) {
+        activeSliceIndex = -1;
+        activeSlice = null;
+        activeNodes = new Set();
+        activeEdges = new Set();
+        newNodes = new Set();
+        activeNodeStats = {};
+        if (sliceLabel) sliceLabel.textContent = "All years";
+        if (sliceStats) sliceStats.textContent = "Temporal index not loaded.";
+        setTemporalControlsEnabled(false);
+        return;
+      }
+
+      activeSliceIndex = Math.max(0, Math.min(Number(index) || 0, temporalSlices.length - 1));
+      activeSlice = temporalSlices[activeSliceIndex];
+      activeNodes = new Set(activeSlice.nodes || []);
+      activeEdges = new Set(activeSlice.edges || []);
+      newNodes = new Set(activeSlice.new_nodes || activeSlice.newNodes || []);
+      activeNodeStats = activeSlice.node_stats || activeSlice.nodeStats || {};
+
+      if (sliceSlider) sliceSlider.value = String(activeSliceIndex);
+      if (sliceLabel) sliceLabel.textContent = activeSlice.label || `${activeSlice.start_year}–${activeSlice.end_year}`;
+
+      const summary = activeSlice.summary || {};
+      if (sliceStats) {
+        sliceStats.textContent =
+          `${activeSlice.label} · ${formatNumber(summary.works)} works · ` +
+          `${formatNumber(summary.active_poets)} poets · ` +
+          `${formatNumber(summary.active_edges)} links · ` +
+          `${formatNumber(summary.new_entries)} first PPA appearances`;
+      }
+
+      setTemporalControlsEnabled(true);
+    }
+
+    updateTemporalState(activeSliceIndex);
 
     // Search index + suggestions
     const labelToNodes = new Map(); // normalized label -> [nodeIds]
@@ -317,7 +408,13 @@
       selectedNeighborhood = node ? new Set([node, ...graph.neighbors(node)]) : null;
 
       if (!node) setDetails(null, {}, NaN);
-      else setDetails(node, graph.getNodeAttributes(node), graph.neighbors(node).length);
+      else setDetails(
+        node,
+        graph.getNodeAttributes(node),
+        graph.neighbors(node).length,
+        activeSlice,
+        activeNodeStats[node],
+      );
 
       renderer.refresh();
     }
@@ -340,16 +437,44 @@
     renderer.setSetting("nodeReducer", (node, data) => {
       const d = data.degree ?? 0;
       if (d < minDegree) return { ...data, hidden: true };
-      if (!selectedNeighborhood) return { ...data, hidden: false };
+
+      const hasTemporalFilter = !!activeSlice;
+      const activeInSlice = !hasTemporalFilter || activeNodes.has(node);
+      const firstAppearance = hasTemporalFilter && newNodes.has(node);
+      const baseColor = baseNodeColor.get(node) ?? data.color;
+      const baseSize = baseNodeSize.get(node) ?? data.size;
+
+      if (!selectedNeighborhood) {
+        if (!activeInSlice) {
+          return {
+            ...data,
+            color: "rgba(200,200,200,0.045)",
+            size: Math.max(0.35, baseSize * 0.16),
+            label: "",
+            hidden: false,
+            zIndex: 0,
+          };
+        }
+        if (firstAppearance) {
+          return {
+            ...data,
+            color: "#c0392b",
+            size: baseSize * 1.35,
+            hidden: false,
+            zIndex: 1,
+          };
+        }
+        return { ...data, color: baseColor, size: baseSize, hidden: false };
+      }
 
       const inN = selectedNeighborhood.has(node);
       if (node === selectedNode) {
         return {
           ...data,
-          // Keep original node color; emphasize size & label
-          color: baseNodeColor.get(node) ?? data.color,
+          // Keep original node color unless this is a first appearance; emphasize size & label
+          color: firstAppearance ? "#c0392b" : baseColor,
           ...(hasBorderProgram ? { type: "border", borderColor: "#fff" } : {}),
-          size: (baseNodeSize.get(node) ?? data.size) * 1.6,
+          size: baseSize * 1.6,
           hidden: false,
           zIndex: 2,
           forceLabel: true,
@@ -358,8 +483,8 @@
       if (inN) {
         return {
           ...data,
-          color: baseNodeColor.get(node) ?? data.color,
-          size: (baseNodeSize.get(node) ?? data.size) * 1.15,
+          color: firstAppearance ? "#c0392b" : baseColor,
+          size: baseSize * (firstAppearance ? 1.35 : 1.15),
           hidden: false,
           zIndex: 1,
         };
@@ -368,7 +493,7 @@
       return {
         ...data,
         color: "rgba(200,200,200,0.03)",
-        size: Math.max(0.5, (baseNodeSize.get(node) ?? data.size) * 0.18),
+        size: Math.max(0.5, baseSize * 0.18),
         label: "",
         hidden: false,
         zIndex: 0,
@@ -381,10 +506,17 @@
       const ds = graph.getNodeAttribute(s, "degree");
       const dt = graph.getNodeAttribute(t, "degree");
       if (ds < minDegree || dt < minDegree) return { ...data, hidden: true };
-      if (!selectedNeighborhood) return { ...data, hidden: false };
+
+      const hasTemporalFilter = !!activeSlice;
+      const activeInSlice = !hasTemporalFilter || activeEdges.has(edgeKey(s, t));
+      if (!selectedNeighborhood) {
+        if (!activeInSlice) return { ...data, color: "rgba(0,0,0,0.002)", hidden: false };
+        return { ...data, color: "rgba(0,0,0,0.08)", hidden: false };
+      }
 
       const keep = selectedNeighborhood.has(s) && selectedNeighborhood.has(t);
-      if (keep) return { ...data, color: "rgba(0,0,0,0.18)", hidden: false };
+      if (keep && activeInSlice) return { ...data, color: "rgba(0,0,0,0.18)", hidden: false };
+      if (keep) return { ...data, color: "rgba(0,0,0,0.025)", hidden: false };
       return { ...data, color: "rgba(0,0,0,0.004)", hidden: false };
     });
 
@@ -395,10 +527,27 @@
     });
     renderer.on("clickStage", () => setSelected(null));
 
+    if (sliceSlider && temporalSlices.length) {
+      sliceSlider.addEventListener("input", (e) => {
+        updateTemporalState(e.target.value);
+        if (selectedNode) {
+          setDetails(
+            selectedNode,
+            graph.getNodeAttributes(selectedNode),
+            graph.neighbors(selectedNode).length,
+            activeSlice,
+            activeNodeStats[selectedNode],
+          );
+        }
+        renderer.refresh();
+      });
+    }
+
     function resetAll() {
       if (search) search.value = "";
       if (aboutPanel) aboutPanel.hidden = true;
       if (aboutBtn) aboutBtn.setAttribute("aria-expanded", "false");
+      if (temporalSlices.length) updateTemporalState(temporalSlices.length - 1);
       setSelected(null);
       camera.animate(initialCameraState, { duration: 500 });
       renderer.refresh();
@@ -451,7 +600,10 @@
       search.addEventListener("change", () => runSearch());
     }
 
-    setStatus(`Ready. ${graph.order.toLocaleString()} nodes, ${graph.size.toLocaleString()} edges`);
+    setStatus(
+      `Ready. ${graph.order.toLocaleString()} nodes, ${graph.size.toLocaleString()} edges` +
+      (activeSlice ? ` · showing ${activeSlice.label}` : "")
+    );
   })().catch((e) => {
     const msg = e && (e.stack || e.message) ? (e.stack || e.message) : String(e);
     console.error(e);
