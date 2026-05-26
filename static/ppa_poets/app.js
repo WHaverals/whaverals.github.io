@@ -232,7 +232,6 @@
     const modularity = meta.modularity_class ?? attrs.modularity_class ?? "";
     const wikidataUrl = `https://www.wikidata.org/wiki/${encodeURIComponent(node)}`;
     const qidLink = `<a class="detailLink" href="${wikidataUrl}" target="_blank" rel="noreferrer">${escapeHtml(node)}</a>`;
-    const firstMention = firstMentionHtml(meta.first_ppa_mention);
     const temporalDetails = slice
       ? (
         nodeStats
@@ -248,9 +247,7 @@
       ${entry !== "" ? `<div><span style="opacity:.7">Entry year:</span> ${escapeHtml(entry)}</div>` : ""}
       ${degree !== "" ? `<div><span style="opacity:.7">Degree:</span> ${escapeHtml(degree)}</div>` : ""}
       ${modularity !== "" ? `<div><span style="opacity:.7">Modularity class:</span> ${escapeHtml(modularity)}</div>` : ""}
-      ${Number.isFinite(neighborsCount) ? `<div><span style="opacity:.7">Neighbors:</span> ${neighborsCount}</div>` : ""}
       ${temporalDetails}
-      ${firstMention}
     `;
   }
 

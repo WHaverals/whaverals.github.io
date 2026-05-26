@@ -44,10 +44,13 @@
     <div id="aboutPanel" hidden>
       <div class="aboutTitle">About this network</div>
       <div class="aboutBody">
-        Poets are Wikidata-linked identities in the Princeton Prosody Archive. Edges connect poets repeatedly co-mentioned
-        within overlapping 5-page windows; colors indicate modularity communities. The publication-window slider filters
-        the archive-wide layout to poets and backbone links active in a selected PPA publication window.
-        <span class="aboutStats">n=2,223 · m=33,573</span>
+        Poets are Wikidata-linked identities in the Princeton Prosody Archive. This is not a concordance of every
+        co-mention. A line is drawn when two poets are repeatedly named near one another, within overlapping five-page
+        windows, more often than their overall visibility in the archive would lead us to expect. The network therefore
+        highlights recurrent pairings that stand out from background frequency. Colors mark communities of poets that
+        tend to be grouped together. The publication-window slider keeps the same archive-wide layout but filters the
+        view to poets and links active in a selected PPA publication window.
+        <span class="aboutStats">Full archive view: 2,223 poets · 33,573 displayed links</span>
       </div>
       <a class="aboutLink" href="https://prosody.princeton.edu/" target="_blank" rel="noreferrer">Princeton Prosody Archive →</a>
     </div>
@@ -61,6 +64,6 @@
   <!-- Use UMD builds to avoid ESM bare-import issues (e.g. "events") -->
   <script src="https://cdn.jsdelivr.net/npm/graphology@0.25.4/dist/graphology.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sigma@3.0.2/dist/sigma.min.js"></script>
-  <script src="./app.js?v=20260525-first-mention2"></script>
+  <script src="./app.js?v=20260525-about-copy"></script>
 </body>
 </html>
