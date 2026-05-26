@@ -380,6 +380,7 @@
     const highlightNewToggle = document.getElementById("highlightNewToggle");
     const minWorksSlider = document.getElementById("minWorksSlider");
     const minWorksLabel = document.getElementById("minWorksLabel");
+    const minWorksNoun = document.getElementById("minWorksNoun");
     const topPoetsList = document.getElementById("topPoetsList");
 
     // Base style caches
@@ -413,6 +414,11 @@
     let activeNodeStats = {};
     let highlightNew = false;
     let minWorks = 1;
+
+    function updateMinWorksLabel() {
+      if (minWorksLabel) minWorksLabel.textContent = formatNumber(minWorks);
+      if (minWorksNoun) minWorksNoun.textContent = minWorks === 1 ? "work" : "works";
+    }
 
     function updateReadyStatus() {
       const fullArchive = temporalSlices.length && activeSliceIndex === temporalSlices.length;
@@ -614,9 +620,10 @@
 
     if (minWorksSlider) {
       minWorksSlider.value = String(minWorks);
+      updateMinWorksLabel();
       minWorksSlider.addEventListener("input", (e) => {
         minWorks = Math.max(1, Math.min(Number(e.target.value) || 1, 100));
-        if (minWorksLabel) minWorksLabel.textContent = formatNumber(minWorks);
+        updateMinWorksLabel();
         updateSliceStatsDisplay();
         updateTopPoetsPanel();
         refreshSelectedNeighborhood();
@@ -829,7 +836,7 @@
       if (aboutBtn) aboutBtn.setAttribute("aria-expanded", "false");
       minWorks = 1;
       if (minWorksSlider) minWorksSlider.value = String(minWorks);
-      if (minWorksLabel) minWorksLabel.textContent = formatNumber(minWorks);
+      updateMinWorksLabel();
       if (temporalSlices.length) updateTemporalState(initialSliceIndex);
       setSelected(null);
       camera.animate(initialCameraState, { duration: 500 });
