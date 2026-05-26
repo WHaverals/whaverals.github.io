@@ -34,6 +34,33 @@
     return Number.isFinite(x) ? x.toLocaleString() : "0";
   }
 
+  function truncateText(s, maxLength = 70) {
+    const text = (s ?? "").toString().trim();
+    if (text.length <= maxLength) return text;
+    return `${text.slice(0, Math.max(0, maxLength - 6)).trimEnd()} [...]`;
+  }
+
+  function inferWorkUrl(firstMention) {
+    if (!firstMention || typeof firstMention !== "object") return "";
+    if (firstMention.source_url) return firstMention.source_url;
+
+    const workId = (firstMention.work_id || "").toString();
+    const source = (firstMention.source || "").toString().toLowerCase();
+    if (!workId) return "";
+
+    if (source.includes("hathitrust")) {
+      return `https://hdl.handle.net/2027/${encodeURIComponent(workId)}`;
+    }
+    if (source.includes("eebo")) {
+      return `http://name.umdl.umich.edu/${encodeURIComponent(workId)}.0001.001`;
+    }
+    if (source.includes("gale")) {
+      const docId = workId.split("-")[0];
+      return `https://link.gale.com/apps/doc/${encodeURIComponent(docId)}/ECCO`;
+    }
+    return "";
+  }
+
   function edgeKey(a, b) {
     const sa = String(a);
     const sb = String(b);
@@ -159,18 +186,53 @@
     return graph;
   }
 
-  function setDetails(node, attrs, neighborsCount, slice, nodeStats) {
+  function firstMentionHtml(firstMention) {
+    if (!firstMention || typeof firstMention !== "object") return "";
+
+    const year = firstMention.year != null ? escapeHtml(firstMention.year) : "";
+    const title = truncateText(firstMention.title || firstMention.work_id || "Untitled work");
+    const author = truncateText(firstMention.author || "", 48);
+    const source = firstMention.source ? escapeHtml(firstMention.source) : "";
+    const page = firstMention.page != null ? `p. ${escapeHtml(firstMention.page)}` : "";
+    const sameYearWorks = Number(firstMention.same_year_works);
+    const workUrl = inferWorkUrl(firstMention);
+    const titleHtml = workUrl
+      ? `<a class="detailLink" href="${escapeHtml(workUrl)}" target="_blank" rel="noreferrer">${escapeHtml(title)}</a>`
+      : escapeHtml(title);
+    const workLine = [
+      year,
+      titleHtml,
+      author ? `— ${escapeHtml(author)}` : "",
+    ].filter(Boolean).join(" ");
+    const metaLine = [page, source].filter(Boolean).join(" · ");
+    const tieLine = Number.isFinite(sameYearWorks) && sameYearWorks > 1
+      ? `<div class="detailSubtle">+${formatNumber(sameYearWorks - 1)} other work${sameYearWorks === 2 ? "" : "s"} in that year</div>`
+      : "";
+
+    return `
+      <div class="detailBlock">
+        <div class="detailHeading">First observed PPA mention</div>
+        <div>${workLine}</div>
+        ${metaLine ? `<div class="detailSubtle">${metaLine}</div>` : ""}
+        ${tieLine}
+      </div>
+    `;
+  }
+
+  function setDetails(node, attrs, neighborsCount, slice, nodeStats, nodeMeta) {
     const el = document.getElementById("details");
     if (!el) return;
     if (!node) { el.innerHTML = ""; return; }
 
-    const name = attrs.poet_name ?? attrs.d2 ?? attrs.label ?? node;
-    const birth = attrs.birth_year ?? attrs.d3 ?? "";
-    const entry = attrs.entry_year ?? attrs.d5 ?? "";
+    const meta = nodeMeta || {};
+    const name = meta.poet_name ?? attrs.poet_name ?? attrs.d2 ?? attrs.label ?? node;
+    const birth = meta.birth_year ?? attrs.birth_year ?? attrs.d3 ?? "";
+    const entry = meta.entry_year ?? attrs.entry_year ?? attrs.d5 ?? "";
     const degree = attrs.degree ?? attrs.Degree ?? "";
-    const modularity = attrs.modularity_class ?? "";
+    const modularity = meta.modularity_class ?? attrs.modularity_class ?? "";
     const wikidataUrl = `https://www.wikidata.org/wiki/${encodeURIComponent(node)}`;
     const qidLink = `<a class="detailLink" href="${wikidataUrl}" target="_blank" rel="noreferrer">${escapeHtml(node)}</a>`;
+    const firstMention = firstMentionHtml(meta.first_ppa_mention);
     const temporalDetails = slice
       ? (
         nodeStats
@@ -188,6 +250,7 @@
       ${modularity !== "" ? `<div><span style="opacity:.7">Modularity class:</span> ${escapeHtml(modularity)}</div>` : ""}
       ${Number.isFinite(neighborsCount) ? `<div><span style="opacity:.7">Neighbors:</span> ${neighborsCount}</div>` : ""}
       ${temporalDetails}
+      ${firstMention}
     `;
   }
 
@@ -334,6 +397,9 @@
     // reducers use these sets to hide nodes/edges outside the selected window.
     // The final slider position is "Full archive", with no temporal filter.
     const temporalSlices = Array.isArray(temporalIndex && temporalIndex.slices) ? temporalIndex.slices : [];
+    const nodeMeta = (temporalIndex && temporalIndex.node_meta && typeof temporalIndex.node_meta === "object")
+      ? temporalIndex.node_meta
+      : {};
     const initialSliceIndex = defaultSliceIndex(temporalSlices);
     let activeSliceIndex = initialSliceIndex;
     let activeSlice = activeSliceIndex >= 0 ? temporalSlices[activeSliceIndex] : null;
@@ -438,6 +504,7 @@
             graph.neighbors(selectedNode).length,
             activeSlice,
             activeNodeStats[selectedNode],
+            nodeMeta[selectedNode],
           );
         }
         renderer.refresh();
@@ -476,6 +543,7 @@
         graph.neighbors(node).length,
         activeSlice,
         activeNodeStats[node],
+        nodeMeta[node],
       );
 
       renderer.refresh();
@@ -597,6 +665,7 @@
             graph.neighbors(selectedNode).length,
             activeSlice,
             activeNodeStats[selectedNode],
+            nodeMeta[selectedNode],
           );
         }
         renderer.refresh();
