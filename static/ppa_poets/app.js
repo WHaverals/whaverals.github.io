@@ -486,7 +486,7 @@
           if (works >= minWorks) rows.push([qid, { works }]);
         });
         rows.sort((a, b) => (Number(b[1].works) - Number(a[1].works)) || a[0].localeCompare(b[0]));
-        const topRows = rows.slice(0, 5);
+        const topRows = rows.slice(0, 10);
         if (!topRows.length) {
           topPoetsList.innerHTML = `<li><span class="topPoetMeta">No poets match the current works filter.</span></li>`;
           return;
@@ -507,7 +507,7 @@
           const br = Number(b[1].rank) || Number.MAX_SAFE_INTEGER;
           return (bw - aw) || (ar - br) || a[0].localeCompare(b[0]);
         })
-        .slice(0, 5);
+        .slice(0, 10);
 
       if (!rows.length) {
         topPoetsList.innerHTML = `<li><span class="topPoetMeta">No poets match the current works filter.</span></li>`;
