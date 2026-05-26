@@ -385,9 +385,13 @@
     // Base style caches
     const baseNodeColor = new Map();
     const baseNodeSize = new Map();
+    const fullNodeWorks = new Map();
     graph.forEachNode((n, a) => {
       baseNodeColor.set(n, a.color);
       baseNodeSize.set(n, a.size);
+      const rawWorks = a.n_works_present ?? a.d1 ?? a.works ?? 0;
+      const works = Number(rawWorks);
+      fullNodeWorks.set(n, Number.isFinite(works) ? works : 0);
     });
 
     // No degree filter in click-only mode
@@ -427,13 +431,20 @@
     }
 
     function passesMinWorks(node) {
-      if (!activeSlice) return true;
-      const stats = activeNodeStats[node];
-      return !!stats && Number(stats.works) >= minWorks;
+      const works = activeSlice
+        ? Number(activeNodeStats[node]?.works)
+        : Number(fullNodeWorks.get(node));
+      return Number.isFinite(works) && works >= minWorks;
     }
 
     function shownPoetCount() {
-      if (!activeSlice) return graph.order;
+      if (!activeSlice) {
+        let count = 0;
+        graph.forEachNode((node) => {
+          if (passesMinWorks(node)) count += 1;
+        });
+        return count;
+      }
       let count = 0;
       for (const node of activeNodes) {
         if (passesMinWorks(node)) count += 1;
@@ -442,7 +453,15 @@
     }
 
     function shownLinkCount() {
-      if (!activeSlice) return graph.size;
+      if (!activeSlice) {
+        let count = 0;
+        graph.forEachEdge((edge) => {
+          const s = graph.source(edge);
+          const t = graph.target(edge);
+          if (passesMinWorks(s) && passesMinWorks(t)) count += 1;
+        });
+        return count;
+      }
       let count = 0;
       for (const key of activeEdges) {
         const [s, t] = key.split("|");
@@ -454,7 +473,21 @@
     function updateTopPoetsPanel() {
       if (!topPoetsList) return;
       if (!activeSlice) {
-        topPoetsList.innerHTML = `<li><span class="topPoetMeta">Choose a publication window to see top named poets.</span></li>`;
+        const rows = [];
+        graph.forEachNode((qid) => {
+          const works = Number(fullNodeWorks.get(qid)) || 0;
+          if (works >= minWorks) rows.push([qid, { works }]);
+        });
+        rows.sort((a, b) => (Number(b[1].works) - Number(a[1].works)) || a[0].localeCompare(b[0]));
+        const topRows = rows.slice(0, 5);
+        if (!topRows.length) {
+          topPoetsList.innerHTML = `<li><span class="topPoetMeta">No poets match the current works filter.</span></li>`;
+          return;
+        }
+        topPoetsList.innerHTML = topRows.map(([qid, stats]) => {
+          const name = nodeMeta[qid]?.poet_name || graph.getNodeAttribute(qid, "label") || qid;
+          return `<li><span class="topPoetName">${escapeHtml(name)}</span> <span class="topPoetMeta">— ${formatNumber(stats.works)} works</span></li>`;
+        }).join("");
         return;
       }
 
@@ -484,8 +517,11 @@
       if (!sliceStats) return;
 
       if (!activeSlice) {
+        const filterSuffix = minWorks > 1
+          ? ` · showing ${formatNumber(shownPoetCount())} poets · ${formatNumber(shownLinkCount())} links`
+          : "";
         sliceStats.textContent =
-          `All publication years · ${formatNumber(graph.order)} poets · ${formatNumber(graph.size)} links`;
+          `All publication years · ${formatNumber(graph.order)} poets · ${formatNumber(graph.size)} links${filterSuffix}`;
         return;
       }
 
@@ -551,7 +587,7 @@
         }
       }
 
-      if (minWorksSlider) minWorksSlider.disabled = fullArchive;
+      if (minWorksSlider) minWorksSlider.disabled = false;
       updateTopPoetsPanel();
       updateReadyStatus();
     }
@@ -682,7 +718,7 @@
       if (d < minDegree) return { ...data, hidden: true };
 
       const hasTemporalFilter = !!activeSlice;
-      const activeInSlice = !hasTemporalFilter || (activeNodes.has(node) && passesMinWorks(node));
+      const activeInSlice = !hasTemporalFilter ? passesMinWorks(node) : (activeNodes.has(node) && passesMinWorks(node));
       const firstAppearance = highlightNew && hasTemporalFilter && newNodes.has(node);
       const baseColor = baseNodeColor.get(node) ?? data.color;
       const baseSize = baseNodeSize.get(node) ?? data.size;
@@ -748,7 +784,7 @@
 
       const hasTemporalFilter = !!activeSlice;
       const activeInSlice =
-        !hasTemporalFilter ||
+        !hasTemporalFilter ? (passesMinWorks(s) && passesMinWorks(t)) :
         (activeEdges.has(edgeKey(s, t)) && activeNodes.has(s) && activeNodes.has(t) && passesMinWorks(s) && passesMinWorks(t));
       if (!selectedNeighborhood) {
         if (!activeInSlice) return { ...data, hidden: true };
