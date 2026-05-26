@@ -219,7 +219,7 @@
     `;
   }
 
-  function setDetails(node, attrs, neighborsCount, slice, nodeStats, nodeMeta) {
+  function setDetails(node, attrs, neighborsCount, slice, nodeStats, nodeMeta, minWorks) {
     const el = document.getElementById("details");
     if (!el) return;
     if (!node) { el.innerHTML = ""; return; }
@@ -235,7 +235,7 @@
     const temporalDetails = slice
       ? (
         nodeStats
-          ? `<div style="margin-top:6px"><span style="opacity:.7">${escapeHtml(slice.label)}:</span> ${formatNumber(nodeStats.works)} works${nodeStats.new ? " · first PPA appearance" : ""}</div>`
+          ? `<div style="margin-top:6px"><span style="opacity:.7">${escapeHtml(slice.label)}:</span> ${formatNumber(nodeStats.works)} works${nodeStats.rank ? ` · rank #${formatNumber(nodeStats.rank)}` : ""}${nodeStats.new ? " · first PPA appearance" : ""}${Number(nodeStats.works) < Number(minWorks) ? " · hidden by works filter" : ""}</div>`
           : `<div style="margin-top:6px;opacity:.7">Not active in ${escapeHtml(slice.label)}</div>`
       )
       : "";
@@ -378,6 +378,9 @@
     const sliceLabel = document.getElementById("sliceLabel");
     const sliceStats = document.getElementById("sliceStats");
     const highlightNewToggle = document.getElementById("highlightNewToggle");
+    const minWorksSlider = document.getElementById("minWorksSlider");
+    const minWorksLabel = document.getElementById("minWorksLabel");
+    const topPoetsList = document.getElementById("topPoetsList");
 
     // Base style caches
     const baseNodeColor = new Map();
@@ -405,6 +408,7 @@
     let newNodes = new Set();
     let activeNodeStats = {};
     let highlightNew = false;
+    let minWorks = 1;
 
     function updateReadyStatus() {
       const fullArchive = temporalSlices.length && activeSliceIndex === temporalSlices.length;
@@ -420,6 +424,81 @@
         sliceSlider.max = String(Math.max(temporalSlices.length, 0));
         sliceSlider.step = "1";
       }
+    }
+
+    function passesMinWorks(node) {
+      if (!activeSlice) return true;
+      const stats = activeNodeStats[node];
+      return !!stats && Number(stats.works) >= minWorks;
+    }
+
+    function shownPoetCount() {
+      if (!activeSlice) return graph.order;
+      let count = 0;
+      for (const node of activeNodes) {
+        if (passesMinWorks(node)) count += 1;
+      }
+      return count;
+    }
+
+    function shownLinkCount() {
+      if (!activeSlice) return graph.size;
+      let count = 0;
+      for (const key of activeEdges) {
+        const [s, t] = key.split("|");
+        if (passesMinWorks(s) && passesMinWorks(t)) count += 1;
+      }
+      return count;
+    }
+
+    function updateTopPoetsPanel() {
+      if (!topPoetsList) return;
+      if (!activeSlice) {
+        topPoetsList.innerHTML = `<li><span class="topPoetMeta">Choose a publication window to see top named poets.</span></li>`;
+        return;
+      }
+
+      const rows = Object.entries(activeNodeStats)
+        .filter(([, stats]) => Number(stats.works) >= minWorks)
+        .sort((a, b) => {
+          const aw = Number(a[1].works) || 0;
+          const bw = Number(b[1].works) || 0;
+          const ar = Number(a[1].rank) || Number.MAX_SAFE_INTEGER;
+          const br = Number(b[1].rank) || Number.MAX_SAFE_INTEGER;
+          return (bw - aw) || (ar - br) || a[0].localeCompare(b[0]);
+        })
+        .slice(0, 5);
+
+      if (!rows.length) {
+        topPoetsList.innerHTML = `<li><span class="topPoetMeta">No poets match the current works filter.</span></li>`;
+        return;
+      }
+
+      topPoetsList.innerHTML = rows.map(([qid, stats]) => {
+        const name = nodeMeta[qid]?.poet_name || graph.getNodeAttribute(qid, "label") || qid;
+        return `<li><span class="topPoetName">${escapeHtml(name)}</span> <span class="topPoetMeta">— ${formatNumber(stats.works)} works</span></li>`;
+      }).join("");
+    }
+
+    function updateSliceStatsDisplay() {
+      if (!sliceStats) return;
+
+      if (!activeSlice) {
+        sliceStats.textContent =
+          `All publication years · ${formatNumber(graph.order)} poets · ${formatNumber(graph.size)} links`;
+        return;
+      }
+
+      const summary = activeSlice.summary || {};
+      const filterSuffix = minWorks > 1
+        ? ` · showing ${formatNumber(shownPoetCount())} poets · ${formatNumber(shownLinkCount())} links`
+        : "";
+      sliceStats.textContent =
+        `${formatNumber(summary.works)} works · ` +
+        `${formatNumber(summary.active_poets)} poets · ` +
+        `${formatNumber(summary.active_edges)} links · ` +
+        `${formatNumber(summary.new_entries)} first PPA appearances` +
+        filterSuffix;
     }
 
     function updateTemporalState(index) {
@@ -462,19 +541,7 @@
           : activeSlice.label || `${activeSlice.start_year}–${activeSlice.end_year}`;
       }
 
-      if (sliceStats) {
-        if (fullArchive) {
-          sliceStats.textContent =
-            `All publication years · ${formatNumber(graph.order)} poets · ${formatNumber(graph.size)} links`;
-        } else {
-          const summary = activeSlice.summary || {};
-          sliceStats.textContent =
-            `${formatNumber(summary.works)} works · ` +
-            `${formatNumber(summary.active_poets)} poets · ` +
-            `${formatNumber(summary.active_edges)} links · ` +
-            `${formatNumber(summary.new_entries)} first PPA appearances`;
-        }
-      }
+      updateSliceStatsDisplay();
 
       if (highlightNewToggle) {
         highlightNewToggle.disabled = fullArchive;
@@ -484,6 +551,8 @@
         }
       }
 
+      if (minWorksSlider) minWorksSlider.disabled = fullArchive;
+      updateTopPoetsPanel();
       updateReadyStatus();
     }
 
@@ -500,6 +569,30 @@
             activeSlice,
             activeNodeStats[selectedNode],
             nodeMeta[selectedNode],
+            minWorks,
+          );
+        }
+        renderer.refresh();
+      });
+    }
+
+    if (minWorksSlider) {
+      minWorksSlider.value = String(minWorks);
+      minWorksSlider.addEventListener("input", (e) => {
+        minWorks = Math.max(1, Math.min(Number(e.target.value) || 1, 100));
+        if (minWorksLabel) minWorksLabel.textContent = formatNumber(minWorks);
+        updateSliceStatsDisplay();
+        updateTopPoetsPanel();
+        refreshSelectedNeighborhood();
+        if (selectedNode) {
+          setDetails(
+            selectedNode,
+            graph.getNodeAttributes(selectedNode),
+            graph.neighbors(selectedNode).length,
+            activeSlice,
+            activeNodeStats[selectedNode],
+            nodeMeta[selectedNode],
+            minWorks,
           );
         }
         renderer.refresh();
@@ -534,13 +627,13 @@
         return new Set([node, ...graph.neighbors(node)]);
       }
 
-      if (!activeNodes.has(node)) {
+      if (!activeNodes.has(node) || !passesMinWorks(node)) {
         return null;
       }
 
       const ego = new Set([node]);
       for (const neighbor of graph.neighbors(node)) {
-        if (activeNodes.has(neighbor) && activeEdges.has(edgeKey(node, neighbor))) {
+        if (activeNodes.has(neighbor) && passesMinWorks(neighbor) && activeEdges.has(edgeKey(node, neighbor))) {
           ego.add(neighbor);
         }
       }
@@ -563,6 +656,7 @@
         activeSlice,
         activeNodeStats[node],
         nodeMeta[node],
+        minWorks,
       );
 
       renderer.refresh();
@@ -588,7 +682,7 @@
       if (d < minDegree) return { ...data, hidden: true };
 
       const hasTemporalFilter = !!activeSlice;
-      const activeInSlice = !hasTemporalFilter || activeNodes.has(node);
+      const activeInSlice = !hasTemporalFilter || (activeNodes.has(node) && passesMinWorks(node));
       const firstAppearance = highlightNew && hasTemporalFilter && newNodes.has(node);
       const baseColor = baseNodeColor.get(node) ?? data.color;
       const baseSize = baseNodeSize.get(node) ?? data.size;
@@ -655,7 +749,7 @@
       const hasTemporalFilter = !!activeSlice;
       const activeInSlice =
         !hasTemporalFilter ||
-        (activeEdges.has(edgeKey(s, t)) && activeNodes.has(s) && activeNodes.has(t));
+        (activeEdges.has(edgeKey(s, t)) && activeNodes.has(s) && activeNodes.has(t) && passesMinWorks(s) && passesMinWorks(t));
       if (!selectedNeighborhood) {
         if (!activeInSlice) return { ...data, hidden: true };
         return { ...data, color: "rgba(0,0,0,0.08)", hidden: false };
@@ -686,6 +780,7 @@
             activeSlice,
             activeNodeStats[selectedNode],
             nodeMeta[selectedNode],
+            minWorks,
           );
         }
         renderer.refresh();
@@ -696,6 +791,9 @@
       if (search) search.value = "";
       if (aboutPanel) aboutPanel.hidden = true;
       if (aboutBtn) aboutBtn.setAttribute("aria-expanded", "false");
+      minWorks = 1;
+      if (minWorksSlider) minWorksSlider.value = String(minWorks);
+      if (minWorksLabel) minWorksLabel.textContent = formatNumber(minWorks);
       if (temporalSlices.length) updateTemporalState(initialSliceIndex);
       setSelected(null);
       camera.animate(initialCameraState, { duration: 500 });

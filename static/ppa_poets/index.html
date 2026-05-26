@@ -35,11 +35,20 @@
       </div>
       <input id="sliceSlider" type="range" min="0" max="0" value="0" step="1" disabled />
       <div id="sliceStats"></div>
+      <div class="filterRow">
+        <label for="minWorksSlider">Named in at least <span id="minWorksLabel">1</span> work</label>
+        <input id="minWorksSlider" type="range" min="1" max="100" value="1" step="1" />
+      </div>
       <label class="toggleRow" for="highlightNewToggle">
         <input id="highlightNewToggle" type="checkbox" />
         Highlight first PPA appearances
       </label>
     </div>
+
+    <details id="topPoetsPanel" class="topPanel">
+      <summary>Top poets in this window</summary>
+      <ol id="topPoetsList"></ol>
+    </details>
 
     <div id="aboutPanel" hidden>
       <div class="aboutTitle">About this network</div>
@@ -64,6 +73,6 @@
   <!-- Use UMD builds to avoid ESM bare-import issues (e.g. "events") -->
   <script src="https://cdn.jsdelivr.net/npm/graphology@0.25.4/dist/graphology.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sigma@3.0.2/dist/sigma.min.js"></script>
-  <script src="./app.js?v=20260525-slice-ego"></script>
+  <script src="./app.js?v=20260525-top-filter"></script>
 </body>
 </html>
