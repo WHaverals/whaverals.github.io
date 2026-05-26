@@ -209,10 +209,10 @@ html, body {
 }
 
 .aboutStats {
-  display: inline-block;
-  margin-left: 6px;
+  display: inline;
+  margin-left: 0;
   opacity: 0.75;
-  white-space: nowrap;
+  white-space: normal;
 }
 
 .aboutLink {
