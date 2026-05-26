@@ -294,13 +294,13 @@
     const GraphCtor = window.graphology.Graph || window.graphology.default || window.graphology;
     if (typeof GraphCtor !== "function") throw new Error("Could not find Graphology Graph constructor.");
 
-    const gexfText = await fetch("./poets.gexf").then(r => {
+    const gexfText = await fetch("./poets.gexf?v=20260526-labels").then(r => {
       if (!r.ok) throw new Error(`Failed to load poets.gexf: ${r.status} ${r.statusText}`);
       return r.text();
     });
 
     setStatus("Fetching temporal_index.json…");
-    const temporalIndex = await fetch("./temporal_index.json").then(r => {
+    const temporalIndex = await fetch("./temporal_index.json?v=20260526-labels").then(r => {
       if (!r.ok) throw new Error(`Failed to load temporal_index.json: ${r.status} ${r.statusText}`);
       return r.json();
     }).catch((e) => {

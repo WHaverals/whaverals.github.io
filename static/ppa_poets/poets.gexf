@@ -1045,7 +1045,7 @@
         <viz:position x="443.81534" y="-783.2323"/>
         <viz:color r="221" g="203" b="177"/>
       </node>
-      <node id="Q312444" label="None">
+      <node id="Q312444" label="John Fletcher">
         <attvalues>
           <attvalue for="d7" value="3. Early Modern (1500–1619)"/>
           <attvalue for="d6" value="1660.0"/>
@@ -6190,7 +6190,7 @@
         <viz:position x="-65.37727" y="-812.2525"/>
         <viz:color r="161" g="224" b="176"/>
       </node>
-      <node id="Q590" label="None">
+      <node id="Q590" label="Luís de Camões">
         <attvalues>
           <attvalue for="d7" value="3. Early Modern (1500–1619)"/>
           <attvalue for="d6" value="1670.0"/>
@@ -11927,7 +11927,7 @@
         <viz:position x="1241.1387" y="244.20653"/>
         <viz:color r="206" g="218" b="132"/>
       </node>
-      <node id="Q49747" label="None">
+      <node id="Q49747" label="Maurice Maeterlinck">
         <attvalues>
           <attvalue for="d7" value="6. Victorian (1845–1899)"/>
           <attvalue for="d6" value="1880.0"/>
@@ -14420,7 +14420,7 @@
         <viz:position x="815.052" y="-215.39445"/>
         <viz:color r="206" g="218" b="132"/>
       </node>
-      <node id="Q493" label="None">
+      <node id="Q493" label="Arthur Rimbaud">
         <attvalues>
           <attvalue for="d7" value="6. Victorian (1845–1899)"/>
           <attvalue for="d6" value="1870.0"/>
@@ -18915,7 +18915,7 @@
         <viz:position x="659.35474" y="453.61887"/>
         <viz:color r="255" g="199" b="131"/>
       </node>
-      <node id="Q7724" label="None">
+      <node id="Q7724" label="August Strindberg">
         <attvalues>
           <attvalue for="d7" value="6. Victorian (1845–1899)"/>
           <attvalue for="d6" value="1890.0"/>
@@ -23538,7 +23538,7 @@
         <viz:position x="393.2732" y="-140.9115"/>
         <viz:color r="255" g="199" b="131"/>
       </node>
-      <node id="Q191305" label="None">
+      <node id="Q191305" label="Gérard de Nerval">
         <attvalues>
           <attvalue for="d7" value="5. Romantic (1770–1844)"/>
           <attvalue for="d6" value="1870.0"/>
