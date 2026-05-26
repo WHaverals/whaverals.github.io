@@ -219,6 +219,37 @@
     `;
   }
 
+  function topWorkHtml(topWork) {
+    if (!topWork || typeof topWork !== "object") return "";
+
+    const year = topWork.year != null ? escapeHtml(topWork.year) : "";
+    const title = truncateText(topWork.title || topWork.work_id || "Untitled work");
+    const author = truncateText(topWork.author || "", 48);
+    const source = topWork.source ? escapeHtml(topWork.source) : "";
+    const windows = Number(topWork.windows);
+    const workUrl = inferWorkUrl(topWork);
+    const titleHtml = workUrl
+      ? `<a class="detailLink" href="${escapeHtml(workUrl)}" target="_blank" rel="noreferrer">${escapeHtml(title)}</a>`
+      : escapeHtml(title);
+    const workLine = [
+      year,
+      titleHtml,
+      author ? `— ${escapeHtml(author)}` : "",
+    ].filter(Boolean).join(" ");
+    const metaLine = [
+      Number.isFinite(windows) ? `${formatNumber(windows)} mention-bearing window${windows === 1 ? "" : "s"}` : "",
+      source,
+    ].filter(Boolean).join(" · ");
+
+    return `
+      <div class="detailBlock">
+        <div class="detailHeading">Most sustained PPA work</div>
+        <div>${workLine}</div>
+        ${metaLine ? `<div class="detailSubtle">${metaLine}</div>` : ""}
+      </div>
+    `;
+  }
+
   function setDetails(node, attrs, neighborsCount, slice, nodeStats, nodeMeta, minWorks) {
     const el = document.getElementById("details");
     if (!el) return;
@@ -232,6 +263,7 @@
     const modularity = meta.modularity_class ?? attrs.modularity_class ?? "";
     const wikidataUrl = `https://www.wikidata.org/wiki/${encodeURIComponent(node)}`;
     const qidLink = `<a class="detailLink" href="${wikidataUrl}" target="_blank" rel="noreferrer">${escapeHtml(node)}</a>`;
+    const topWork = topWorkHtml(meta.top_ppa_work);
     const selectedHiddenByFilter = slice && nodeStats && Number(nodeStats.works) < Number(minWorks);
     const temporalDetails = slice
       ? (
@@ -249,6 +281,7 @@
       ${degree !== "" ? `<div><span style="opacity:.7">Degree:</span> ${escapeHtml(degree)}</div>` : ""}
       ${modularity !== "" ? `<div><span style="opacity:.7">Modularity class:</span> ${escapeHtml(modularity)}</div>` : ""}
       ${temporalDetails}
+      ${topWork}
     `;
   }
 
