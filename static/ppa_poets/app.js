@@ -232,11 +232,12 @@
     const modularity = meta.modularity_class ?? attrs.modularity_class ?? "";
     const wikidataUrl = `https://www.wikidata.org/wiki/${encodeURIComponent(node)}`;
     const qidLink = `<a class="detailLink" href="${wikidataUrl}" target="_blank" rel="noreferrer">${escapeHtml(node)}</a>`;
+    const selectedHiddenByFilter = slice && nodeStats && Number(nodeStats.works) < Number(minWorks);
     const temporalDetails = slice
       ? (
         nodeStats
-          ? `<div style="margin-top:6px"><span style="opacity:.7">${escapeHtml(slice.label)}:</span> ${formatNumber(nodeStats.works)} works${nodeStats.rank ? ` · rank #${formatNumber(nodeStats.rank)}` : ""}${nodeStats.new ? " · first PPA appearance" : ""}${Number(nodeStats.works) < Number(minWorks) ? " · hidden by works filter" : ""}</div>`
-          : `<div style="margin-top:6px;opacity:.7">Not active in ${escapeHtml(slice.label)}</div>`
+          ? `<div style="margin-top:6px"><span style="opacity:.7">${escapeHtml(slice.label)}:</span> ${formatNumber(nodeStats.works)} works${nodeStats.rank ? ` · rank #${formatNumber(nodeStats.rank)}` : ""}${nodeStats.new ? " · first PPA appearance" : ""}${selectedHiddenByFilter ? " · hidden by works filter" : ""}</div>${selectedHiddenByFilter ? `<div class="detailSubtle">Showing the full ${escapeHtml(slice.label)} window instead.</div>` : ""}`
+          : `<div style="margin-top:6px;opacity:.7">${escapeHtml(name)} is not active in ${escapeHtml(slice.label)}. Showing the full ${escapeHtml(slice.label)} window instead.</div>`
       )
       : "";
 
