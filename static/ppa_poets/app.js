@@ -408,10 +408,8 @@
 
     function updateReadyStatus() {
       const fullArchive = temporalSlices.length && activeSliceIndex === temporalSlices.length;
-      setStatus(
-        `Ready. ${graph.order.toLocaleString()} nodes, ${graph.size.toLocaleString()} edges` +
-        (activeSlice ? ` · showing ${activeSlice.label}` : fullArchive ? " · showing Full archive" : "")
-      );
+      const showing = activeSlice ? activeSlice.label : fullArchive ? "Full archive" : "all years";
+      setStatus(`Network ready. Showing ${showing}.`);
     }
 
     function setTemporalControlsEnabled(enabled) {
@@ -529,9 +527,33 @@
     let selectedNode = null;
     let selectedNeighborhood = null; // Set<string> | null
 
+    function selectedSliceNeighborhood(node) {
+      if (!node) return null;
+
+      if (!activeSlice) {
+        return new Set([node, ...graph.neighbors(node)]);
+      }
+
+      if (!activeNodes.has(node)) {
+        return null;
+      }
+
+      const ego = new Set([node]);
+      for (const neighbor of graph.neighbors(node)) {
+        if (activeNodes.has(neighbor) && activeEdges.has(edgeKey(node, neighbor))) {
+          ego.add(neighbor);
+        }
+      }
+      return ego;
+    }
+
+    function refreshSelectedNeighborhood() {
+      selectedNeighborhood = selectedSliceNeighborhood(selectedNode);
+    }
+
     function setSelected(node) {
       selectedNode = node;
-      selectedNeighborhood = node ? new Set([node, ...graph.neighbors(node)]) : null;
+      refreshSelectedNeighborhood();
 
       if (!node) setDetails(null, {}, NaN);
       else setDetails(
@@ -655,6 +677,7 @@
     if (sliceSlider && temporalSlices.length) {
       sliceSlider.addEventListener("input", (e) => {
         updateTemporalState(e.target.value);
+        refreshSelectedNeighborhood();
         if (selectedNode) {
           setDetails(
             selectedNode,
