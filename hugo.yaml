@@ -80,8 +80,6 @@ languages:
         title: "Recent werk"
         items:
           - content: >
-              [Mei 2026] **Co-organisator**, [The Ends of Prosody](https://cdh.princeton.edu/events/the-ends-of-prosody/) – Vierdaagse conferentie aan Princeton University rond de voltooiing van het Princeton Prosody Archive, waarin literaire en computationele onderzoekers nieuwe perspectieven op prosodie, archieven en poëzie als data verkenden, 14–17 mei 2026.
-          - content: >
               [Maart 2026] Wouter Haverals, **Style and Prejudice: Attribution Bias in Human and AI Literary Judgment** – Lezing op [Cultural AI: An Emerging Field](https://as.nyu.edu/research-centers/remarque/events/Spring-2026/cultural-ai--an-emerging-field.html), NYU Remarque Institute, 10 maart 2026.
           - content: >
               [Okt 2025] Wouter Haverals en Meredith Martin, **Everyone prefers human writers, including AI** – AI-modellen vertonen een sterkere voorkeur voor menselijk auteurschap dan mensen zelf bij het evalueren van literaire teksten. [arXiv:2510.08831](https://arxiv.org/abs/2510.08831)
@@ -89,6 +87,8 @@ languages:
               [Okt 2025] Maggie Wang en Wouter Haverals, **Prompt-Character Divergence: A Responsibility Compass for Human-AI Creative Collaboration** – Een diagnostische tool die makers helpt hun intenties te onderscheiden van de invloed van AI-modellen in GenAI output. [NeurIPS 2025 Creative AI Track](https://neurips.cc/Conferences/2025/CallForCreativeAI).
           - content: >
               [Aug 2025] Caroline Vandyck, Wouter Haverals, en Mike Kestemont, **Making Characters Count** – Identificatie van middeleeuwse scribentenhanden door computationele analyse van afkortingspraktijken en linguïstische kenmerken in 14e-eeuwse Middelnederlandse manuscripten. [arXiv:2509.00067](https://arxiv.org/abs/2509.00067)
+          - content: >
+              [Mei 2025] **Mede-organisator**, [The Ends of Prosody](https://cdh.princeton.edu/events/the-ends-of-prosody/) – Vierdaagse conferentie aan Princeton University rond de voltooiing van het Princeton Prosody Archive, waarin literaire en computationele onderzoekers nieuwe perspectieven op prosodie, archieven en poëzie als data verkenden, 14–17 mei 2025.
           - content: >
               [Mei 2025] Wouter Haverals, **When Humans and Machines Translate Char: Computational Insights into *Feuillets d'Hypnos* Across Languages** – Presentatie op [Resistance and its Futures: Translating the (Untranslatable) Wartime Poetry of Rene Char](https://complit.princeton.edu/events/resistance-and-its-futures-translating-untranslatable-wartime-poetry-rene-char), Princeton University, mei 2025.
           - content: >
@@ -180,8 +180,6 @@ params:
     title: "Recent highlights"
     items:
       - content: >
-          [May 2026] **Co-organizer**, [The Ends of Prosody](https://cdh.princeton.edu/events/the-ends-of-prosody/) – Conference at Princeton University celebrating the completion of the Princeton Prosody Archive and bringing together literary and computational scholars, 14–17 May 2026.
-      - content: >
           [March 2026] Wouter Haverals, **Style and Prejudice: Attribution Bias in Human and AI Literary Judgment** – Talk at [Cultural AI: An Emerging Field](https://as.nyu.edu/research-centers/remarque/events/Spring-2026/cultural-ai--an-emerging-field.html), NYU Remarque Institute, 10 March 2026.
       - content: >
           [Oct 2025] Wouter Haverals and Meredith Martin, **Everyone prefers human writers, including AI** – AI models show 2.5x stronger pro-human authorship bias than humans when evaluating literary content. [arXiv:2510.08831](https://arxiv.org/abs/2510.08831)
@@ -189,6 +187,8 @@ params:
           [Oct 2025] Maggie Wang and Wouter Haverals, **Prompt-Character Divergence: A Responsibility Compass for Human-AI Creative Collaboration** – A diagnostic tool to help creators distinguish their intent from AI model influence in generative output. [NeurIPS 2025 Creative AI Track](https://neurips.cc/Conferences/2025/CallForCreativeAI).
       - content: >
           [Aug 2025] Caroline Vandyck, Wouter Haverals, and Mike Kestemont, **Making Characters Count** – Identifying medieval scribal hands through computational analysis of abbreviation practices and linguistic features in 14th-century manuscripts. [arXiv:2509.00067](https://arxiv.org/abs/2509.00067)
+      - content: >
+          [May 2025] **Co-organizer**, [The Ends of Prosody](https://cdh.princeton.edu/events/the-ends-of-prosody/) – Conference at Princeton University celebrating the completion of the Princeton Prosody Archive and bringing together literary and computational scholars, 14–17 May 2025.
       - content: >
           [May 2025] Wouter Haverals, **When Humans and Machines Translate Char: Computational Insights into *Feuillets d'Hypnos* Across Languages** – Presentation at [Resistance and its Futures: Translating the (Untranslatable) Wartime Poetry of Rene Char](https://complit.princeton.edu/events/resistance-and-its-futures-translating-untranslatable-wartime-poetry-rene-char), Princeton University, May 2025.
       - content: >
