@@ -80,6 +80,8 @@ languages:
         title: "Recent werk"
         items:
           - content: >
+              [Mei 2026] **Co-organisator**, [The Ends of Prosody](https://cdh.princeton.edu/events/the-ends-of-prosody/) – Vierdaagse conferentie aan Princeton University rond de voltooiing van het Princeton Prosody Archive, waarin literaire en computationele onderzoekers nieuwe perspectieven op prosodie, archieven en poëzie als data verkenden, 14–17 mei 2026.
+          - content: >
               [Maart 2026] Wouter Haverals, **Style and Prejudice: Attribution Bias in Human and AI Literary Judgment** – Lezing op [Cultural AI: An Emerging Field](https://as.nyu.edu/research-centers/remarque/events/Spring-2026/cultural-ai--an-emerging-field.html), NYU Remarque Institute, 10 maart 2026.
           - content: >
               [Okt 2025] Wouter Haverals en Meredith Martin, **Everyone prefers human writers, including AI** – AI-modellen vertonen een sterkere voorkeur voor menselijk auteurschap dan mensen zelf bij het evalueren van literaire teksten. [arXiv:2510.08831](https://arxiv.org/abs/2510.08831)
@@ -177,6 +179,8 @@ params:
   recentWork:
     title: "Recent highlights"
     items:
+      - content: >
+          [May 2026] **Co-organizer**, [The Ends of Prosody](https://cdh.princeton.edu/events/the-ends-of-prosody/) – Conference at Princeton University celebrating the completion of the Princeton Prosody Archive and bringing together literary and computational scholars, 14–17 May 2026.
       - content: >
           [March 2026] Wouter Haverals, **Style and Prejudice: Attribution Bias in Human and AI Literary Judgment** – Talk at [Cultural AI: An Emerging Field](https://as.nyu.edu/research-centers/remarque/events/Spring-2026/cultural-ai--an-emerging-field.html), NYU Remarque Institute, 10 March 2026.
       - content: >
