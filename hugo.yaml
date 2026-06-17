@@ -80,6 +80,8 @@ languages:
         title: "Recent werk"
         items:
           - content: >
+              [Juni 2026] Wouter Haverals, **Evolution of the Poetic Canon in the Princeton Prosody Archive** – Lezing op [Mapping the Canon: Quantitative Approaches to Literary History](https://www.linglit.tu-darmstadt.de/institutlinglit/mitarbeitende/brottrager/mapping_the_canon/index.en.jsp), Technische Universiteit Darmstadt, 18–19 juni 2026. [[slides](https://whaverals.github.io/slidedecks/decks/2026-06-poetic-canon/)]
+          - content: >
               [Maart 2026] Wouter Haverals, **Style and Prejudice: Attribution Bias in Human and AI Literary Judgment** – Lezing op [Cultural AI: An Emerging Field](https://as.nyu.edu/research-centers/remarque/events/Spring-2026/cultural-ai--an-emerging-field.html), NYU Remarque Institute, 10 maart 2026.
           - content: >
               [Okt 2025] Wouter Haverals en Meredith Martin, **Everyone prefers human writers, including AI** – AI-modellen vertonen een sterkere voorkeur voor menselijk auteurschap dan mensen zelf bij het evalueren van literaire teksten. [arXiv:2510.08831](https://arxiv.org/abs/2510.08831)
@@ -179,6 +181,8 @@ params:
   recentWork:
     title: "Recent highlights"
     items:
+      - content: >
+          [June 2026] Wouter Haverals, **Evolution of the Poetic Canon in the Princeton Prosody Archive** – Talk at [Mapping the Canon: Quantitative Approaches to Literary History](https://www.linglit.tu-darmstadt.de/institutlinglit/mitarbeitende/brottrager/mapping_the_canon/index.en.jsp), Technical University of Darmstadt, 18–19 June 2026. [[slides](https://whaverals.github.io/slidedecks/decks/2026-06-poetic-canon/)]
       - content: >
           [March 2026] Wouter Haverals, **Style and Prejudice: Attribution Bias in Human and AI Literary Judgment** – Talk at [Cultural AI: An Emerging Field](https://as.nyu.edu/research-centers/remarque/events/Spring-2026/cultural-ai--an-emerging-field.html), NYU Remarque Institute, 10 March 2026.
       - content: >
