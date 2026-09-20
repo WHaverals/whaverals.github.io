@@ -80,6 +80,8 @@ languages:
         title: "Recent werk"
         items:
           - content: >
+              [Sept 2026] Andrew Janco en Wouter Haverals, **Temporal Reasoning at Scale: Fine-Tuning a Vision-Language Model for Historical Research** – Lightning talk op [AI4LAM Fantastic Futures 2026](https://ai4lam.org/fantastic-futures/), Library of Congress, Washington, D.C., 15–17 september 2026.
+          - content: >
               [Juni 2026] Wouter Haverals, **Evolution of the Poetic Canon in the Princeton Prosody Archive** – Lezing op [Mapping the Canon: Quantitative Approaches to Literary History](https://www.linglit.tu-darmstadt.de/institutlinglit/mitarbeitende/brottrager/mapping_the_canon/index.en.jsp), Technische Universiteit Darmstadt, 18–19 juni 2026. [[slides](https://whaverals.github.io/slidedecks/decks/2026-06-poetic-canon/)]
           - content: >
               [Maart 2026] Wouter Haverals, **Style and Prejudice: Attribution Bias in Human and AI Literary Judgment** – Lezing op [Cultural AI: An Emerging Field](https://as.nyu.edu/research-centers/remarque/events/Spring-2026/cultural-ai--an-emerging-field.html), NYU Remarque Institute, 10 maart 2026.
@@ -181,6 +183,8 @@ params:
   recentWork:
     title: "Recent highlights"
     items:
+      - content: >
+          [Sept 2026] Andrew Janco and Wouter Haverals, **Temporal Reasoning at Scale: Fine-Tuning a Vision-Language Model for Historical Research** – Lightning talk at [AI4LAM Fantastic Futures 2026](https://ai4lam.org/fantastic-futures/), Library of Congress, Washington, D.C., 15–17 September 2026.
       - content: >
           [June 2026] Wouter Haverals, **Evolution of the Poetic Canon in the Princeton Prosody Archive** – Talk at [Mapping the Canon: Quantitative Approaches to Literary History](https://www.linglit.tu-darmstadt.de/institutlinglit/mitarbeitende/brottrager/mapping_the_canon/index.en.jsp), Technical University of Darmstadt, 18–19 June 2026. [[slides](https://whaverals.github.io/slidedecks/decks/2026-06-poetic-canon/)]
       - content: >
