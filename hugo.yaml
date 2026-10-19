@@ -80,6 +80,8 @@ languages:
         title: "Recent werk"
         items:
           - content: >
+              [Okt 2026] Wouter Haverals, Meredith Martin, Rebecca Sutton Koeser en Laure Thompson, **The quotable canon: Poetry as example in the Princeton Prosody Archive (1532–1929)** – *Computational Humanities Research* 2, e28 (open access). [[artikel](https://doi.org/10.1017/chr.2026.10048)] [[draadje](https://bsky.app/profile/wouterhaverals.bsky.social/post/3myaiokdkb22e)]
+          - content: >
               [Sept 2026] Andrew Janco en Wouter Haverals, **Temporal Reasoning at Scale: Fine-Tuning a Vision-Language Model for Historical Research** – Lightning talk op [AI4LAM Fantastic Futures 2026](https://ai4lam.org/fantastic-futures/), Library of Congress, Washington, D.C., 15–17 september 2026.
           - content: >
               [Juni 2026] Wouter Haverals, **Evolution of the Poetic Canon in the Princeton Prosody Archive** – Lezing op [Mapping the Canon: Quantitative Approaches to Literary History](https://www.linglit.tu-darmstadt.de/institutlinglit/mitarbeitende/brottrager/mapping_the_canon/index.en.jsp), Technische Universiteit Darmstadt, 18–19 juni 2026. [[slides](https://whaverals.github.io/slidedecks/decks/2026-06-poetic-canon/)]
@@ -183,6 +185,8 @@ params:
   recentWork:
     title: "Recent highlights"
     items:
+      - content: >
+          [Oct 2026] Wouter Haverals, Meredith Martin, Rebecca Sutton Koeser, and Laure Thompson, **The quotable canon: Poetry as example in the Princeton Prosody Archive (1532–1929)** – *Computational Humanities Research* 2, e28 (open access). [[article](https://doi.org/10.1017/chr.2026.10048)] [[thread](https://bsky.app/profile/wouterhaverals.bsky.social/post/3myaiokdkb22e)]
       - content: >
           [Sept 2026] Andrew Janco and Wouter Haverals, **Temporal Reasoning at Scale: Fine-Tuning a Vision-Language Model for Historical Research** – Lightning talk at [AI4LAM Fantastic Futures 2026](https://ai4lam.org/fantastic-futures/), Library of Congress, Washington, D.C., 15–17 September 2026.
       - content: >
