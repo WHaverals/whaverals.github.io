@@ -636,7 +636,7 @@
       }
 
       h += `<div class="dSection"><h3>In the archive</h3>`;
-      if (ND.first[i]) h += `<div class="gloss">First observed mention${ND.first[i][4] ? ` (p. ${esc(ND.first[i][4])})` : ""}</div>${workLine(ND.first[i])}`;
+      if (ND.first[i]) h += `<div class="gloss">First observed mention</div>${workLine(ND.first[i])}`;
       if (ND.top[i]) h += `<div class="gloss" style="margin-top:8px">Work with the most pages naming them</div>${workLine(ND.top[i], (n) => (n ? `${fmt(n)} five-page windows` : ""))}`;
       h += `</div>`;
 
