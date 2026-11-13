@@ -10,7 +10,7 @@
   const norm = (s) => String(s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().trim();
   const yearStr = (y) => (y == null ? "" : y < 0 ? `${-y} BCE` : String(y));
 
-  const DATA_VERSION = "20261019"; // bump when data/*.json is rebuilt
+  const DATA_VERSION = "20261113-fixed8"; // bump when data/*.json is rebuilt
   const query = new URLSearchParams(location.search);
   const EMBED = query.get("embed") === "1";
   if (EMBED) document.body.classList.add("embed");
@@ -777,9 +777,9 @@
       else if (state.links) linkTxt = `Showing each poet's ${state.links} strongest links${wl} (${fmt(shown)} of ${fmt(win ? win.nLinks : E)}).`;
       else linkTxt = `Showing all ${fmt(shown)} links${wl}.`;
       const sizeTxt = state.size === "links"
-        ? (win ? "Size: poets linked in this window." : "Size: number of linked poets (as in the article's Figure 7).")
+        ? (win ? "Size: poets linked in this window." : "Size: number of linked poets.")
         : (win ? "Size: works naming the poet in this window." : "Size: works naming the poet.");
-      const colorTxt = state.color === "group" ? "Colour: Gephi community." : "Colour: period, by birth year + 20.";
+      const colorTxt = state.color === "group" ? "Colour: community (consensus of 500 weighted Louvain runs, corrected network)." : "Colour: period, by birth year + 20.";
       $("encodingNote").textContent = `${linkTxt} Darker lines carry more excess co-mention. ${sizeTxt} ${colorTxt}`;
     }
 
