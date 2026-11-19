@@ -95,3 +95,31 @@ body {
     opacity: 0.8;
     text-decoration-thickness: 2px;
 }
+
+/* Older highlights, collapsed per year */
+.recent-work-archive {
+    margin-top: 2.5rem;
+    border-top: 1px solid var(--border);
+    padding-top: 1.5rem;
+}
+
+.recent-work-archive .archive-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 0.75rem;
+    color: var(--secondary);
+}
+
+.recent-work-archive details {
+    margin-bottom: 0.75rem;
+}
+
+.recent-work-archive summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--content);
+}
+
+.recent-work-archive details[open] summary {
+    margin-bottom: 1rem;
+}

@@ -24,6 +24,23 @@
       </li>
       {{- end }}
     </ul>
+    {{- with $recentWork.archive }}
+    <div class="recent-work-archive">
+      <h3 class="archive-title">{{ $recentWork.archiveTitle | default "Archive" }}</h3>
+      {{- range . }}
+      <details>
+        <summary>{{ .year }}</summary>
+        <ul class="recent-work-list">
+          {{- range .items }}
+          <li>
+            {{ .content | markdownify }}
+          </li>
+          {{- end }}
+        </ul>
+      </details>
+      {{- end }}
+    </div>
+    {{- end }}
   </div>
 </section>
 {{- end }}
