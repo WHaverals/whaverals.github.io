@@ -1,6 +1,6 @@
 /* global graphology, Sigma */
 // PPA Poets. Loads data/network.json + data/time.json (built by tools/ppa_poets/build_data.py),
-// keeps the archive-wide Gephi layout, and recomputes node/edge styles from one `state` object.
+// keeps the archive-wide layout, and recomputes node/edge styles from one `state` object.
 (function () {
   "use strict";
 
@@ -10,7 +10,7 @@
   const norm = (s) => String(s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().trim();
   const yearStr = (y) => (y == null ? "" : y < 0 ? `${-y} BCE` : String(y));
 
-  const DATA_VERSION = "20261113-fixed8"; // bump when data/*.json is rebuilt
+  const DATA_VERSION = "20261118-v2"; // bump when data/*.json is rebuilt
   const query = new URLSearchParams(location.search);
   const EMBED = query.get("embed") === "1";
   if (EMBED) document.body.classList.add("embed");
@@ -779,7 +779,7 @@
       const sizeTxt = state.size === "links"
         ? (win ? "Size: poets linked in this window." : "Size: number of linked poets.")
         : (win ? "Size: works naming the poet in this window." : "Size: works naming the poet.");
-      const colorTxt = state.color === "group" ? "Colour: community (consensus of 500 weighted Louvain runs, corrected network)." : "Colour: period, by birth year + 20.";
+      const colorTxt = state.color === "group" ? "Colour: community (consensus of 500 weighted Louvain runs)." : "Colour: period, by birth year + 20.";
       $("encodingNote").textContent = `${linkTxt} Darker lines carry more excess co-mention. ${sizeTxt} ${colorTxt}`;
     }
 
@@ -892,6 +892,7 @@
     }
     $("collapseBtn").addEventListener("click", () => setCollapsed(!$("panel").classList.contains("collapsed")));
     $("aboutBtn").addEventListener("click", () => { $("about").hidden = false; $("aboutClose").focus(); });
+    $("versionBtn").addEventListener("click", () => { $("about").hidden = false; $("aboutClose").focus(); $("aboutVersion").scrollIntoView({ block: "start" }); });
     $("aboutClose").addEventListener("click", () => { $("about").hidden = true; });
     $("about").addEventListener("click", (ev) => { if (ev.target === $("about")) $("about").hidden = true; });
 
