@@ -892,7 +892,6 @@
     }
     $("collapseBtn").addEventListener("click", () => setCollapsed(!$("panel").classList.contains("collapsed")));
     $("aboutBtn").addEventListener("click", () => { $("about").hidden = false; $("aboutClose").focus(); });
-    $("versionBtn").addEventListener("click", () => { $("about").hidden = false; $("aboutClose").focus(); $("aboutVersion").scrollIntoView({ block: "start" }); });
     $("aboutClose").addEventListener("click", () => { $("about").hidden = true; });
     $("about").addEventListener("click", (ev) => { if (ev.target === $("about")) $("about").hidden = true; });
 

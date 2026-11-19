@@ -26,8 +26,7 @@
           <button id="collapseBtn" type="button" class="btn iconBtn" aria-expanded="true" aria-controls="panelBody" title="Hide controls">–</button>
         </div>
       </div>
-      <p class="subtitle">Which poets are named together in Princeton Prosody Archive works, 1559–1929 ·
-        <button id="versionBtn" type="button" class="linkBtn">Version 2</button></p>
+      <p class="subtitle">Which poets are named together in Princeton Prosody Archive works, 1559–1929</p>
     </header>
 
     <div class="searchWrap">
@@ -134,10 +133,10 @@
         More than half the archive's works date from 1870–1929, so the map itself mostly reflects that period.
         Windows with fewer than 50 works are hatched: read them as a list of names, not as structure.</p>
       <h3 id="aboutVersion">Version 2 (November 2026)</h3>
-      <p>This map differs slightly from the article's. There, an automatic entity linker matched each name to a Wikidata person, and only confident matches were kept.
-        Here those names were checked again: a language model read each passage and chose among the people of that name who could be meant, or none,
-        and a few documented rules were added. This separates namesakes the linker confused (Erasmus Darwin read as Charles, the courtier Walter Raleigh and the critic)
-        and keeps mentions the linker found but was unsure of (Thomas Gray's more than triple). The overall picture is unchanged; individual poets and links differ.
+      <p>This map differs slightly from the article's. The article kept only the names that the entity linker ReFinED matched to a Wikidata person with a confidence of at least 0.9.
+        Here every match at 0.85 or above was kept and checked by a language model. The model read each passage and chose among the Wikidata people of that name (or none),
+        which corrected the linker where it had picked the wrong person. ReFinED often read Erasmus Darwin as Charles Darwin, for example,
+        and many of Thomas Gray's mentions were right but fell just under 0.9.
         The article's network and data remain available on <a href="https://doi.org/10.5281/zenodo.18623170" target="_blank" rel="noreferrer">Zenodo</a>.</p>
       <h3>Source</h3>
       <p>Haverals, Šeļa and Plecháč, “Canon Dynamics in the Princeton Prosody Archive, 1559–1929,”
@@ -148,6 +147,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/graphology@0.25.4/dist/graphology.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sigma@3.0.2/dist/sigma.min.js"></script>
-  <script src="./app.js?v=20261118"></script>
+  <script src="./app.js?v=20261118b"></script>
 </body>
 </html>
